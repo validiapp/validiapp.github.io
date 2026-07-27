@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReallyNight — Smart Light Control</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #2C3E50;
+            --accent: #E67E22;
+            --accent-dark: #D35400;
+            --bg: #FAFBFC;
+            --card: #FFFFFF;
+            --text: #1A1A2E;
+            --text-secondary: #6C7A89;
+            --text-light: #95A5A6;
+            --border: #E8ECF0;
+            --warm: #FFE0B2;
+            --cool: #D6E6FF;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+        header {
+            padding: 48px 0 32px;
+            text-align: center;
+            background: linear-gradient(135deg, #FFF5E6 0%, #FAFBFC 100%);
+            border-bottom: 1px solid var(--border);
+        }
+        header .logo-icon {
+            width: 72px; height: 72px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 24px rgba(230, 126, 34, 0.25);
+        }
+        header .logo-icon svg { width: 36px; height: 36px; fill: white; }
+        header h1 {
+            font-size: 32px; font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+        header p {
+            font-size: 18px; color: var(--text-secondary);
+            max-width: 500px; margin: 0 auto;
+        }
+
+        nav {
+            display: flex; gap: 12px;
+            justify-content: center;
+            padding: 20px 0;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        nav a:hover { background: var(--accent); color: white; }
+
+        .hero { padding: 64px 0; text-align: center; }
+        .hero h2 { font-size: 36px; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.5px; }
+        .hero p { font-size: 17px; color: var(--text-secondary); max-width: 580px; margin: 0 auto 32px; }
+        .hero .cta {
+            display: inline-block; padding: 14px 32px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: white; border-radius: 12px;
+            text-decoration: none; font-weight: 600;
+            box-shadow: 0 4px 16px rgba(230, 126, 34, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .hero .cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4); }
+
+        .features { padding: 48px 0; }
+        .features h3 { text-align: center; font-size: 24px; margin-bottom: 40px; }
+        .feature-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+        .feature-card {
+            background: var(--card);
+            border-radius: 16px; padding: 28px;
+            border: 1px solid var(--border);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
+        .feature-card .icon {
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 16px;
+            font-size: 22px;
+        }
+        .feature-card h4 { font-size: 17px; margin-bottom: 8px; }
+        .feature-card p { font-size: 14px; color: var(--text-secondary); }
+
+        .steps { padding: 48px 0; }
+        .steps h3 { text-align: center; font-size: 24px; margin-bottom: 40px; }
+        .step-list { max-width: 600px; margin: 0 auto; }
+        .step {
+            display: flex; gap: 20px; margin-bottom: 32px;
+            align-items: flex-start;
+        }
+        .step-num {
+            width: 40px; height: 40px; flex-shrink: 0;
+            background: var(--accent);
+            color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 16px;
+        }
+        .step h4 { font-size: 16px; margin-bottom: 4px; }
+        .step p { font-size: 14px; color: var(--text-secondary); }
+
+        .privacy-link {
+            text-align: center; padding: 48px 0;
+            border-top: 1px solid var(--border);
+        }
+        .privacy-link a {
+            color: var(--accent); text-decoration: none;
+            font-weight: 500;
+        }
+        .privacy-link a:hover { text-decoration: underline; }
+
+        footer {
+            text-align: center;
+            padding: 32px 0;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            header { padding: 32px 0 24px; }
+            header h1 { font-size: 24px; }
+            .hero h2 { font-size: 28px; }
+            .feature-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></svg>
+            </div>
+            <h1>ReallyNight</h1>
+            <p>Effortless smart light control with intuitive scheduling and energy tracking.</p>
+        </div>
+    </header>
+
+    <nav class="container">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="support.html">Support</a>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Your light, your rhythm.</h2>
+            <p>Control brightness, color temperature, and schedules from one beautiful interface. Track your energy usage and build smarter lighting habits.</p>
+            <a href="https://apps.apple.com" class="cta">Download on the App Store</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h3>Everything you need in one app.</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon">💡</div>
+                    <h4>Smart Control</h4>
+                    <p>Toggle your light on and off with one tap. Adjust brightness from 1% to 100% in real time.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🎨</div>
+                    <h4>Color Modes</h4>
+                    <p>Choose between Cool, Neutral White, and Warm tones to match your mood and activity.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">⏰</div>
+                    <h4>Scheduling</h4>
+                    <p>Set automatic on/off times with repeat options. Perfect for daily routines and sleep schedules.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📊</div>
+                    <h4>Energy Tracking</h4>
+                    <p>Monitor daily, weekly, and monthly energy consumption with detailed charts and reports.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📡</div>
+                    <h4>Bluetooth Connection</h4>
+                    <p>Reliable BLE connectivity with automatic discovery. No hub or bridge required.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔒</div>
+                    <h4>Private by Design</h4>
+                    <p>All data stays on your device. No registration, no cloud accounts, no tracking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="steps" id="how-it-works">
+        <div class="container">
+            <h3>Get started in three steps.</h3>
+            <div class="step-list">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div>
+                        <h4>Scan for devices</h4>
+                        <p>Open the app and tap the add button. Your ReallyNight light will appear automatically via Bluetooth.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div>
+                        <h4>Customize your light</h4>
+                        <p>Adjust brightness, pick a color temperature, and set up schedules that fit your lifestyle.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div>
+                        <h4>Track and optimize</h4>
+                        <p>View energy statistics and fine-tune your usage patterns for a more efficient home.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="privacy-link">
+        <div class="container">
+            <p>Your privacy matters. <a href="privacy.html">Read our Privacy Policy</a></p>
+            <p style="margin-top:8px">Need help? <a href="support.html">Visit our Support page</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 ReallyNight. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
