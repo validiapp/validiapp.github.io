@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Support — iBournOpen</title>
+    <style>
+        :root {
+            --primary: #8B5A2B;
+            --primary-light: #B4854E;
+            --bg: #FAF7F3;
+            --card: #FFFFFF;
+            --text: #33291C;
+            --text-secondary: #806E58;
+            --text-muted: #AE9C84;
+            --border: #E6DCD0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+        nav {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            background: var(--card);
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 22px; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .back-link { font-size: 14px; color: var(--text-secondary); text-decoration: none; }
+        .back-link:hover { color: var(--primary); }
+        .content { padding: 60px 0 80px; }
+        .content h1 { font-size: 36px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.8px; }
+        .content .subtitle { font-size: 16px; color: var(--text-secondary); margin-bottom: 40px; }
+        .content h2 { font-size: 20px; font-weight: 700; margin: 36px 0 16px; color: var(--primary); }
+        .content p { font-size: 15px; color: var(--text-secondary); margin-bottom: 16px; }
+        .faq-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: all 0.2s;
+        }
+        .faq-item:hover {
+            box-shadow: 0 4px 20px rgba(139, 90, 43, 0.06);
+            border-color: var(--primary-light);
+        }
+        .faq-item h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+        .faq-item p { margin-bottom: 0; font-size: 14px; }
+        .contact-card {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .contact-card h2 { color: white; margin: 0 0 12px; }
+        .contact-card p { color: rgba(255,255,255,0.85); margin-bottom: 24px; }
+        .contact-card a {
+            display: inline-block;
+            padding: 12px 28px;
+            background: white;
+            color: var(--primary);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .contact-card a:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+        footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+        footer p { font-size: 13px; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <a href="index.html" class="logo">iBournOpen</a>
+        <a href="index.html" class="back-link">&larr; Back to Home</a>
+    </div>
+</nav>
+
+<div class="content">
+    <div class="container">
+        <h1>Technical Support</h1>
+        <p class="subtitle">Find answers to common questions or reach out to our team.</p>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3>How do I pair my smart lock with the app?</h3>
+            <p>Open the app and navigate to the Home tab. Tap the "+" button in the top right corner. Press and hold the pairing button on your physical lock for 3 seconds until the LED flashes blue. The lock should appear in the app within a few seconds. Tap the "+" icon next to it to add it to your device list.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Why can't the app find my lock?</h3>
+            <p>Ensure Bluetooth is enabled on your iPhone. Make sure the lock has fresh batteries and is in pairing mode (LED flashing blue). Try moving closer to the lock — the effective Bluetooth range is typically 10-15 meters. If the issue persists, restart both the app and the lock.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I set up automatic lock schedules?</h3>
+            <p>Go to the Settings tab and find the "Lock Schedules" section. Tap the "+" button to create a new schedule. Choose the action (Lock or Unlock), set the time, and select which days the schedule should repeat. Toggle the schedule on or off as needed.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is Scene Control?</h3>
+            <p>Scenes let you group multiple lock actions into a single command. For example, "Night Mode" can lock all your doors at once, while "Home Mode" can unlock your front door. Navigate to the Scene tab to create and manage your scenes.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How does Auto Lock work?</h3>
+            <p>When Auto Lock is enabled in Settings, the lock will automatically re-lock itself after a configurable delay (default: 30 seconds) once it has been unlocked. This ensures your door is never accidentally left unlocked.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is my data secure?</h3>
+            <p>All data is stored locally on your device and never sent to external servers. Communication between the app and your lock uses encrypted Bluetooth Low Energy protocol. We do not collect any personal information. Read our <a href="privacy.html" style="color: var(--primary);">Privacy Policy</a> for complete details.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I check the battery level?</h3>
+            <p>The battery level is displayed on each device card in the Home tab. You will also receive a notification when the battery drops below 20%. The Settings tab shows additional battery details and usage statistics.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Can I control the lock when I'm away from home?</h3>
+            <p>The app communicates with your lock via Bluetooth, so you need to be within Bluetooth range (approximately 10-15 meters). For remote access beyond Bluetooth range, a compatible hub accessory is required (sold separately).</p>
+        </div>
+
+        <div class="contact-card">
+            <h2>Still need help?</h2>
+            <p>Our support team is ready to assist you with any questions or issues.</p>
+            <a href="mailto:support@ibournopen.com">Contact Support</a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 iBournOpen. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
