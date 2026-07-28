@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iBournOpen — Smart Lock, Simplified</title>
+    <style>
+        :root {
+            --primary: #8B5A2B;
+            --primary-light: #B4854E;
+            --primary-dark: #654321;
+            --accent: #C79860;
+            --accent-light: #DEB887;
+            --bg: #FAF7F3;
+            --card: #FFFFFF;
+            --text: #33291C;
+            --text-secondary: #806E58;
+            --text-muted: #AE9C84;
+            --border: #E6DCD0;
+            --success: #4CAF50;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        nav {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            background: var(--card);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--text);
+            letter-spacing: -1.5px;
+            max-width: 680px;
+            margin: 0 auto 24px;
+        }
+
+        .hero h1 span { color: var(--primary); }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            color: white;
+            box-shadow: 0 4px 20px rgba(139, 90, 43, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(139, 90, 43, 0.35);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--border);
+            color: var(--text-secondary);
+            margin-left: 12px;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .features {
+            padding: 80px 0;
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .features-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.8px;
+            margin-bottom: 12px;
+        }
+
+        .features-header p {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 36px 28px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(139, 90, 43, 0.08);
+            border-color: var(--accent-light);
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        .steps {
+            padding: 80px 0;
+            background: var(--card);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .steps-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .steps-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.8px;
+            margin-bottom: 12px;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .step h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        .privacy-section {
+            padding: 80px 0;
+        }
+
+        .privacy-section .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .privacy-content h2 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.8px;
+            margin-bottom: 16px;
+        }
+
+        .privacy-content p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .privacy-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .privacy-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 20px;
+            background: var(--card);
+            border-radius: 14px;
+            border: 1px solid var(--border);
+        }
+
+        .privacy-item-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(139, 90, 43, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .privacy-item-text {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        footer .links {
+            margin-top: 16px;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        footer a {
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        footer a:hover { color: var(--primary); }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .features-grid, .steps-grid { grid-template-columns: 1fr; }
+            .privacy-section .container { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <a href="#" class="logo">iBournOpen</a>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="support.html">Support</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <h1>Your door, <span>your control.</span> Simplified.</h1>
+        <p>Manage your smart lock from anywhere. One tap to secure your space, intelligent scheduling, and scene-based automation — no complexity required.</p>
+        <a href="#features" class="btn btn-primary">Explore Features</a>
+        <a href="support.html" class="btn btn-outline">Get Support</a>
+    </div>
+</section>
+
+<section class="features" id="features">
+    <div class="container">
+        <div class="features-header">
+            <h2>Everything you need. Nothing you don't.</h2>
+            <p>Designed for simplicity, built for reliability.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(76,175,80,0.1);">&#128274;</div>
+                <h3>Remote Lock Control</h3>
+                <p>Lock or unlock your door from anywhere with a single tap. Real-time status updates keep you informed at all times.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(139,90,43,0.1);">&#9201;</div>
+                <h3>Smart Scheduling</h3>
+                <p>Set automatic lock and unlock schedules. Choose specific days, times, and repeating patterns that fit your routine.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(199,152,95,0.1);">&#127968;</div>
+                <h3>Scene Automation</h3>
+                <p>Create scenes like "Away Mode" or "Night Mode" to trigger multiple lock actions with a single gesture.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(33,150,243,0.1);">&#128267;</div>
+                <h3>Bluetooth Connection</h3>
+                <p>Secure BLE pairing ensures your lock communicates only with your device. Quick setup, no hub required.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(255,152,0,0.1);">&#128202;</div>
+                <h3>Activity Tracking</h3>
+                <p>View a complete log of all lock events — who locked, when, and how. Weekly usage statistics at your fingertips.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(156,39,176,0.1);">&#128267;</div>
+                <h3>Battery Monitoring</h3>
+                <p>Real-time battery level tracking with low-power alerts. Never get locked out by a dead battery again.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="steps" id="how">
+    <div class="container">
+        <div class="steps-header">
+            <h2>Set up in three simple steps.</h2>
+            <p>From unboxing to fully automated in under two minutes.</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Power On Your Lock</h3>
+                <p>Insert batteries and hold the pairing button until the LED flashes blue.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Scan &amp; Connect</h3>
+                <p>Open the app, allow Bluetooth access, and select your lock from the discovered list.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Lock &amp; Automate</h3>
+                <p>Start controlling your lock. Set schedules, create scenes, and enjoy peace of mind.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="privacy-section" id="privacy">
+    <div class="container">
+        <div class="privacy-content">
+            <h2>Private by design.</h2>
+            <p>Your security data stays on your device. We do not collect personal information, track your location, or store your lock activity on external servers.</p>
+            <p>The only communication is between your phone and your lock over an encrypted Bluetooth connection.</p>
+            <a href="privacy.html" class="btn btn-primary" style="margin-top: 20px;">Read Privacy Policy</a>
+        </div>
+        <div class="privacy-visual">
+            <div class="privacy-item">
+                <div class="privacy-item-icon">&#128274;</div>
+                <span class="privacy-item-text">End-to-end encrypted Bluetooth communication</span>
+            </div>
+            <div class="privacy-item">
+                <div class="privacy-item-icon">&#128247;</div>
+                <span class="privacy-item-text">No camera, microphone, or location tracking</span>
+            </div>
+            <div class="privacy-item">
+                <div class="privacy-item-icon">&#128187;</div>
+                <span class="privacy-item-text">All data stored locally on your device</span>
+            </div>
+            <div class="privacy-item">
+                <div class="privacy-item-icon">&#128101;</div>
+                <span class="privacy-item-text">No third-party analytics or advertising SDKs</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 iBournOpen. All rights reserved.</p>
+        <div class="links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="support.html">Technical Support</a>
+            <a href="terms.html">Terms of Use</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
