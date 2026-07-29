@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uPanelSwitch — Smart switch control, simplified</title>
+    <style>
+        :root {
+            --blue: #2163d9;
+            --blue-light: #4085f5;
+            --blue-bg: #f0f5ff;
+            --text: #1a2332;
+            --text-secondary: #5a6577;
+            --bg: #ffffff;
+            --section-bg: #f8fafc;
+            --border: #e8ecf2;
+            --radius: 12px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 16px 0;
+        }
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        nav .logo {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--blue);
+            text-decoration: none;
+        }
+        nav .links { display: flex; gap: 28px; }
+        nav .links a {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        nav .links a:hover { color: var(--blue); }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .hero {
+            padding: 140px 0 80px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+        .hero h1 span { color: var(--blue); }
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto 32px;
+        }
+        .hero .badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .hero .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--blue-bg);
+            color: var(--blue);
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        section {
+            padding: 64px 0;
+        }
+        section.alt { background: var(--section-bg); }
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+        .feature-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(33, 99, 217, 0.08);
+        }
+        .feature-card .icon {
+            width: 44px;
+            height: 44px;
+            background: var(--blue-bg);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 20px;
+        }
+        .feature-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        .steps { counter-reset: step; }
+        .step {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 32px;
+            align-items: flex-start;
+        }
+        .step-number {
+            counter-increment: step;
+            min-width: 36px;
+            height: 36px;
+            background: var(--blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .step-content h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .step-content p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .privacy-section {
+            background: var(--blue-bg);
+            border-radius: var(--radius);
+            padding: 32px;
+            text-align: center;
+            margin-top: 24px;
+        }
+        .privacy-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .privacy-section p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        .privacy-section a {
+            color: var(--blue);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .privacy-section a:hover { text-decoration: underline; }
+        
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+        footer .links a {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        footer .links a:hover { color: var(--blue); }
+        footer .copy {
+            font-size: 13px;
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 600px) {
+            nav .links { gap: 16px; }
+            .features { grid-template-columns: 1fr; }
+            .hero { padding: 120px 0 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">uPanelSwitch</a>
+            <div class="links">
+                <a href="support.html">Support</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="container">
+            <h1>Smart switch control,<br><span>simplified.</span></h1>
+            <p>Connect to your Bluetooth smart switches and control them from anywhere in your home — no hub required.</p>
+            <div class="badges">
+                <span class="badge">⚡ Instant Control</span>
+                <span class="badge">⏰ Timer Scheduling</span>
+                <span class="badge">📱 Bluetooth Direct</span>
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <h2 class="section-title">How it works</h2>
+            <p class="section-subtitle">From pairing to full control in three steps.</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Pair your device</h3>
+                        <p>Open the app, tap add, and your compatible switch appears automatically via Bluetooth.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Control instantly</h3>
+                        <p>Tap the power button to toggle your switch. Visual feedback confirms the state change.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Schedule timers</h3>
+                        <p>Set automatic on/off times with day-of-week repeat. Your switches follow your routine.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="alt">
+        <div class="container">
+            <h2 class="section-title">Features</h2>
+            <p class="section-subtitle">Everything you need to manage your smart switches.</p>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="icon">🔌</div>
+                    <h3>Remote Switch</h3>
+                    <p>Turn devices on or off from your phone with a single tap. Real-time status confirmation.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">⏱️</div>
+                    <h3>Timer Control</h3>
+                    <p>Configure automatic on/off schedules with customizable repeat patterns for each day.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📶</div>
+                    <h3>Bluetooth Direct</h3>
+                    <p>No Wi-Fi hub needed. Connects directly via Bluetooth Low Energy for reliable local control.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🏠</div>
+                    <h3>Room Organization</h3>
+                    <p>Group devices by room for easy management. See all your switches organized at a glance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔒</div>
+                    <h3>Private & Local</h3>
+                    <p>All data stays on your device. No cloud account, no registration, no tracking.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">⚙️</div>
+                    <h3>Simple Setup</h3>
+                    <p>Power on your switch, open the app, and connect. No complex configuration required.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="privacy-section">
+                <h3>Private by design.</h3>
+                <p>No registration. No cloud storage. No tracking.<br>Your switch data stays entirely on your device.</p>
+                <a href="privacy.html">Read the Privacy Policy →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="links">
+                <a href="support.html">Support</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+            </div>
+            <p class="copy">&copy; 2026 uPanelSwitch. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
