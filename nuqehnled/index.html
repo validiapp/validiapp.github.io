@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>imuouLight — Smart LED Control</title>
+    <style>
+        :root {
+            --primary: #5C6BFA;
+            --primary-dark: #4A56D6;
+            --accent: #66D9B8;
+            --warm: #FAA652;
+            --bg: #F5F7FC;
+            --card: #FFFFFF;
+            --text: #212640;
+            --text-secondary: #808099;
+            --text-tertiary: #B8BCCC;
+            --radius: 20px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-inner {
+            max-width: 1080px; margin: 0 auto;
+            padding: 0 32px; height: 64px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .logo { font-size: 20px; font-weight: 700; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
+        .nav-links { display: flex; gap: 28px; }
+        .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 14px; font-weight: 500; transition: color .2s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* HERO */
+        .hero {
+            max-width: 1080px; margin: 0 auto;
+            padding: 160px 32px 100px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+        .hero h1 span { color: var(--primary); }
+        .hero p {
+            font-size: 18px; color: var(--text-secondary);
+            max-width: 540px; margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        .hero-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 8px 18px; border-radius: 100px;
+            font-size: 13px; font-weight: 600;
+            background: var(--card); border: 1px solid rgba(0,0,0,0.06);
+            color: var(--text);
+        }
+        .badge svg { width: 16px; height: 16px; }
+
+        /* STEPS */
+        .steps {
+            max-width: 1080px; margin: 0 auto;
+            padding: 60px 32px 80px;
+        }
+        .steps-title {
+            text-align: center; font-size: 14px; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 2px;
+            color: var(--primary); margin-bottom: 12px;
+        }
+        .steps-heading {
+            text-align: center; font-size: 32px; font-weight: 700;
+            margin-bottom: 56px; letter-spacing: -0.5px;
+        }
+        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+        .step-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        .step-num {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 36px; height: 36px; border-radius: 10px;
+            background: var(--primary); color: #fff;
+            font-size: 16px; font-weight: 700; margin-bottom: 20px;
+        }
+        .step-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+        .step-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* FEATURES */
+        .features {
+            max-width: 1080px; margin: 0 auto;
+            padding: 60px 32px 80px;
+        }
+        .feature-row {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 48px; align-items: center;
+            margin-bottom: 64px;
+        }
+        .feature-row.reverse { direction: rtl; }
+        .feature-row.reverse > * { direction: ltr; }
+        .feature-text h2 { font-size: 28px; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.5px; }
+        .feature-text p { font-size: 15px; color: var(--text-secondary); line-height: 1.7; }
+        .feature-visual {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: var(--radius);
+            height: 280px;
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+        }
+        .feature-visual.warm { background: linear-gradient(135deg, var(--warm), #e8913e); }
+        .feature-visual.green { background: linear-gradient(135deg, var(--accent), #4ac4a0); }
+        .feature-visual svg { width: 80px; height: 80px; fill: rgba(255,255,255,0.9); }
+        .glow {
+            position: absolute; width: 160px; height: 160px;
+            border-radius: 50%; background: rgba(255,255,255,0.12);
+            filter: blur(40px);
+        }
+
+        /* PRIVACY BANNER */
+        .privacy-banner {
+            max-width: 1080px; margin: 0 auto;
+            padding: 0 32px 80px;
+        }
+        .privacy-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 48px; text-align: center;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        .privacy-card h2 { font-size: 28px; font-weight: 700; margin-bottom: 12px; }
+        .privacy-card p { font-size: 15px; color: var(--text-secondary); margin-bottom: 24px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+        .privacy-card a {
+            display: inline-block; padding: 12px 32px;
+            background: var(--primary); color: #fff;
+            border-radius: 100px; text-decoration: none;
+            font-size: 14px; font-weight: 600;
+            transition: background .2s;
+        }
+        .privacy-card a:hover { background: var(--primary-dark); }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid rgba(0,0,0,0.06);
+            padding: 40px 32px;
+        }
+        .footer-inner {
+            max-width: 1080px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 16px;
+        }
+        .footer-inner p { font-size: 13px; color: var(--text-tertiary); }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: color .2s; }
+        .footer-links a:hover { color: var(--primary); }
+
+        @media (max-width: 720px) {
+            .feature-row, .feature-row.reverse { grid-template-columns: 1fr; direction: ltr; }
+            .feature-row.reverse > * { direction: ltr; }
+            .nav-links { gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo">i</a>
+        <div class="nav-links">
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="support.html">Support</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>Your light,<br><span>your control.</span></h1>
+    <p>Connect to your smart LED lights over Bluetooth, adjust brightness and color temperature, set timers, and track energy consumption — all offline, all private.</p>
+    <div class="hero-badges">
+        <div class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 4 12.73V17a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2.27A7 7 0 0 1 12 2z"/><line x1="10" y1="21" x2="14" y2="21"/></svg>
+            Bluetooth LED Control
+        </div>
+        <div class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            100% Offline
+        </div>
+        <div class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Energy Tracking
+        </div>
+    </div>
+</section>
+
+<section class="steps">
+    <div class="steps-title">How it works</div>
+    <h2 class="steps-heading">From scan to full control.</h2>
+    <div class="steps-grid">
+        <div class="step-card">
+            <div class="step-num">1</div>
+            <h3>Scan nearby</h3>
+            <p>Open the app and scan for compatible Bluetooth LED devices within range. No pairing codes needed.</p>
+        </div>
+        <div class="step-card">
+            <div class="step-num">2</div>
+            <h3>Connect instantly</h3>
+            <p>Tap to connect. Your device appears on the home screen, ready for immediate control.</p>
+        </div>
+        <div class="step-card">
+            <div class="step-num">3</div>
+            <h3>Adjust &amp; automate</h3>
+            <p>Set brightness, choose color temperature, configure auto-off timers — everything from one screen.</p>
+        </div>
+        <div class="step-card">
+            <div class="step-num">4</div>
+            <h3>Track usage</h3>
+            <p>Monitor daily energy consumption, view weekly and monthly reports, and estimate electricity costs.</p>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+
+    <div class="feature-row">
+        <div class="feature-text">
+            <h2>Three tones. One tap.</h2>
+            <p>Switch between cool daylight, neutral white, and warm amber to match any mood or activity. Pair it with precise brightness control from 5% to 100% for the perfect atmosphere.</p>
+        </div>
+        <div class="feature-visual">
+            <div class="glow" style="top:-30px;left:-30px;"></div>
+            <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 4 12.73V17a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2.27A7 7 0 0 1 12 2z M10 21h4"/></svg>
+        </div>
+    </div>
+
+    <div class="feature-row reverse">
+        <div class="feature-text">
+            <h2>Energy at a glance.</h2>
+            <p>See how much power each light uses, day by day. Weekly and monthly summaries show totals in kWh and estimated cost based on your electricity rate. Set your own rate and currency to get accurate local figures.</p>
+        </div>
+        <div class="feature-visual warm">
+            <div class="glow" style="bottom:-30px;right:-30px;"></div>
+            <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+    </div>
+
+    <div class="feature-row">
+        <div class="feature-text">
+            <h2>Timers that turn off for you.</h2>
+            <p>Set a 15-minute, 30-minute, 1-hour, or 2-hour auto-off timer. A live countdown shows exactly when the light will switch off — and a notification confirms when it's done.</p>
+        </div>
+        <div class="feature-visual green">
+            <div class="glow" style="top:-30px;right:-30px;"></div>
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+    </div>
+
+</section>
+
+<section class="privacy-banner">
+    <div class="privacy-card">
+        <h2>Private by design.</h2>
+        <p>No accounts, no cloud, no tracking. All data — devices, usage logs, preferences — stays on your device. We never see it.</p>
+        <a href="privacy.html">Read the Privacy Policy</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-inner">
+        <p>&copy; 2026 imu ou. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="support.html">Support</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
