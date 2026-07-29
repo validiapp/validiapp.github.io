@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use — MudoiLed</title>
+    <style>
+        :root {
+            --primary: #2DB76A;
+            --primary-dark: #1A8C45;
+            --primary-light: #8FDE9F;
+            --bg: #F8FAF8;
+            --card: #FFFFFF;
+            --text: #212D24;
+            --text-sec: #6B7D72;
+            --radius: 16px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+
+        nav {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            position: fixed; top: 0; left: 0; right: 0;
+            z-index: 100; padding: 16px 0;
+        }
+        nav .nav-inner {
+            max-width: 1080px; margin: 0 auto; padding: 0 24px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 22px; font-weight: 700; color: var(--text); text-decoration: none;
+        }
+        .logo-icon {
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 18px;
+        }
+        nav ul { list-style: none; display: flex; gap: 32px; }
+        nav a { text-decoration: none; color: var(--text-sec); font-size: 15px; font-weight: 500; transition: color 0.2s; }
+        nav a:hover { color: var(--primary); }
+
+        .page-header { padding: 140px 0 40px; text-align: center; }
+        .page-header h1 { font-size: 42px; font-weight: 800; margin-bottom: 12px; }
+        .page-header p { color: var(--text-sec); font-size: 16px; }
+        .badge {
+            display: inline-block; background: var(--primary); color: white;
+            padding: 4px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 16px;
+        }
+
+        .content { padding: 0 0 80px; }
+        .content-card {
+            background: var(--card); border-radius: var(--radius);
+            padding: 32px 40px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); margin-bottom: 16px;
+        }
+        .content-card h2 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: var(--primary-dark); }
+        .content-card p { color: var(--text-sec); font-size: 15px; margin-bottom: 10px; }
+        .content-card ul { color: var(--text-sec); font-size: 15px; padding-left: 20px; margin-bottom: 10px; }
+        .content-card li { margin-bottom: 6px; }
+
+        footer {
+            background: var(--text); color: rgba(255,255,255,0.6);
+            padding: 40px 0; text-align: center; font-size: 14px;
+        }
+        footer a { color: var(--primary-light); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 28px; }
+            .content-card { padding: 24px; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">💡</div>
+                MudoiLed
+            </a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <span class="badge">Legal</span>
+            <h1>Terms of Use</h1>
+            <p>Last updated: July 29, 2026</p>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <div class="content-card">
+                <h2>1. Acceptance of Terms</h2>
+                <p>By downloading, installing, or using MudoiLed ("the App"), you agree to be bound by these Terms of Use. If you do not agree to these terms, please do not use the App.</p>
+            </div>
+
+            <div class="content-card">
+                <h2>2. Description of Service</h2>
+                <p>MudoiLed is a mobile application designed to control compatible smart LED lighting devices via Bluetooth. The App provides features including:</p>
+                <ul>
+                    <li>Light on/off control</li>
+                    <li>Brightness adjustment (1-100%)</li>
+                    <li>Color temperature selection (warm, neutral white, cool)</li>
+                    <li>Scene creation and management</li>
+                    <li>Automated scheduling</li>
+                    <li>Energy consumption monitoring</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h2>3. Requirements</h2>
+                <p>To use the App, you need:</p>
+                <ul>
+                    <li>An iPhone running iOS 13.0 or later</li>
+                    <li>Bluetooth Low Energy (BLE) support</li>
+                    <li>A compatible MudoiLed hardware device</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h2>4. User Responsibilities</h2>
+                <p>You are responsible for:</p>
+                <ul>
+                    <li>Ensuring your device meets the minimum system requirements</li>
+                    <li>Maintaining the security of your device</li>
+                    <li>Any electrical installations related to MudoiLed hardware</li>
+                    <li>Compliance with local electrical safety regulations</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h2>5. Intellectual Property</h2>
+                <p>The App, including its design, code, graphics, and content, is the intellectual property of MudoiLed and is protected by applicable copyright and trademark laws. You may not reproduce, modify, or distribute any part of the App without prior written consent.</p>
+            </div>
+
+            <div class="content-card">
+                <h2>6. Disclaimer of Warranties</h2>
+                <p>The App is provided "as is" without warranties of any kind, either express or implied. We do not guarantee that the App will be uninterrupted, error-free, or free of harmful components.</p>
+            </div>
+
+            <div class="content-card">
+                <h2>7. Limitation of Liability</h2>
+                <p>To the maximum extent permitted by law, MudoiLed shall not be liable for any indirect, incidental, special, or consequential damages arising from the use or inability to use the App or connected hardware devices.</p>
+            </div>
+
+            <div class="content-card">
+                <h2>8. Modifications</h2>
+                <p>We reserve the right to modify these Terms of Use at any time. Continued use of the App after changes constitutes acceptance of the updated terms.</p>
+            </div>
+
+            <div class="content-card">
+                <h2>9. Contact</h2>
+                <p>For questions about these Terms, please contact us at <strong>support@mudoiled.com</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 MudoiLed. All rights reserved. | <a href="index.html">Home</a> | <a href="privacy.html">Privacy</a> | <a href="support.html">Support</a></p>
+        </div>
+    </footer>
+</body>
+</html>
