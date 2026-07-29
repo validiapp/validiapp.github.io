@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — iMuouLight</title>
+    <style>
+        :root {
+            --primary: #5C6BFA;
+            --primary-dark: #4A56D6;
+            --bg: #F5F7FC;
+            --card: #FFFFFF;
+            --text: #212640;
+            --text-secondary: #808099;
+            --text-tertiary: #B8BCCC;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            color: var(--text); background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            z-index: 100; border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-inner {
+            max-width: 1080px; margin: 0 auto;
+            padding: 0 32px; height: 64px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .logo { font-size: 20px; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 28px; }
+        .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 14px; font-weight: 500; transition: color .2s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .doc {
+            max-width: 720px; margin: 0 auto;
+            padding: 120px 32px 80px;
+        }
+        .doc h1 {
+            font-size: 36px; font-weight: 800; margin-bottom: 8px; letter-spacing: -1px;
+        }
+        .doc .updated {
+            font-size: 13px; color: var(--text-tertiary); margin-bottom: 48px;
+        }
+        .doc h2 {
+            font-size: 20px; font-weight: 700; margin-top: 40px; margin-bottom: 12px;
+        }
+        .doc p, .doc li {
+            font-size: 15px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px;
+        }
+        .doc ul { padding-left: 20px; margin-bottom: 16px; }
+        .doc li { margin-bottom: 8px; }
+        .doc a { color: var(--primary); text-decoration: none; }
+        .doc a:hover { text-decoration: underline; }
+
+        .highlight-box {
+            background: var(--card);
+            border-left: 4px solid var(--primary);
+            border-radius: 0 12px 12px 0;
+            padding: 20px 24px;
+            margin: 24px 0;
+        }
+        .highlight-box p { margin-bottom: 0; font-weight: 500; color: var(--text); }
+
+        footer {
+            border-top: 1px solid rgba(0,0,0,0.06); padding: 40px 32px;
+        }
+        .footer-inner {
+            max-width: 1080px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+        }
+        .footer-inner p { font-size: 13px; color: var(--text-tertiary); }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; }
+        .footer-links a:hover { color: var(--primary); }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo">iMuouLight</a>
+        <div class="nav-links">
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="support.html">Support</a>
+        </div>
+    </div>
+</nav>
+
+<div class="doc">
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: July 22, 2026</p>
+
+    <div class="highlight-box">
+        <p>iMuouLight operates entirely offline. We do not collect, store, or transmit any personal data to external servers.</p>
+    </div>
+
+    <h2>Overview</h2>
+    <p>This privacy policy explains how the iMuouLight application ("App") handles information. The App is a smart LED light controller that connects to Bluetooth devices and runs completely on your iPhone. There are no user accounts, no cloud services, and no analytics.</p>
+
+    <h2>Information We Do Not Collect</h2>
+    <p>We want to be explicit about what we do <strong>not</strong> do:</p>
+    <ul>
+        <li>We do not collect any personal information (name, email, phone number, etc.).</li>
+        <li>We do not use analytics frameworks or tracking SDKs.</li>
+        <li>We do not transmit any data over the internet.</li>
+        <li>We do not store data on remote servers.</li>
+        <li>We do not display advertisements.</li>
+        <li>We do not share data with any third parties.</li>
+    </ul>
+
+    <h2>Bluetooth</h2>
+    <p>The App uses Bluetooth Low Energy (BLE) to discover and communicate with compatible LED light devices. The Bluetooth permission is requested only when you initiate a device scan within the App. Bluetooth data is processed locally and in real time — it is never recorded, logged, or transmitted.</p>
+
+    <h2>Locally Stored Data</h2>
+    <p>The following data is stored on your device using standard iOS local storage (UserDefaults):</p>
+    <ul>
+        <li><strong>Device list</strong> — names, model identifiers, and connection details of LED devices you have added.</li>
+        <li><strong>Usage records</strong> — estimated energy consumption data generated locally for tracking purposes.</li>
+        <li><strong>Preferences</strong> — your chosen electricity rate, currency symbol, and display settings.</li>
+        <li><strong>Notifications</strong> — in-app messages about device events (connection, timer completion, etc.).</li>
+    </ul>
+    <p>This data never leaves your device. It is not accessible to us or any third party.</p>
+
+    <h2>Data Retention &amp; Deletion</h2>
+    <p>All data persists on your device until you choose to remove it. You can delete all stored data at any time through <strong>Settings → Reset All Data</strong> within the App. Uninstalling the App also removes all associated data.</p>
+
+    <h2>Children's Privacy</h2>
+    <p>The App does not knowingly collect information from children under the age of 13. Since the App collects no personal information from any user, there is no age-specific data handling.</p>
+
+    <h2>Changes to This Policy</h2>
+    <p>We may update this privacy policy from time to time. Changes will be reflected in the "Last updated" date at the top of this page. Continued use of the App after changes constitutes acceptance.</p>
+
+    <h2>Contact</h2>
+    <p>If you have any questions about this privacy policy, please reach out via the <a href="support.html">Support page</a> or contact us through the App Store listing.</p>
+</div>
+
+<footer>
+    <div class="footer-inner">
+        <p>&copy; 2026 iMuouLight. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="support.html">Support</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
