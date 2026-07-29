@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — uPanelSwitch</title>
+    <style>
+        :root {
+            --blue: #2163d9;
+            --blue-light: #4085f5;
+            --blue-bg: #f0f5ff;
+            --text: #1a2332;
+            --text-secondary: #5a6577;
+            --bg: #ffffff;
+            --section-bg: #f8fafc;
+            --border: #e8ecf2;
+            --radius: 12px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 16px 0;
+        }
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        nav .logo {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--blue);
+            text-decoration: none;
+        }
+        nav .links { display: flex; gap: 28px; }
+        nav .links a {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        nav .links a:hover { color: var(--blue); }
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .content {
+            padding: 120px 0 80px;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .effective {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+        .intro {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            padding: 16px 20px;
+            background: var(--section-bg);
+            border-radius: var(--radius);
+            border-left: 3px solid var(--blue);
+        }
+        h2 {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 36px 0 12px;
+            color: var(--text);
+        }
+        p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+        }
+        ul {
+            padding-left: 20px;
+            margin-bottom: 14px;
+        }
+        ul li {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+        footer .links a {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        footer .links a:hover { color: var(--blue); }
+        footer .copy { font-size: 13px; color: var(--text-secondary); opacity: 0.7; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">uPanelSwitch</a>
+            <div class="links">
+                <a href="support.html">Support</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p class="effective">Effective date: July 29, 2026</p>
+            
+            <p class="intro">uPanelSwitch is provided by an individual developer. This Privacy Policy explains how uPanelSwitch handles information when you use the app to control smart switch devices.</p>
+
+            <h2>Information we use</h2>
+            <p>uPanelSwitch does not require registration. The app stores all configuration data locally on your device, including device names, timer schedules, and room assignments. No personal data is transmitted to external servers.</p>
+
+            <h2>Bluetooth access</h2>
+            <p>uPanelSwitch uses Bluetooth Low Energy (BLE) to discover and communicate with compatible smart switch hardware. Bluetooth is used exclusively for:</p>
+            <ul>
+                <li>Discovering nearby compatible switch devices</li>
+                <li>Establishing a connection for control commands</li>
+                <li>Sending on/off and scheduling instructions</li>
+                <li>Receiving device status confirmations</li>
+            </ul>
+            <p>Bluetooth access is never used for location tracking, advertising, or any purpose unrelated to device control.</p>
+
+            <h2>Data on your device</h2>
+            <p>All device configuration, timer schedules, and room organization data is stored locally using on-device storage. Uninstalling uPanelSwitch removes all app data from your device. There is no cloud backup or synchronization.</p>
+
+            <h2>No analytics or tracking</h2>
+            <p>uPanelSwitch does not collect usage analytics, crash reports, device identifiers, IP addresses, or any form of behavioral data. The app operates entirely offline after the initial download from the App Store.</p>
+
+            <h2>Third-party services</h2>
+            <p>uPanelSwitch does not integrate third-party analytics, advertising, or data-processing services. No information is shared with third parties.</p>
+
+            <h2>Children</h2>
+            <p>uPanelSwitch is a general-audience utility app and is not directed to children under 13. The app does not collect personal information from any user.</p>
+
+            <h2>Changes to this policy</h2>
+            <p>We may update this Privacy Policy when the app changes or when legal requirements change. The latest version will be posted on this page with an updated effective date.</p>
+
+            <h2>Contact</h2>
+            <p>Questions about this Privacy Policy can be sent to <strong>support@upanelswitch.com</strong>.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="support.html">Support</a>
+                <a href="terms.html">Terms of Service</a>
+            </div>
+            <p class="copy">&copy; 2026 uPanelSwitch. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
