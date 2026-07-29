@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vreswa — Smart Fan Control</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --primary:#4F46E5;--primary-light:#818CF8;--primary-dark:#3730A3;
+      --accent:#7C3AED;--bg:#FAFBFF;--surface:#FFFFFF;
+      --text:#1E1B4B;--text-secondary:#6B7280;--border:#E5E7EB;
+      --radius:16px;--shadow:0 4px 24px rgba(79,70,229,0.08);
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(255,255,255,0.82);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+    nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.06)}
+    .nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .nav-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.15rem;color:var(--text);text-decoration:none}
+    .nav-brand img{width:34px;height:34px;border-radius:8px}
+    .nav-links{display:flex;gap:28px;align-items:center}
+    .nav-links a{text-decoration:none;color:var(--text-secondary);font-size:.9rem;font-weight:500;transition:color .2s}
+    .nav-links a:hover{color:var(--primary)}
+
+    /* HERO */
+    .hero{padding:140px 24px 80px;text-align:center;background:linear-gradient(180deg,#EEF2FF 0%,var(--bg) 100%)}
+    .hero-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;background:var(--primary);color:#fff;border-radius:100px;font-size:.75rem;font-weight:600;letter-spacing:.5px;margin-bottom:24px}
+    .hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;line-height:1.15;max-width:720px;margin:0 auto 20px;background:linear-gradient(135deg,var(--text) 0%,var(--primary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero p{font-size:1.15rem;color:var(--text-secondary);max-width:560px;margin:0 auto 36px;line-height:1.7}
+    .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:600;font-size:.95rem;text-decoration:none;transition:all .25s;border:none;cursor:pointer}
+    .btn-primary{background:var(--primary);color:#fff;box-shadow:0 4px 16px rgba(79,70,229,0.3)}
+    .btn-primary:hover{background:var(--primary-dark);transform:translateY(-1px);box-shadow:0 6px 24px rgba(79,70,229,0.4)}
+    .btn-outline{background:transparent;color:var(--primary);border:2px solid var(--primary)}
+    .btn-outline:hover{background:var(--primary);color:#fff}
+    .hero-visual{margin-top:60px;position:relative}
+    .phone-mockup{width:280px;height:560px;background:linear-gradient(145deg,#1E1B4B,#312E81);border-radius:40px;padding:12px;box-shadow:0 40px 80px rgba(30,27,75,0.25);margin:0 auto;position:relative;overflow:hidden}
+    .phone-screen{width:100%;height:100%;background:linear-gradient(180deg,#F8FAFC,#EEF2FF);border-radius:30px;overflow:hidden;position:relative}
+    .phone-notch{width:120px;height:28px;background:#1E1B4B;border-radius:0 0 16px 16px;position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:2}
+    .phone-ui{padding:44px 16px 16px;height:100%}
+    .phone-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+    .phone-header h3{font-size:.85rem;color:var(--text)}
+    .phone-status{display:flex;gap:8px}
+    .status-dot{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.6rem}
+    .status-green{background:#D1FAE5;color:#059669}
+    .status-blue{background:#DBEAFE;color:#2563EB}
+    .phone-card{background:#fff;border-radius:14px;padding:14px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+    .phone-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+    .phone-card-title{font-size:.75rem;font-weight:600;color:var(--text)}
+    .phone-card-badge{font-size:.55rem;padding:3px 8px;border-radius:6px;font-weight:600}
+    .badge-on{background:#D1FAE5;color:#059669}
+    .badge-off{background:#F3F4F6;color:#9CA3AF}
+    .speed-bar{height:6px;background:#E5E7EB;border-radius:3px;overflow:hidden;margin-top:6px}
+    .speed-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--primary),var(--accent))}
+    .phone-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+    .phone-stat{background:#fff;border-radius:10px;padding:10px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+    .phone-stat-value{font-size:.85rem;font-weight:700;color:var(--primary)}
+    .phone-stat-label{font-size:.55rem;color:var(--text-secondary);margin-top:2px}
+
+    /* FEATURES */
+    .section{padding:100px 24px}
+    .section-header{text-align:center;margin-bottom:64px}
+    .section-label{font-size:.8rem;font-weight:700;color:var(--primary);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+    .section-title{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;margin-bottom:16px;color:var(--text)}
+    .section-desc{font-size:1.05rem;color:var(--text-secondary);max-width:560px;margin:0 auto}
+    .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:1120px;margin:0 auto}
+    .feature-card{background:var(--surface);border-radius:var(--radius);padding:32px;border:1px solid var(--border);transition:all .3s;position:relative;overflow:hidden}
+    .feature-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--primary-light)}
+    .feature-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:1.5rem}
+    .feature-card h3{font-size:1.15rem;font-weight:700;margin-bottom:8px}
+    .feature-card p{font-size:.9rem;color:var(--text-secondary);line-height:1.6}
+
+    /* HOW IT WORKS */
+    .steps{max-width:800px;margin:0 auto;position:relative}
+    .steps::before{content:"";position:absolute;left:28px;top:40px;bottom:40px;width:2px;background:linear-gradient(180deg,var(--primary),var(--accent));opacity:.2}
+    .step{display:flex;gap:24px;margin-bottom:48px;position:relative}
+    .step-number{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.3rem;flex-shrink:0;position:relative;z-index:1}
+    .step-content h3{font-size:1.2rem;font-weight:700;margin-bottom:6px}
+    .step-content p{color:var(--text-secondary);font-size:.95rem;line-height:1.6}
+
+    /* SCENES */
+    .bg-alt{background:#F0F0FF}
+    .scenes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;max-width:900px;margin:0 auto}
+    .scene-card{background:var(--surface);border-radius:14px;padding:24px;text-align:center;border:1px solid var(--border);transition:all .3s}
+    .scene-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+    .scene-icon{font-size:2rem;margin-bottom:12px}
+    .scene-card h4{font-size:1rem;font-weight:700;margin-bottom:4px}
+    .scene-card p{font-size:.8rem;color:var(--text-secondary)}
+
+    /* FOOTER */
+    footer{background:var(--text);color:#fff;padding:60px 24px 32px}
+    .footer-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px}
+    .footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+    .footer-brand img{width:36px;height:36px;border-radius:8px}
+    .footer-brand span{font-weight:700;font-size:1.1rem}
+    footer p{color:#A5B4FC;font-size:.85rem;line-height:1.7}
+    footer h4{font-weight:700;margin-bottom:16px;font-size:.9rem}
+    footer ul{list-style:none}
+    footer li{margin-bottom:10px}
+    footer a{color:#A5B4FC;text-decoration:none;font-size:.85rem;transition:color .2s}
+    footer a:hover{color:#fff}
+    .footer-bottom{max-width:1120px;margin:32px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);text-align:center;color:#6366F1;font-size:.8rem}
+
+    @media(max-width:768px){
+      .nav-links{display:none}
+      .footer-inner{grid-template-columns:1fr;gap:32px}
+      .hero{padding:120px 20px 60px}
+      .phone-mockup{width:240px;height:480px}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <img src="logo.svg" alt="Vreswa"/>
+      Vreswa
+    </a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how">How It Works</a>
+      <a href="#scenes">Scenes</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">&#9889; Smart Fan Control for iOS</div>
+  <h1>Your comfort,<br/>at your fingertips.</h1>
+  <p>Connect your smart fan via Bluetooth, control speed and swing, set up scenes, and track energy usage — all from one beautifully designed app.</p>
+  <div class="hero-actions">
+    <a href="#features" class="btn btn-primary">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Z"/><path d="m10 8 6 4-6 4Z"/></svg>
+      See How It Works
+    </a>
+    <a href="support.html" class="btn btn-outline">Get Support</a>
+  </div>
+
+  <div class="hero-visual">
+    <div class="phone-mockup">
+      <div class="phone-screen">
+        <div class="phone-notch"></div>
+        <div class="phone-ui">
+          <div class="phone-header">
+            <h3>My Fans</h3>
+            <div class="phone-status">
+              <div class="status-dot status-green">&#10003;</div>
+              <div class="status-dot status-blue">+</div>
+            </div>
+          </div>
+          <div class="phone-card">
+            <div class="phone-card-header">
+              <span class="phone-card-title">Smart Fan Pro</span>
+              <span class="phone-card-badge badge-on">ON</span>
+            </div>
+            <div style="font-size:.6rem;color:#6B7280;margin-bottom:4px">Speed Level 5 / 10</div>
+            <div class="speed-bar"><div class="speed-fill" style="width:50%"></div></div>
+          </div>
+          <div class="phone-card">
+            <div class="phone-card-header">
+              <span class="phone-card-title">Bedroom Breeze</span>
+              <span class="phone-card-badge badge-off">OFF</span>
+            </div>
+            <div style="font-size:.6rem;color:#6B7280;margin-bottom:4px">Speed Level 2 / 10</div>
+            <div class="speed-bar"><div class="speed-fill" style="width:20%"></div></div>
+          </div>
+          <div class="phone-stats">
+            <div class="phone-stat">
+              <div class="phone-stat-value">126h</div>
+              <div class="phone-stat-label">Runtime</div>
+            </div>
+            <div class="phone-stat">
+              <div class="phone-stat-value">92%</div>
+              <div class="phone-stat-label">Battery</div>
+            </div>
+            <div class="phone-stat">
+              <div class="phone-stat-value">3</div>
+              <div class="phone-stat-label">Connected</div>
+            </div>
+            <div class="phone-stat">
+              <div class="phone-stat-value">5</div>
+              <div class="phone-stat-label">Rooms</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="section-header">
+    <div class="section-label">Features</div>
+    <h2 class="section-title">Everything you need to<br/>control your comfort.</h2>
+    <p class="section-desc">Designed for simplicity and power. Manage all your smart fans from one place.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#DBEAFE;color:#2563EB">&#128225;</div>
+      <h3>Bluetooth Connection</h3>
+      <p>Instantly discover and connect to your Vreswa smart fan via Bluetooth Low Energy. No Wi-Fi or account needed.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#D1FAE5;color:#059669">&#127777;&#65039;</div>
+      <h3>10-Level Speed Control</h3>
+      <p>Fine-tune airflow from a gentle breeze to full power. Slide to pick the perfect level for any moment.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#FEF3C7;color:#D97706">&#128260;</div>
+      <h3>Swing Modes</h3>
+      <p>Enable horizontal, vertical, or both swing directions for wider air coverage across the room.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#FCE7F3;color:#DB2777">&#127769;</div>
+      <h3>Smart Scenes</h3>
+      <p>Switch between preset scenes like Sleep, Natural, Baby Care, and Focus Work — or create your own custom scene.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#E0E7FF;color:#4F46E5">&#128200;</div>
+      <h3>Energy Statistics</h3>
+      <p>Track power consumption with detailed charts. View daily, weekly, and monthly usage to save energy.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#F3E8FF;color:#7C3AED">&#9201;</div>
+      <h3>Timer & Scheduling</h3>
+      <p>Set auto-off timers to save power. Schedule your fan to turn off after a set duration automatically.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section bg-alt" id="how">
+  <div class="section-header">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">Get started in minutes.</h2>
+    <p class="section-desc">From setup to full control in three simple steps.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h3>Connect Your Fan</h3>
+        <p>Turn on Bluetooth, open Vreswa, and tap "Add Device." Your compatible smart fan appears automatically for pairing.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h3>Customize Your Settings</h3>
+        <p>Adjust speed levels, set swing modes, name your fan, and assign it to a room. Choose from preset scenes or create your own.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h3>Enjoy Smart Control</h3>
+        <p>Use one-tap quick actions, schedule timers, track energy usage, and manage multiple fans from anywhere in your home.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCENES -->
+<section class="section" id="scenes">
+  <div class="section-header">
+    <div class="section-label">Smart Scenes</div>
+    <h2 class="section-title">One tap. Perfect airflow.</h2>
+    <p class="section-desc">Pre-configured scenes for every moment of your day.</p>
+  </div>
+  <div class="scenes-grid">
+    <div class="scene-card">
+      <div class="scene-icon">&#127769;</div>
+      <h4>Sleep</h4>
+      <p>Ultra-quiet, low speed for peaceful rest. Auto-off after 8 hours.</p>
+    </div>
+    <div class="scene-card">
+      <div class="scene-icon">&#127807;</div>
+      <h4>Natural</h4>
+      <p>Simulates a natural breeze with oscillation and variable speed.</p>
+    </div>
+    <div class="scene-card">
+      <div class="scene-icon">&#127744;</div>
+      <h4>Power Cool</h4>
+      <p>Maximum cooling power for hot days. Full horizontal swing.</p>
+    </div>
+    <div class="scene-card">
+      <div class="scene-icon">&#128151;</div>
+      <h4>Baby Care</h4>
+      <p>Gentle airflow for the nursery. Vertical swing, 2-hour timer.</p>
+    </div>
+    <div class="scene-card">
+      <div class="scene-icon">&#129504;</div>
+      <h4>Focus Work</h4>
+      <p>Steady airflow to stay alert. Fixed direction, 1-hour timer.</p>
+    </div>
+    <div class="scene-card">
+      <div class="scene-icon">&#127939;</div>
+      <h4>Exercise</h4>
+      <p>High-speed cooling during workouts. Full oscillation, 30-min timer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACY HIGHLIGHT -->
+<section class="section bg-alt">
+  <div class="section-header">
+    <div class="section-label">Privacy First</div>
+    <h2 class="section-title">Your data stays on your device.</h2>
+    <p class="section-desc">No registration, no cloud storage, no tracking. Vreswa works entirely offline with Bluetooth — your comfort data never leaves your phone.</p>
+  </div>
+  <div style="text-align:center">
+    <a href="privacy.html" class="btn btn-outline">Read Our Privacy Policy</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <img src="logo.svg" alt="Vreswa"/>
+        <span>Vreswa</span>
+      </div>
+      <p>A beautifully designed smart fan control app. Connect, control, and save energy — all from your iPhone.</p>
+    </div>
+    <div>
+      <h4>Product</h4>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#scenes">Scenes</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="support.html">Technical Support</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 Vreswa. All rights reserved.</div>
+</footer>
+
+<script>
+  window.addEventListener("scroll",function(){
+    document.getElementById("nav").classList.toggle("scrolled",window.scrollY>10);
+  });
+</script>
+</body>
+</html>
