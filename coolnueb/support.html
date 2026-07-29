@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoolNueb - Technical Support</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.7;
+            color: #2d3748;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .logo {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, #3382f5, #29c7bd);
+            border-radius: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            box-shadow: 0 8px 32px rgba(51, 130, 245, 0.25);
+        }
+        
+        .logo svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            color: #718096;
+            font-size: 15px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            margin-bottom: 24px;
+        }
+        
+        .card h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #ebf4ff;
+        }
+        
+        .card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        
+        .card p, .card li {
+            color: #4a5568;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+        
+        .card ul, .card ol {
+            padding-left: 20px;
+            margin-bottom: 16px;
+        }
+        
+        .card li {
+            margin-bottom: 8px;
+        }
+        
+        .faq-item {
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 12px;
+            transition: all 0.2s ease;
+        }
+        
+        .faq-item:hover {
+            border-color: #3182ce;
+            box-shadow: 0 2px 12px rgba(49, 130, 206, 0.1);
+        }
+        
+        .faq-item h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .faq-item h4::before {
+            content: "Q";
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: #ebf4ff;
+            color: #3182ce;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .faq-item p {
+            padding-left: 32px;
+            color: #4a5568;
+            margin-bottom: 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+        
+        .contact-card {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .contact-card .icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        
+        .contact-card h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 4px;
+        }
+        
+        .contact-card p {
+            font-size: 13px;
+            color: #718096;
+            margin-bottom: 0;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 32px;
+            color: #a0aec0;
+            font-size: 13px;
+        }
+        
+        .footer a {
+            color: #3182ce;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 640px) {
+            .container {
+                padding: 24px 16px;
+            }
+            .card {
+                padding: 24px;
+            }
+            .header h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 11c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-1.5-8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5c0 1.77-1.02 3.28-2.5 4.02V9h2v2.02c1.48.74 2.5 2.25 2.5 4.02 0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5c0-1.77 1.02-3.28 2.5-4.02V9h-2V6.98C9.02 6.24 8 4.73 8 2.96c0-.83.67-1.5 1.5-1.5zM12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+                </svg>
+            </div>
+            <h1>Technical Support</h1>
+            <p>CoolNueb Smart Fan Controller</p>
+        </div>
+        
+        <div class="card">
+            <h2>Getting Started</h2>
+            <p>Welcome to CoolNueb! Follow these steps to set up your smart fan:</p>
+            <ol>
+                <li><strong>Power on your fan</strong> - Ensure your CoolNueb smart fan is plugged in and powered on.</li>
+                <li><strong>Enable Bluetooth</strong> - Open your device Settings and make sure Bluetooth is turned on.</li>
+                <li><strong>Open CoolNueb app</strong> - Launch the app and tap the "+" button on the Home screen.</li>
+                <li><strong>Start scanning</strong> - The app will automatically scan for nearby devices. Wait for your fan to appear.</li>
+                <li><strong>Connect</strong> - Tap "Connect" next to your fan device. Once connected, you can control all features.</li>
+            </ol>
+        </div>
+        
+        <div class="card">
+            <h2>Features Guide</h2>
+            
+            <h3>Power & Speed Control</h3>
+            <p>Toggle your fan on/off with the power button. Adjust speed from level 1 (gentle breeze) to level 10 (maximum airflow) using the speed selector.</p>
+            
+            <h3>Oscillation</h3>
+            <p>Enable vertical and/or horizontal oscillation independently. Combine both for full-room coverage.</p>
+            
+            <h3>Timer</h3>
+            <p>Set automatic turn-on and turn-off times. Perfect for scheduling your fan to start before you arrive home or turn off after you fall asleep.</p>
+            
+            <h3>Usage Statistics</h3>
+            <p>View your fan usage patterns over time. Track daily and weekly usage to understand your energy consumption habits.</p>
+            
+            <h3>Room Management</h3>
+            <p>Organize multiple fans across different rooms. Create custom room names and manage devices independently.</p>
+        </div>
+        
+        <div class="card">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <h4>My fan is not appearing during scan</h4>
+                <p>Make sure your fan is in pairing mode (check the fan's manual for instructions). Ensure Bluetooth is enabled on your phone and you're within 10 meters of the fan.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>The app lost connection to my fan</h4>
+                <p>Try moving closer to your fan. If the issue persists, turn your fan off and on again, then reconnect from the app. Also check that Bluetooth is enabled in your device settings.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Timer is not working correctly</h4>
+                <p>Ensure that your phone maintains a Bluetooth connection with the fan. Timer schedules are sent to the fan device and operate independently once set.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>How do I reset my fan to factory settings?</h4>
+                <p>Go to Settings > Reset All Data to remove all saved devices from the app. For the physical fan device, refer to the hardware manual for factory reset instructions.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Does the app work without internet?</h4>
+                <p>Yes! CoolNueb operates entirely over Bluetooth and does not require an internet connection. All data is stored locally on your device.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Which iOS versions are supported?</h4>
+                <p>CoolNueb supports iOS 13.0 and later. We recommend keeping your device updated to the latest iOS version for the best experience.</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Contact Us</h2>
+            <p>Need further assistance? We're here to help.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="icon">&#9993;</div>
+                    <h4>Email Support</h4>
+                    <p>support@coolnueb.com</p>
+                </div>
+                <div class="contact-card">
+                    <div class="icon">&#8987;</div>
+                    <h4>Response Time</h4>
+                    <p>Within 24 hours</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2026 CoolNueb. All rights reserved.</p>
+            <p><a href="index.html">Home</a> &middot; <a href="support.html">Support</a> &middot; <a href="privacy-policy.html">Privacy Policy</a></p>
+        </div>
+    </div>
+</body>
+</html>
