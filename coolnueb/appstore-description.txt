@@ -1,0 +1,9 @@
+============================================
+CoolNueb - App Store Description (150 words)
+============================================
+
+【English】
+Breathe easier with intelligent airflow management at your fingertips. Transform any ordinary fan into a precision climate companion through seamless Bluetooth connectivity. Effortlessly adjust wind speed across ten refined levels, orchestrate multi-directional oscillation patterns, and schedule automatic operation windows that align with your daily rhythm. Detailed usage analytics reveal your energy patterns over time, helping you stay comfortable while remaining mindful of consumption. Organize multiple devices across different rooms, each with independent controls and personalized configurations. Whether you prefer a gentle whisper during sleep or a powerful breeze while working, every moment of airflow is yours to craft. Clean interface, responsive controls, and reliable connectivity ensure that comfort is never more than a tap away.
+
+【中文】
+轻松掌控智能气流管理。通过蓝牙无缝连接，将普通风扇升级为精准的气候伴侣。十档风速随心调节，多方向摆风自由编排，定时开关与生活节律完美同步。详细的使用统计揭示能耗规律，舒适享受的同时不忘节能。多房间、多设备独立管控，个性化配置满足每一位家庭成员的需求。无论是入睡时的轻柔微风，还是工作中的清爽劲风，每一缕气流都由你掌控。简洁界面、灵敏操控与稳定连接，让舒适触手可及。
