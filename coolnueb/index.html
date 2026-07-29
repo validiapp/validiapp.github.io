@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoolNueb - Smart Fan Controller</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 24px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        
+        .nav-logo {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #3382f5, #29c7bd);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-logo svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+        
+        .nav-brand span {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a202c;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: #3182ce;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 160px 24px 100px;
+            text-align: center;
+            background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%);
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(51, 130, 245, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            color: #1a202c;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+        
+        .hero h1 span {
+            background: linear-gradient(135deg, #3382f5, #29c7bd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            color: #718096;
+            max-width: 560px;
+            margin: 0 auto 40px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #3382f5, #2970db);
+            color: white;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            box-shadow: 0 4px 16px rgba(51, 130, 245, 0.3);
+            transition: all 0.2s;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(51, 130, 245, 0.4);
+        }
+        
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: white;
+            color: #2d3748;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .btn-secondary:hover {
+            border-color: #3182ce;
+            color: #3182ce;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 12px;
+        }
+        
+        .section-header p {
+            font-size: 16px;
+            color: #718096;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .feature-card {
+            padding: 32px;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .feature-card:hover {
+            border-color: transparent;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
+        }
+        
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 24px;
+        }
+        
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 8px;
+        }
+        
+        .feature-card p {
+            font-size: 14px;
+            color: #718096;
+        }
+        
+        /* App Preview */
+        .preview {
+            padding: 100px 24px;
+            background: linear-gradient(180deg, #ffffff 0%, #f7fafc 100%);
+            text-align: center;
+        }
+        
+        .preview-mockup {
+            max-width: 320px;
+            margin: 48px auto 0;
+            background: #1a202c;
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.15);
+        }
+        
+        .preview-screen {
+            background: linear-gradient(180deg, #f5f7fa, #edf2f7);
+            border-radius: 30px;
+            padding: 48px 24px;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+        }
+        
+        .preview-screen .fan-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3382f5, #29c7bd);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            animation: spin 3s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .preview-screen .speed-bar {
+            display: flex;
+            gap: 4px;
+        }
+        
+        .preview-screen .speed-bar span {
+            width: 24px;
+            height: 32px;
+            background: #e2e8f0;
+            border-radius: 4px;
+        }
+        
+        .preview-screen .speed-bar span.active {
+            background: linear-gradient(180deg, #3382f5, #29c7bd);
+        }
+        
+        /* Stats Section */
+        .stats {
+            padding: 80px 24px;
+            background: linear-gradient(135deg, #1a202c, #2d3748);
+        }
+        
+        .stats-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            text-align: center;
+        }
+        
+        .stat-item h3 {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #63b3ed, #4fd1c5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        
+        .stat-item p {
+            color: #a0aec0;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 48px 24px;
+            text-align: center;
+            background: #f7fafc;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #4a5568;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .footer-links a:hover {
+            color: #3182ce;
+        }
+        
+        .footer p {
+            color: #a0aec0;
+            font-size: 13px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-brand">
+                <div class="nav-logo">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+                    </svg>
+                </div>
+                <span>CoolNueb</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="privacy-policy.html">Privacy</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section class="hero">
+        <h1>Your Fan, <span>Reimagined</span></h1>
+        <p>Control your smart fan with precision. Ten speed levels, multi-directional oscillation, intelligent scheduling, and detailed usage analytics — all from your pocket.</p>
+        <div class="hero-buttons">
+            <a href="#" class="btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
+                Download on App Store
+            </a>
+            <a href="support.html" class="btn-secondary">
+                Learn More
+            </a>
+        </div>
+    </section>
+    
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>Powerful Features</h2>
+            <p>Everything you need to manage your smart fan experience, designed with simplicity in mind.</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #ebf4ff;">&#127744;</div>
+                <h3>10-Level Speed Control</h3>
+                <p>From a gentle whisper to powerful airflow, find your perfect comfort level with precision speed adjustment.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #e6fffa;">&#8596;</div>
+                <h3>Smart Oscillation</h3>
+                <p>Independent vertical and horizontal oscillation controls for complete room coverage.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #fefcbf;">&#9202;</div>
+                <h3>Intelligent Timer</h3>
+                <p>Schedule automatic on/off times to match your daily routine. Set it and forget it.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #fed7e2;">&#128200;</div>
+                <h3>Usage Analytics</h3>
+                <p>Track your usage patterns with detailed statistics. Understand your energy consumption over time.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #e9d8fd;">&#127968;</div>
+                <h3>Room Management</h3>
+                <p>Organize multiple fans across different rooms with independent controls for each space.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #c6f6d5;">&#128268;</div>
+                <h3>Bluetooth Connected</h3>
+                <p>Reliable Bluetooth connectivity with no internet required. Your data stays on your device.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="preview">
+        <div class="section-header">
+            <h2>Beautiful Interface</h2>
+            <p>Designed for simplicity with intuitive controls that respond instantly.</p>
+        </div>
+        
+        <div class="preview-mockup">
+            <div class="preview-screen">
+                <div class="fan-icon">&#127744;</div>
+                <div class="speed-bar">
+                    <span class="active"></span>
+                    <span class="active"></span>
+                    <span class="active"></span>
+                    <span class="active"></span>
+                    <span class="active"></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <p style="color: #2d3748; font-weight: 600;">Speed Level 5</p>
+                <p style="color: #718096; font-size: 13px;">Living Room Fan</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>10</h3>
+                <p>Speed Levels</p>
+            </div>
+            <div class="stat-item">
+                <h3>2</h3>
+                <p>Oscillation Modes</p>
+            </div>
+            <div class="stat-item">
+                <h3>0</h3>
+                <p>Data Shared</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="support.html">Technical Support</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+        <p>&copy; 2026 CoolNueb. All rights reserved.</p>
+    </footer>
+</body>
+</html>
