@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CDZQora — Your personal seasoning companion</title>
+<meta name="description" content="Organize your spice collection, track usage, monitor stock levels, and discover your flavor patterns. Everything stays on your device.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --brown-900:#2D1B0E;--brown-800:#3E2723;--brown-700:#6B4226;--brown-500:#8B6914;
+  --brown-100:#F5E6D3;--brown-50:#FAF6F1;
+  --green-700:#2E7D32;--green-500:#43A047;
+  --orange-600:#E65100;--blue-600:#1565C0;--purple-600:#6A1B9A;
+  --text:#2D1B0E;--text-secondary:#7A5C3E;--text-hint:#B8A08A;
+  --border:#E8DDD0;--white:#FFFFFF;
+  --star:#FFC107;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:var(--text);background:var(--brown-50);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--brown-700);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:960px;margin:0 auto;padding:0 24px}
+
+/* ── Nav ── */
+nav{background:rgba(255,255,255,.92);border-bottom:1px solid var(--border);padding:14px 0;position:sticky;top:0;z-index:100;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+nav .container{display:flex;justify-content:space-between;align-items:center}
+nav .logo{font-size:18px;font-weight:700;color:var(--brown-700);display:flex;align-items:center;gap:8px}
+nav .logo span{font-size:20px}
+nav .links{display:flex;align-items:center;gap:6px}
+nav .links a{padding:6px 14px;font-size:14px;color:var(--text-secondary);font-weight:500;transition:all .2s;border-radius:8px}
+nav .links a:hover{color:var(--brown-700);background:var(--brown-50);text-decoration:none}
+nav .links a.active{color:var(--brown-700);background:var(--brown-50);font-weight:600}
+
+/* ── Hero ── */
+.hero{background:linear-gradient(135deg,var(--brown-800) 0%,var(--brown-700) 40%,var(--brown-500) 100%);padding:100px 0 80px;text-align:center;color:var(--white);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60%;right:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,255,255,.04) 0%,transparent 70%);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-40%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(255,255,255,.03) 0%,transparent 70%);border-radius:50%}
+.hero .container{position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);padding:6px 16px;border-radius:20px;font-size:13px;font-weight:500;margin-bottom:28px;backdrop-filter:blur(8px)}
+.hero h1{font-size:52px;font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:20px}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,#D4A574,#FFC107);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:19px;opacity:.82;max-width:580px;margin:0 auto 36px;line-height:1.6}
+.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:600;transition:all .2s;border:none;cursor:pointer}
+.btn-primary{background:var(--white);color:var(--brown-700)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.15);text-decoration:none}
+.btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.35)}
+.btn-outline:hover{background:rgba(255,255,255,.1);text-decoration:none}
+.hero-stats{display:flex;justify-content:center;gap:48px;margin-top:48px;padding-top:32px;border-top:1px solid rgba(255,255,255,.1)}
+.hero-stat{text-align:center}
+.hero-stat strong{display:block;font-size:28px;font-weight:800}
+.hero-stat span{font-size:12px;opacity:.6;text-transform:uppercase;letter-spacing:1px}
+
+/* ── Section ── */
+section{padding:72px 0}
+section:nth-child(even){background:var(--white)}
+.section-label{font-size:12px;font-weight:600;color:var(--brown-500);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
+.section-title{font-size:32px;font-weight:700;margin-bottom:8px;letter-spacing:-0.5px;line-height:1.2}
+.section-subtitle{font-size:16px;color:var(--text-secondary);margin-bottom:40px;max-width:560px}
+
+/* ── Steps ── */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step-card{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:28px;transition:all .25s;position:relative}
+.step-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(107,66,38,.08)}
+.step-num{width:36px;height:36px;background:var(--brown-700);color:var(--white);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;margin-bottom:16px}
+.step-card h3{font-size:18px;font-weight:600;margin-bottom:6px}
+.step-card p{font-size:14px;color:var(--text-secondary);line-height:1.55}
+
+/* ── Features ── */
+.features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.feat{background:var(--brown-50);border:1px solid var(--border);border-radius:16px;padding:24px;display:flex;gap:16px;align-items:flex-start;transition:all .2s}
+.feat:hover{border-color:var(--brown-500);background:var(--white)}
+.feat-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.feat h4{font-size:15px;font-weight:600;margin-bottom:3px}
+.feat p{font-size:13px;color:var(--text-secondary);line-height:1.5}
+
+/* ── Tabs ── */
+.tabs-row{display:flex;justify-content:center;gap:8px;margin-bottom:32px;flex-wrap:wrap}
+.tab-btn{padding:8px 20px;border-radius:10px;font-size:14px;font-weight:500;border:1px solid var(--border);background:var(--white);color:var(--text-secondary);cursor:pointer;transition:all .2s}
+.tab-btn.active,.tab-btn:hover{background:var(--brown-700);color:var(--white);border-color:var(--brown-700)}
+.tab-content{display:none;animation:fadeIn .3s ease}
+.tab-content.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── Screenshot Row ── */
+.screenshot-row{display:flex;gap:16px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.screenshot-card{min-width:260px;background:var(--white);border:1px solid var(--border);border-radius:16px;padding:20px;scroll-snap-align:start;flex-shrink:0}
+.screenshot-card .label{font-size:11px;font-weight:600;color:var(--brown-500);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.screenshot-card h4{font-size:16px;font-weight:600;margin-bottom:4px}
+.screenshot-card p{font-size:13px;color:var(--text-secondary);line-height:1.5}
+.screenshot-card .mock{height:140px;background:linear-gradient(135deg,var(--brown-100),var(--brown-50));border-radius:10px;margin-top:12px;display:flex;align-items:center;justify-content:center;font-size:36px}
+
+/* ── Converter Tool ── */
+.tool-box{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:32px;max-width:480px;margin:0 auto}
+.tool-box h3{font-size:18px;font-weight:600;margin-bottom:18px;text-align:center}
+.tool-row{display:flex;gap:12px;margin-bottom:14px;align-items:center}
+.tool-input{flex:1;padding:12px 14px;border:1px solid var(--border);border-radius:10px;font-size:15px;outline:none;transition:border .2s;font-family:inherit}
+.tool-input:focus{border-color:var(--brown-700)}
+.tool-select{padding:12px 14px;border:1px solid var(--border);border-radius:10px;font-size:14px;outline:none;background:var(--brown-50);font-family:inherit;cursor:pointer;min-width:80px}
+.tool-result{background:var(--brown-50);border-radius:12px;padding:18px;text-align:center;font-size:20px;font-weight:700;color:var(--brown-700);min-height:60px;display:flex;align-items:center;justify-content:center}
+.tool-swap{width:36px;height:36px;background:var(--brown-700);color:var(--white);border:none;border-radius:10px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:transform .2s;flex-shrink:0}
+.tool-swap:hover{transform:rotate(180deg)}
+
+/* ── Spice Guide ── */
+.guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.guide-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:16px;cursor:pointer;transition:all .2s}
+.guide-card:hover{transform:translateY(-2px);border-color:var(--brown-500)}
+.guide-card .head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.guide-dot{width:12px;height:12px;border-radius:50%}
+.guide-card h4{font-size:14px;font-weight:600}
+.guide-card p{font-size:12px;color:var(--text-secondary);line-height:1.5}
+.guide-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:8px}
+.guide-tag{padding:2px 8px;background:var(--brown-50);border-radius:4px;font-size:10px;color:var(--text-hint);font-weight:500}
+
+/* ── Highlights ── */
+.hl-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:16px}
+.hl-card{border-radius:18px;padding:36px;color:var(--white)}
+.hl-card.brown{background:linear-gradient(135deg,var(--brown-700),var(--brown-500))}
+.hl-card.green{background:linear-gradient(135deg,var(--green-700),var(--green-500))}
+.hl-card.orange{background:linear-gradient(135deg,var(--orange-600),#FF8F00)}
+.hl-card.blue{background:linear-gradient(135deg,var(--blue-600),#1E88E5)}
+.hl-card h3{font-size:20px;font-weight:700;margin-bottom:8px}
+.hl-card p{font-size:14px;opacity:.82;line-height:1.55}
+
+/* ── CTA ── */
+.cta-section{background:linear-gradient(135deg,var(--brown-800),var(--brown-700));padding:80px 0;text-align:center;color:var(--white)}
+.cta-section h2{font-size:34px;font-weight:800;margin-bottom:12px;letter-spacing:-0.5px}
+.cta-section p{font-size:16px;opacity:.75;margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto}
+
+/* ── Footer ── */
+footer{background:var(--brown-900);color:rgba(255,255,255,.5);padding:40px 0}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:28px}
+.footer-brand h4{color:var(--white);font-size:16px;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.footer-brand h4 span{font-size:18px}
+.footer-brand p{font-size:13px;line-height:1.5}
+.footer-col h5{color:rgba(255,255,255,.8);font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .2s}
+.footer-col a:hover{color:rgba(255,255,255,.9);text-decoration:none}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:12px;text-align:center}
+
+@media(max-width:768px){
+  .hero h1{font-size:32px}
+  .hero p{font-size:16px}
+  .hero-stats{gap:24px}
+  .hero-stat strong{font-size:22px}
+  .steps-grid{grid-template-columns:1fr}
+  .features-grid{grid-template-columns:1fr}
+  .hl-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:24px}
+  nav .links a{padding:6px 10px;font-size:13px}
+  .section-title{font-size:24px}
+}
+</style>
+</head>
+<body>
+
+<!-- ── Nav ── -->
+<nav>
+  <div class="container">
+    <a href="index.html" class="logo"><span>🫙</span> CDZQora</a>
+    <div class="links">
+      <a href="index.html" class="active">Home</a>
+      <a href="#features">Features</a>
+      <a href="#tools">Tools</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-badge">✨ Available on the App Store</div>
+    <h1>Your seasoning world,<br><em>perfectly organized.</em></h1>
+    <p>Track your spice collection, log every use, monitor stock levels, and discover your flavor patterns — everything stays on your device.</p>
+    <div class="hero-actions">
+      <a href="#how" class="btn btn-primary">See How It Works</a>
+      <a href="#tools" class="btn btn-outline">Try Our Tools</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>14</strong><span>Categories</span></div>
+      <div class="hero-stat"><strong>5</strong><span>Tabs</span></div>
+      <div class="hero-stat"><strong>100%</strong><span>Offline</span></div>
+      <div class="hero-stat"><strong>0</strong><span>Data Collected</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── How It Works ── -->
+<section id="how">
+  <div class="container">
+    <div class="section-label">How It Works</div>
+    <div class="section-title">From first jar to full pantry.</div>
+    <div class="section-subtitle">Three steps to mastering your seasoning collection.</div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Build your collection</h3>
+        <p>Add each seasoning with category, quantity, unit, purchase date, expiry date, and personal rating. Choose from 14 categories with unique icons.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Log every use</h3>
+        <p>Record which seasoning you used, how much, the recipe, occasion, and satisfaction. Stock levels update automatically in real time.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Restock smartly</h3>
+        <p>When supplies run low, log restocks with amount, cost, and vendor. Track spending patterns and discover your purchasing habits.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── App Screens ── -->
+<section>
+  <div class="container">
+    <div class="section-label">Inside the App</div>
+    <div class="section-title">Five tabs, one powerful experience.</div>
+    <div class="section-subtitle">Each tab serves a distinct purpose in managing your collection.</div>
+    <div class="screenshot-row">
+      <div class="screenshot-card">
+        <div class="label">Tab 1</div>
+        <h4>Archive</h4>
+        <p>Browse favorites, low-stock alerts, expiring items. Toggle between list and grid views with search and category breakdowns.</p>
+        <div class="mock">📦</div>
+      </div>
+      <div class="screenshot-card">
+        <div class="label">Tab 2</div>
+        <h4>Moments</h4>
+        <p>Chronological timeline of every usage and restock event. Smart date grouping — Today, Yesterday, and beyond.</p>
+        <div class="mock">⏱️</div>
+      </div>
+      <div class="screenshot-card">
+        <div class="label">Tab 3</div>
+        <h4>Pantry</h4>
+        <p>Your main inventory. Grid or list view, search, category filters, sort options, long-press quick actions, and stock badges.</p>
+        <div class="mock">🫙</div>
+      </div>
+      <div class="screenshot-card">
+        <div class="label">Tab 4</div>
+        <h4>Trends</h4>
+        <p>Interactive charts: usage over time, category pie charts, spending bars, top seasonings, health score, and rating distribution.</p>
+        <div class="mock">📊</div>
+      </div>
+      <div class="screenshot-card">
+        <div class="label">Tab 5</div>
+        <h4>Settings</h4>
+        <p>Preferences, alert thresholds, PDF export, data management, unit defaults, currency selection, and support links.</p>
+        <div class="mock">⚙️</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Features ── -->
+<section id="features">
+  <div class="container">
+    <div class="section-label">Features</div>
+    <div class="section-title">Everything you need, nothing you don't.</div>
+    <div class="section-subtitle">Powerful features designed around how you actually cook.</div>
+    <div class="features-grid">
+      <div class="feat">
+        <div class="feat-icon" style="background:#FFF3E0">🏷️</div>
+        <div><h4>14 Categories</h4><p>Herbs, Ground Spices, Whole Spices, Blends, Salts, Peppers, Seeds, Dried, Exotic, Baking, Asian, Mediterranean, Latin, and General.</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon" style="background:#E8F5E9">📊</div>
+        <div><h4>Interactive Charts</h4><p>Touch-responsive pie charts, line graphs, bar charts, progress bars, and health score gauges powered by fl_chart.</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon" style="background:#E3F2FD">⭐</div>
+        <div><h4>Rating System</h4><p>Five-star ratings on every seasoning and every use. Over time, see which combinations earn the highest marks.</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon" style="background:#FCE4EC">❤️</div>
+        <div><h4>Favorites</h4><p>Mark any seasoning as a favorite. Access them instantly from the Archive tab or toggle with long-press.</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon" style="background:#FFF8E1">⚠️</div>
+        <div><h4>Smart Alerts</h4><p>Low stock warnings with configurable thresholds. Expiry tracking with customizable warning periods.</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon" style="background:#E0F2F1">📄</div>
+        <div><h4>PDF Export</h4><p>Professional reports with inventory tables, usage logs, and spending history. Share via AirDrop, email, or any app.</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon" style="background:#F3E5F5">🔍</div>
+        <div><h4>Powerful Search</h4><p>Search across names, categories, and notes. Combine with category filters and multiple sort modes for precision.</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon" style="background:#EFEBE9">🔒</div>
+        <div><h4>Complete Privacy</h4><p>No account, no cloud, no analytics, no tracking. All data stored locally on your device with zero network access.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Highlights ── -->
+<section>
+  <div class="container">
+    <div class="hl-row">
+      <div class="hl-card brown">
+        <h3>14 categories. One tidy pantry.</h3>
+        <p>Every category has its own icon and color. Filter instantly, sort by name, usage, rating, quantity, or recent activity. Switch between grid and list views.</p>
+      </div>
+      <div class="hl-card green">
+        <h3>Private by design.</h3>
+        <p>No registration, no email, no tracking. Your installation identity is completely anonymous. Data never leaves your device, ever.</p>
+      </div>
+    </div>
+    <div class="hl-row">
+      <div class="hl-card orange">
+        <h3>Know before you run out.</h3>
+        <p>Configurable low-stock thresholds and expiry warnings. Visual badges on every card. Dedicated filters in Archive to see items that need attention.</p>
+      </div>
+      <div class="hl-card blue">
+        <h3>Export and share.</h3>
+        <p>Generate PDF reports with full inventory, usage history, and spending summary. Share through the system share sheet to any app on your device.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Tools Section ── -->
+<section id="tools">
+  <div class="container">
+    <div class="section-label">Online Tools</div>
+    <div class="section-title">Handy tools for your kitchen.</div>
+    <div class="section-subtitle">Use these free tools right in your browser — no download required.</div>
+
+    <div class="tabs-row">
+      <button class="tab-btn active" onclick="showTool('converter')">Unit Converter</button>
+      <button class="tab-btn" onclick="showTool('guide')">Spice Guide</button>
+      <button class="tab-btn" onclick="showTool('pairing')">Pairing Finder</button>
+    </div>
+
+    <!-- Converter -->
+    <div class="tab-content active" id="tool-converter">
+      <div class="tool-box">
+        <h3>Seasoning Unit Converter</h3>
+        <div class="tool-row">
+          <input type="number" class="tool-input" id="conv-val" value="1" min="0" step="any" oninput="convertUnit()">
+          <select class="tool-select" id="conv-from" onchange="convertUnit()">
+            <option value="g">g</option>
+            <option value="kg">kg</option>
+            <option value="oz">oz</option>
+            <option value="lb">lb</option>
+            <option value="tsp" selected>tsp</option>
+            <option value="tbsp">tbsp</option>
+            <option value="cup">cup</option>
+            <option value="ml">ml</option>
+            <option value="L">L</option>
+          </select>
+          <button class="tool-swap" onclick="swapUnits()" title="Swap">⇄</button>
+          <select class="tool-select" id="conv-to" onchange="convertUnit()">
+            <option value="g" selected>g</option>
+            <option value="kg">kg</option>
+            <option value="oz">oz</option>
+            <option value="lb">lb</option>
+            <option value="tsp">tsp</option>
+            <option value="tbsp">tbsp</option>
+            <option value="cup">cup</option>
+            <option value="ml">ml</option>
+            <option value="L">L</option>
+          </select>
+        </div>
+        <div class="tool-result" id="conv-result">≈ 4.93 g</div>
+      </div>
+    </div>
+
+    <!-- Spice Guide -->
+    <div class="tab-content" id="tool-guide">
+      <div class="guide-grid" id="guide-grid"></div>
+    </div>
+
+    <!-- Pairing Finder -->
+    <div class="tab-content" id="tool-pairing">
+      <div class="tool-box">
+        <h3>Seasoning Pairing Finder</h3>
+        <p style="text-align:center;color:var(--text-secondary);font-size:14px;margin-bottom:16px">Select an ingredient to discover ideal seasoning pairings.</p>
+        <select class="tool-select" id="pair-select" onchange="showPairing()" style="width:100%;margin-bottom:16px">
+          <option value="">Choose an ingredient...</option>
+          <option value="chicken">Chicken</option>
+          <option value="beef">Beef</option>
+          <option value="fish">Fish</option>
+          <option value="pork">Pork</option>
+          <option value="lamb">Lamb</option>
+          <option value="tofu">Tofu</option>
+          <option value="rice">Rice</option>
+          <option value="pasta">Pasta</option>
+          <option value="potato">Potato</option>
+          <option value="egg">Eggs</option>
+          <option value="tomato">Tomato</option>
+          <option value="mushroom">Mushroom</option>
+        </select>
+        <div id="pair-result" style="min-height:60px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<div class="cta-section">
+  <div class="container">
+    <h2>Ready to organize your pantry?</h2>
+    <p>Download CDZQora and take control of your seasoning collection today.</p>
+    <a href="#" class="btn btn-primary" style="font-size:16px;padding:16px 36px">Download on the App Store</a>
+  </div>
+</div>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4><span>🫙</span> CDZQora</h4>
+        <p>Your personal seasoning companion. Organize, track, and discover your flavor habits — entirely on your device.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Product</h5>
+        <a href="#how">How It Works</a>
+        <a href="#features">Features</a>
+        <a href="#tools">Online Tools</a>
+        <a href="#">Download</a>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <a href="support.html">Technical Support</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="mailto:support@natellic.com">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 CDZQora. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Unit Converter ──
+const factors = {g:1,kg:1000,oz:28.3495,lb:453.592,tsp:4.929,tbsp:14.787,cup:236.588,ml:1,L:1000};
+function convertUnit(){
+  const v=parseFloat(document.getElementById('conv-val').value)||0;
+  const from=document.getElementById('conv-from').value;
+  const to=document.getElementById('conv-to').value;
+  const grams=v*factors[from];
+  const result=grams/factors[to];
+  const display=result<0.01&&result>0?result.toExponential(2):result<1?result.toFixed(4):result<100?result.toFixed(2):result.toFixed(1);
+  document.getElementById('conv-result').textContent='≈ '+display+' '+to;
+}
+function swapUnits(){
+  const f=document.getElementById('conv-from');
+  const t=document.getElementById('conv-to');
+  const tmp=f.value;f.value=t.value;t.value=tmp;
+  convertUnit();
+}
+
+// ── Tab Switching ──
+function showTool(id){
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tool-'+id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ── Spice Guide ──
+const spices=[
+  {name:'Paprika',cat:'Ground Spices',color:'#D32F2F',origin:'Central America',flavor:'Sweet, smoky, mild warmth',pairs:['chicken','pork','potato','egg'],tips:'Add near end of cooking to preserve color.'},
+  {name:'Cumin',cat:'Ground Spices',color:'#795548',origin:'Mediterranean',flavor:'Earthy, warm, slightly bitter',pairs:['beef','lamb','rice','tofu'],tips:'Toast whole seeds before grinding for deeper flavor.'},
+  {name:'Turmeric',cat:'Ground Spices',color:'#F9A825',origin:'South Asia',flavor:'Earthy, peppery, warm',pairs:['rice','chicken','egg','tofu'],tips:'Use sparingly — a little goes a long way. Stains surfaces.'},
+  {name:'Oregano',cat:'Herbs',color:'#2E7D32',origin:'Mediterranean',flavor:'Aromatic, slightly bitter, peppery',pairs:['tomato','pasta','chicken','lamb'],tips:'Dried oregano is more potent than fresh. Crush before adding.'},
+  {name:'Cinnamon',cat:'Ground Spices',color:'#8D6E63',origin:'Sri Lanka',flavor:'Sweet, warm, woody',pairs:['apple','lamb','rice','oatmeal'],tips:'Use Ceylon cinnamon for delicate dishes, Cassia for baking.'},
+  {name:'Black Pepper',cat:'Peppers',color:'#424242',origin:'South India',flavor:'Pungent, sharp, hot',pairs:['beef','egg','pasta','potato'],tips:'Always grind fresh. Add at end for maximum aroma.'},
+  {name:'Basil',cat:'Herbs',color:'#388E3C',origin:'South Asia',flavor:'Sweet, peppery, slightly minty',pairs:['tomato','pasta','chicken','fish'],tips:'Add fresh basil at the very end — heat destroys its flavor.'},
+  {name:'Ginger',cat:'Ground Spices',color:'#EF6C00',origin:'Southeast Asia',flavor:'Sharp, warm, spicy-sweet',pairs:['fish','chicken','tofu','rice'],tips:'Fresh ginger is brighter; dried is warmer and more concentrated.'},
+  {name:'Rosemary',cat:'Herbs',color:'#1B5E20',origin:'Mediterranean',flavor:'Pine-like, woody, earthy',pairs:['lamb','potato','chicken','bread'],tips:'Use whole sprigs during roasting, remove before serving.'},
+  {name:'Chili Flakes',cat:'Peppers',color:'#C62828',origin:'Americas',flavor:'Hot, slightly fruity, smoky',pairs:['pasta','pizza','egg','tofu'],tips:'Toast briefly in oil to release essential oils and bloom flavor.'},
+  {name:'Thyme',cat:'Herbs',color:'#33691E',origin:'Mediterranean',flavor:'Earthy, minty, slightly floral',pairs:['chicken','mushroom','potato','beef'],tips:'Withstands long cooking — add early in stews and braises.'},
+  {name:'Garlic Powder',cat:'Ground Spices',color:'#A1887F',origin:'Central Asia',flavor:'Savory, pungent, slightly sweet',pairs:['bread','pasta','chicken','beef'],tips:'Use when you want garlic flavor without the texture of fresh garlic.'},
+];
+function renderGuide(){
+  const grid=document.getElementById('guide-grid');
+  grid.innerHTML=spices.map(s=>`
+    <div class="guide-card" onclick="this.querySelector('.guide-detail').style.display=this.querySelector('.guide-detail').style.display==='block'?'none':'block'">
+      <div class="head"><div class="guide-dot" style="background:${s.color}"></div><h4>${s.name}</h4></div>
+      <p>${s.flavor}</p>
+      <div class="guide-tags"><span class="guide-tag">${s.cat}</span><span class="guide-tag">${s.origin}</span></div>
+      <div class="guide-detail" style="display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)">
+        <p style="font-size:12px;color:var(--text-secondary);margin-bottom:4px"><strong>Tip:</strong> ${s.tips}</p>
+        <p style="font-size:12px;color:var(--text-secondary)"><strong>Pairs with:</strong> ${s.pairs.join(', ')}</p>
+      </div>
+    </div>
+  `).join('');
+}
+renderGuide();
+
+// ── Pairing Finder ──
+const pairings={
+  chicken:['Paprika','Oregano','Thyme','Rosemary','Garlic Powder','Cumin','Turmeric','Basil','Black Pepper','Ginger'],
+  beef:['Black Pepper','Cumin','Rosemary','Thyme','Garlic Powder','Chili Flakes','Paprika','Oregano'],
+  fish:['Ginger','Basil','Black Pepper','Turmeric','Thyme','Dill','Paprika','Lemon Zest'],
+  pork:['Paprika','Cumin','Garlic Powder','Ginger','Thyme','Black Pepper','Rosemary','Cinnamon'],
+  lamb:['Rosemary','Cumin','Cinnamon','Oregano','Thyme','Black Pepper','Garlic Powder','Paprika'],
+  tofu:['Ginger','Turmeric','Cumin','Chili Flakes','Black Pepper','Garlic Powder','Basil'],
+  rice:['Turmeric','Cumin','Cinnamon','Ginger','Saffron','Black Pepper','Garlic Powder'],
+  pasta:['Oregano','Basil','Black Pepper','Chili Flakes','Garlic Powder','Thyme','Rosemary'],
+  potato:['Rosemary','Paprika','Black Pepper','Thyme','Garlic Powder','Cumin','Chili Flakes'],
+  egg:['Paprika','Black Pepper','Chili Flakes','Turmeric','Garlic Powder','Basil','Thyme'],
+  tomato:['Oregano','Basil','Thyme','Black Pepper','Garlic Powder','Chili Flakes','Cumin'],
+  mushroom:['Thyme','Rosemary','Black Pepper','Garlic Powder','Paprika','Oregano'],
+};
+function showPairing(){
+  const sel=document.getElementById('pair-select').value;
+  const box=document.getElementById('pair-result');
+  if(!sel){box.innerHTML='';return;}
+  const list=pairings[sel]||[];
+  box.innerHTML='<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center">'+list.map(s=>{
+    const sp=spices.find(x=>x.name===s);
+    const c=sp?sp.color:'var(--brown-700)';
+    return '<span style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:'+c+'12;border:1px solid '+c+'30;border-radius:10px;font-size:13px;font-weight:500;color:'+c+'"><span style="width:8px;height:8px;background:'+c+';border-radius:50%"></span>'+s+'</span>';
+  }).join('')+'</div>';
+}
+
+// Init converter
+convertUnit();
+</script>
+
+</body>
+</html>
