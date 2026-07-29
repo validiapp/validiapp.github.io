@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — MudoiLed</title>
+    <style>
+        :root {
+            --primary: #2DB76A;
+            --primary-dark: #1A8C45;
+            --primary-light: #8FDE9F;
+            --bg: #F8FAF8;
+            --card: #FFFFFF;
+            --text: #212D24;
+            --text-sec: #6B7D72;
+            --text-muted: #A5B3AB;
+            --radius: 16px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+
+        nav {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 16px 0;
+        }
+        nav .nav-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .logo-icon {
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 18px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 32px;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--text-sec);
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--primary); }
+
+        .page-header {
+            padding: 140px 0 40px;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .page-header p {
+            color: var(--text-sec);
+            font-size: 16px;
+        }
+        .badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .content {
+            padding: 0 0 80px;
+        }
+        .content-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            margin-bottom: 24px;
+        }
+        .content-card h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--primary-dark);
+        }
+        .content-card h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin: 20px 0 8px;
+        }
+        .content-card p {
+            color: var(--text-sec);
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+        .content-card ul {
+            color: var(--text-sec);
+            font-size: 15px;
+            padding-left: 20px;
+            margin-bottom: 12px;
+        }
+        .content-card li { margin-bottom: 6px; }
+        .highlight-box {
+            background: rgba(45,183,106,0.08);
+            border-left: 4px solid var(--primary);
+            padding: 16px 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 16px 0;
+        }
+        .highlight-box p {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        footer {
+            background: var(--text);
+            color: rgba(255,255,255,0.6);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+        footer a {
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 28px; }
+            .content-card { padding: 24px; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">💡</div>
+                MudoiLed
+            </a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <span class="badge">Legal</span>
+            <h1>Privacy Policy</h1>
+            <p>Last updated: July 29, 2026</p>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <div class="content-card">
+                <h2>Overview</h2>
+                <p>MudoiLed ("the App") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our mobile application.</p>
+                <div class="highlight-box">
+                    <p>We do not collect, store, or transmit any personal data to external servers. All data remains on your device.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h2>Information We Collect</h2>
+                <h3>Device Data (Stored Locally)</h3>
+                <p>The App stores the following information locally on your device:</p>
+                <ul>
+                    <li>Device names and room assignments you configure</li>
+                    <li>Lighting preferences (brightness levels, color temperature settings)</li>
+                    <li>Custom scenes and schedules you create</li>
+                    <li>Energy consumption data generated by the App</li>
+                </ul>
+                <h3>Bluetooth Information</h3>
+                <p>The App uses Bluetooth Low Energy (BLE) to discover and communicate with compatible LED hardware devices. Bluetooth data is processed locally and is not transmitted to any server.</p>
+                <h3>What We Do Not Collect</h3>
+                <ul>
+                    <li>No personal identification information (name, email, phone)</li>
+                    <li>No location data</li>
+                    <li>No usage analytics or tracking</li>
+                    <li>No advertising identifiers</li>
+                    <li>No data shared with third parties</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h2>Data Storage</h2>
+                <p>All application data is stored locally on your device using standard iOS storage mechanisms (UserDefaults). No data is transmitted to external servers or cloud services.</p>
+                <p>If you delete the App, all stored data will be permanently removed from your device.</p>
+            </div>
+
+            <div class="content-card">
+                <h2>Bluetooth Permissions</h2>
+                <p>The App requests Bluetooth permission solely for the purpose of discovering and communicating with MudoiLed hardware devices. This permission is required for the core functionality of the App.</p>
+                <p>You can revoke Bluetooth permission at any time through your device's Settings app. Without Bluetooth access, the App will not be able to connect to or control LED devices.</p>
+            </div>
+
+            <div class="content-card">
+                <h2>Third-Party Services</h2>
+                <p>The App does not integrate with any third-party analytics, advertising, or data collection services. We use open-source libraries for UI components only, which do not collect or transmit user data.</p>
+            </div>
+
+            <div class="content-card">
+                <h2>Children's Privacy</h2>
+                <p>The App does not knowingly collect information from children under the age of 13. The App is a general-purpose utility that does not target or collect data from any specific age group.</p>
+            </div>
+
+            <div class="content-card">
+                <h2>Changes to This Policy</h2>
+                <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated "Last updated" date. We encourage you to review this page periodically.</p>
+            </div>
+
+            <div class="content-card">
+                <h2>Contact Us</h2>
+                <p>If you have any questions or concerns about this Privacy Policy, please contact us at:</p>
+                <p><strong>Email:</strong> support@mudoiled.com</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 MudoiLed. All rights reserved. | <a href="index.html">Home</a> | <a href="support.html">Support</a> | <a href="terms.html">Terms</a></p>
+        </div>
+    </footer>
+</body>
+</html>
