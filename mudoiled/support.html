@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support — MudoiLed</title>
+    <style>
+        :root {
+            --primary: #2DB76A;
+            --primary-dark: #1A8C45;
+            --primary-light: #8FDE9F;
+            --bg: #F8FAF8;
+            --card: #FFFFFF;
+            --text: #212D24;
+            --text-sec: #6B7D72;
+            --text-muted: #A5B3AB;
+            --radius: 16px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+
+        nav {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 16px 0;
+        }
+        nav .nav-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .logo-icon {
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 18px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 32px;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--text-sec);
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--primary); }
+
+        .page-header {
+            padding: 140px 0 40px;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .page-header p {
+            color: var(--text-sec);
+            font-size: 16px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .content { padding: 0 0 80px; }
+
+        .contact-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: var(--radius);
+            padding: 40px;
+            color: white;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .contact-card h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .contact-card p {
+            font-size: 15px;
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+        .contact-email {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .contact-email:hover { background: rgba(255,255,255,0.3); }
+
+        .faq-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            margin-bottom: 16px;
+        }
+        .faq-card h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .faq-icon {
+            width: 32px; height: 32px;
+            background: rgba(45,183,106,0.1);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .faq-card p {
+            color: var(--text-sec);
+            font-size: 15px;
+            padding-left: 42px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 40px 0 20px;
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .guide-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            transition: transform 0.2s;
+        }
+        .guide-card:hover { transform: translateY(-2px); }
+        .guide-card .guide-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+        .guide-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .guide-card p {
+            color: var(--text-sec);
+            font-size: 13px;
+        }
+
+        footer {
+            background: var(--text);
+            color: rgba(255,255,255,0.6);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+        footer a {
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 28px; }
+            .guide-grid { grid-template-columns: 1fr; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">💡</div>
+                MudoiLed
+            </a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <span class="badge">Help Center</span>
+            <h1>Technical Support</h1>
+            <p>Get help with setup, troubleshooting, and getting the most out of your MudoiLed experience.</p>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <div class="contact-card">
+                <h2>Need help? We're here.</h2>
+                <p>Our support team typically responds within 24 hours.</p>
+                <a href="mailto:support@mudoiled.com" class="contact-email">
+                    ✉ support@mudoiled.com
+                </a>
+            </div>
+
+            <h2 class="section-title">Quick Start Guides</h2>
+            <div class="guide-grid">
+                <div class="guide-card">
+                    <div class="guide-icon">📡</div>
+                    <h3>Connecting Your Device</h3>
+                    <p>Open the app, tap the + button, and allow Bluetooth access. Your device will appear in the scanner automatically.</p>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon">💡</div>
+                    <h3>Adjusting Brightness</h3>
+                    <p>Use the brightness slider on the Home tab. Drag to any level between 1% and 100%, or use quick presets.</p>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon">🎨</div>
+                    <h3>Changing Color Temperature</h3>
+                    <p>Select between Warm (2700K), Neutral White (4000K), or Cool (6500K) from the temperature section.</p>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon">⏰</div>
+                    <h3>Setting Schedules</h3>
+                    <p>Go to Settings, find Schedules, and tap + to create an automated lighting schedule with repeat options.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title">Frequently Asked Questions</h2>
+
+            <div class="faq-card">
+                <h3><span class="faq-icon">❓</span> Why can't my device be found?</h3>
+                <p>Make sure Bluetooth is enabled on your iPhone and the MudoiLed device is powered on and within range (approximately 10 meters). Try closing and reopening the Add Device screen to restart the scan.</p>
+            </div>
+
+            <div class="faq-card">
+                <h3><span class="faq-icon">❓</span> How do I reset my light to factory settings?</h3>
+                <p>Turn the light off and on 5 times rapidly (1 second intervals). The light will blink 3 times to confirm the reset. Then re-add the device in the app.</p>
+            </div>
+
+            <div class="faq-card">
+                <h3><span class="faq-icon">❓</span> Can I control multiple lights at once?</h3>
+                <p>Yes. Use the Scenes feature to apply brightness and color temperature settings across all connected devices simultaneously.</p>
+            </div>
+
+            <div class="faq-card">
+                <h3><span class="faq-icon">❓</span> Does the app work without an internet connection?</h3>
+                <p>Yes. MudoiLed communicates directly with your devices via Bluetooth. No internet connection or cloud account is required.</p>
+            </div>
+
+            <div class="faq-card">
+                <h3><span class="faq-icon">❓</span> How accurate is the energy consumption data?</h3>
+                <p>Energy data is estimated based on the device's rated wattage, brightness level, and active duration. It provides a close approximation for tracking purposes.</p>
+            </div>
+
+            <div class="faq-card">
+                <h3><span class="faq-icon">❓</span> What iOS version is required?</h3>
+                <p>MudoiLed requires iOS 13.0 or later. It is compatible with iPhone models that support iOS 13 and above.</p>
+            </div>
+
+            <div class="faq-card">
+                <h3><span class="faq-icon">❓</span> Is my data shared with anyone?</h3>
+                <p>No. All data is stored locally on your device. We do not collect, transmit, or share any personal or usage data. Please see our <a href="privacy.html" style="color: var(--primary);">Privacy Policy</a> for full details.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 MudoiLed. All rights reserved. | <a href="index.html">Home</a> | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
+        </div>
+    </footer>
+</body>
+</html>
