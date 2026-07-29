@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Technical Support — Vreswa</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--primary:#4F46E5;--primary-light:#818CF8;--primary-dark:#3730A3;--accent:#7C3AED;--bg:#FAFBFF;--surface:#FFFFFF;--text:#1E1B4B;--text-secondary:#6B7280;--border:#E5E7EB;--radius:16px;--shadow:0 4px 24px rgba(79,70,229,0.08)}
+    html{scroll-behavior:smooth}
+    body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(255,255,255,0.82);border-bottom:1px solid var(--border)}
+    .nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .nav-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.15rem;color:var(--text);text-decoration:none}
+    .nav-brand img{width:34px;height:34px;border-radius:8px}
+    .nav-links{display:flex;gap:28px;align-items:center}
+    .nav-links a{text-decoration:none;color:var(--text-secondary);font-size:.9rem;font-weight:500;transition:color .2s}
+    .nav-links a:hover{color:var(--primary)}
+
+    .page-header{padding:120px 24px 48px;text-align:center;background:linear-gradient(180deg,#EEF2FF 0%,var(--bg) 100%)}
+    .page-header h1{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;color:var(--text);margin-bottom:12px}
+    .page-header p{color:var(--text-secondary);font-size:1rem;max-width:500px;margin:0 auto}
+
+    .content{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+
+    /* FAQ */
+    .faq-section{margin-bottom:48px}
+    .faq-section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+    .faq-section h2 .section-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+    .faq-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:12px;overflow:hidden;transition:box-shadow .3s}
+    .faq-item:hover{box-shadow:var(--shadow)}
+    .faq-q{padding:20px 24px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-weight:600;font-size:.95rem;user-select:none}
+    .faq-q:hover{color:var(--primary)}
+    .faq-arrow{transition:transform .3s;font-size:.8rem;color:var(--text-secondary)}
+    .faq-item.open .faq-arrow{transform:rotate(180deg)}
+    .faq-a{padding:0 24px;max-height:0;overflow:hidden;transition:all .35s ease}
+    .faq-item.open .faq-a{max-height:400px;padding:0 24px 20px}
+    .faq-a p{font-size:.9rem;color:var(--text-secondary);line-height:1.7}
+    .faq-a ul{padding-left:18px;margin-top:8px}
+    .faq-a li{font-size:.9rem;color:var(--text-secondary);margin-bottom:4px}
+
+    /* Troubleshooting */
+    .trouble-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:48px}
+    .trouble-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:all .3s}
+    .trouble-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--primary-light)}
+    .trouble-card .t-icon{font-size:1.8rem;margin-bottom:14px}
+    .trouble-card h3{font-size:1rem;font-weight:700;margin-bottom:8px}
+    .trouble-card p{font-size:.85rem;color:var(--text-secondary);line-height:1.6}
+
+    /* Contact */
+    .contact-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;text-align:center;box-shadow:var(--shadow)}
+    .contact-section h2{font-size:1.4rem;font-weight:700;margin-bottom:8px}
+    .contact-section p{color:var(--text-secondary);font-size:.95rem;margin-bottom:24px;max-width:480px;margin-left:auto;margin-right:auto}
+    .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;max-width:640px;margin:0 auto}
+    .contact-card{background:linear-gradient(135deg,#EEF2FF,#F0F0FF);border-radius:12px;padding:24px;text-align:center;transition:transform .2s}
+    .contact-card:hover{transform:translateY(-2px)}
+    .contact-card .c-icon{font-size:1.6rem;margin-bottom:10px}
+    .contact-card h4{font-size:.9rem;font-weight:700;margin-bottom:4px}
+    .contact-card p{font-size:.8rem;color:var(--text-secondary);margin:0}
+
+    /* Specs */
+    .specs-table{width:100%;border-collapse:collapse;margin-top:16px}
+    .specs-table td{padding:12px 16px;font-size:.9rem;border-bottom:1px solid var(--border)}
+    .specs-table td:first-child{font-weight:600;color:var(--text);width:40%}
+    .specs-table td:last-child{color:var(--text-secondary)}
+
+    footer{background:var(--text);color:#fff;padding:40px 24px;text-align:center}
+    footer p{color:#A5B4FC;font-size:.85rem}
+    footer a{color:#A5B4FC;text-decoration:none}
+    footer a:hover{color:#fff}
+
+    @media(max-width:768px){
+      .nav-links{display:none}
+      .contact-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <img src="logo.svg" alt="Vreswa"/>
+      Vreswa
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="support.html" style="color:var(--primary)">Support</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1>Technical Support</h1>
+  <p>Find answers to common questions and troubleshooting tips for your Vreswa smart fan.</p>
+</div>
+
+<div class="content">
+
+  <!-- Quick Troubleshooting -->
+  <h2 style="font-size:1.3rem;font-weight:700;margin-bottom:20px">Quick Troubleshooting</h2>
+  <div class="trouble-grid">
+    <div class="trouble-card">
+      <div class="t-icon">&#128268;</div>
+      <h3>Connection Issues</h3>
+      <p>Ensure Bluetooth is enabled on your iPhone. Move within 10 meters of the fan. Try toggling Bluetooth off and on, then re-scan in the app.</p>
+    </div>
+    <div class="trouble-card">
+      <div class="t-icon">&#128267;</div>
+      <h3>Fan Not Responding</h3>
+      <p>Check the fan's battery level. Try power-cycling the fan by turning it off and on. Re-pair the device if the issue persists.</p>
+    </div>
+    <div class="trouble-card">
+      <div class="t-icon">&#128260;</div>
+      <h3>Swing Not Working</h3>
+      <p>Verify the swing mode is enabled in device settings. Some fan models may not support dual-axis swing. Check your fan model's specifications.</p>
+    </div>
+    <div class="trouble-card">
+      <div class="t-icon">&#9201;</div>
+      <h3>Timer Not Activating</h3>
+      <p>Make sure the fan is currently on before setting a timer. The timer only counts down when the fan is running. Re-set the timer if needed.</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2><span class="section-icon">?</span> Frequently Asked Questions</h2>
+
+    <div class="faq-item open">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        What devices are compatible with Vreswa?
+        <span class="faq-arrow">&#9660;</span>
+      </div>
+      <div class="faq-a">
+        <p>Vreswa is compatible with Bluetooth Low Energy (BLE) enabled smart fan devices from the Vreswa product line, including:</p>
+        <ul>
+          <li>Vreswa SF-Pro — Premium smart fan</li>
+          <li>Vreswa SF-100 — Standard smart fan</li>
+          <li>Vreswa SF-200 — High-performance fan</li>
+          <li>Vreswa SF-Mini — Compact fan</li>
+          <li>Vreswa SF-Outdoor — Weather-resistant outdoor fan</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Does the app require an internet connection?
+        <span class="faq-arrow">&#9660;</span>
+      </div>
+      <div class="faq-a">
+        <p>No. Vreswa operates entirely offline via Bluetooth. No internet connection, cloud account, or registration is required. All data is stored locally on your device.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        How many fans can I control at once?
+        <span class="faq-arrow">&#9660;</span>
+      </div>
+      <div class="faq-a">
+        <p>You can add and manage multiple fans in the app. Each fan can be named, assigned to a room, and controlled independently. The "All Off" quick action lets you turn off all fans at once.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        What are Smart Scenes?
+        <span class="faq-arrow">&#9660;</span>
+      </div>
+      <div class="faq-a">
+        <p>Smart Scenes are pre-configured profiles that set speed, swing, and timer in one tap. The app includes 6 built-in scenes: Sleep, Natural, Power Cool, Baby Care, Focus Work, and Exercise. You can also create your own custom scenes.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        How does energy tracking work?
+        <span class="faq-arrow">&#9660;</span>
+      </div>
+      <div class="faq-a">
+        <p>The app tracks your fan's runtime and estimates power consumption based on speed level and duration. You can view daily, weekly, and monthly energy usage charts to optimize your usage and save energy.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Can I delete all my data?
+        <span class="faq-arrow">&#9660;</span>
+      </div>
+      <div class="faq-a">
+        <p>Yes. Go to Settings &gt; Delete All Data to remove all stored configurations, scenes, and statistics. Uninstalling the app will also delete all data permanently. Since no data leaves your device, deletion is complete and immediate.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        What iOS version is required?
+        <span class="faq-arrow">&#9660;</span>
+      </div>
+      <div class="faq-a">
+        <p>Vreswa requires iOS 16.0 or later. The app is optimized for iPhone and takes advantage of the latest SwiftUI features for a smooth, native experience.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        My fan shows "Disconnected" — what should I do?
+        <span class="faq-arrow">&#9660;</span>
+      </div>
+      <div class="faq-a">
+        <p>Try these steps:</p>
+        <ul>
+          <li>Make sure you're within Bluetooth range (approximately 10 meters)</li>
+          <li>Check that the fan is powered on and has sufficient battery</li>
+          <li>Toggle your iPhone's Bluetooth off and on in Settings</li>
+          <li>Open the app and attempt to reconnect from the device list</li>
+          <li>If the problem persists, remove the device and re-pair it</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- System Requirements -->
+  <div class="faq-section">
+    <h2><span class="section-icon">&#9881;</span> System Requirements</h2>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden">
+      <table class="specs-table">
+        <tr><td>Platform</td><td>iOS 16.0 or later</td></tr>
+        <tr><td>Devices</td><td>iPhone (all models supporting iOS 16+)</td></tr>
+        <tr><td>Connectivity</td><td>Bluetooth Low Energy (BLE 4.0+)</td></tr>
+        <tr><td>Network</td><td>Not required (fully offline)</td></tr>
+        <tr><td>Storage</td><td>Less than 30 MB</td></tr>
+        <tr><td>Data</td><td>Stored locally on device only</td></tr>
+        <tr><td>Permissions</td><td>Bluetooth access</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="contact-section">
+    <h2>Still need help?</h2>
+    <p>We're here to assist you. Reach out through any of the following channels.</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="c-icon">&#128172;</div>
+        <h4>In-App Feedback</h4>
+        <p>Settings &gt; Feedback</p>
+      </div>
+      <div class="contact-card">
+        <div class="c-icon">&#9733;</div>
+        <h4>Rate & Review</h4>
+        <p>Share your experience on the App Store</p>
+      </div>
+      <div class="contact-card">
+        <div class="c-icon">&#128274;</div>
+        <h4>Privacy Concerns</h4>
+        <p><a href="privacy.html" style="color:var(--primary)">Read our Privacy Policy</a></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 Vreswa. All rights reserved. &nbsp;|&nbsp; <a href="index.html">Home</a> &nbsp;|&nbsp; <a href="privacy.html">Privacy</a> &nbsp;|&nbsp; <a href="terms.html">Terms</a></p>
+</footer>
+
+<script>
+  function toggleFaq(el){
+    const item=el.parentElement;
+    const wasOpen=item.classList.contains("open");
+    document.querySelectorAll(".faq-item").forEach(i=>i.classList.remove("open"));
+    if(!wasOpen) item.classList.add("open");
+  }
+</script>
+</body>
+</html>
