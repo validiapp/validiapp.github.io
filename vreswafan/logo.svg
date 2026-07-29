@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4F46E5"/>
+      <stop offset="100%" style="stop-color:#7C3AED"/>
+    </linearGradient>
+    <linearGradient id="blade1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.95"/>
+      <stop offset="100%" style="stop-color:#e0e7ff;stop-opacity:0.85"/>
+    </linearGradient>
+    <linearGradient id="blade2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#c7d2fe;stop-opacity:0.8"/>
+    </linearGradient>
+    <linearGradient id="centerG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="100%" style="stop-color:#e0e7ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#1e1b4b" flood-opacity="0.3"/>
+    </filter>
+    <filter id="innerShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#1e1b4b" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+
+  <g transform="translate(256,256)" filter="url(#shadow)">
+    <!-- Blade 1 - Top -->
+    <path d="M-8,-30 C-12,-80 -40,-150 -15,-175 C10,-200 50,-170 60,-130 C70,-90 40,-50 8,-30 Z"
+          fill="url(#blade1)" opacity="0.92"/>
+
+    <!-- Blade 2 - Right -->
+    <path d="M30,-8 C80,-12 150,-40 175,-15 C200,10 170,50 130,60 C90,70 50,40 30,8 Z"
+          fill="url(#blade2)" opacity="0.88"/>
+
+    <!-- Blade 3 - Bottom -->
+    <path d="M8,30 C12,80 40,150 15,175 C-10,200 -50,170 -60,130 C-70,90 -40,50 -8,30 Z"
+          fill="url(#blade1)" opacity="0.85"/>
+
+    <!-- Blade 4 - Left -->
+    <path d="M-30,8 C-80,12 -150,40 -175,15 C-200,-10 -170,-50 -130,-60 C-90,-70 -50,-40 -30,-8 Z"
+          fill="url(#blade2)" opacity="0.82"/>
+
+    <!-- Center hub -->
+    <circle cx="0" cy="0" r="28" fill="url(#centerG)" filter="url(#innerShadow)"/>
+    <circle cx="0" cy="0" r="16" fill="none" stroke="#4F46E5" stroke-width="2.5" opacity="0.4"/>
+    <circle cx="0" cy="0" r="6" fill="#4F46E5" opacity="0.5"/>
+
+    <!-- Wind arc accents -->
+    <path d="M95,-95 A135,135 0 0,1 135,0" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/>
+    <path d="M110,-75 A110,110 0 0,1 120,15" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.2"/>
+  </g>
+</svg>
