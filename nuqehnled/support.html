@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support — iMuouLight</title>
+    <style>
+        :root {
+            --primary: #5C6BFA;
+            --primary-dark: #4A56D6;
+            --accent: #66D9B8;
+            --warm: #FAA652;
+            --bg: #F5F7FC;
+            --card: #FFFFFF;
+            --text: #212640;
+            --text-secondary: #808099;
+            --text-tertiary: #B8BCCC;
+            --radius: 20px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            color: var(--text); background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            z-index: 100; border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-inner {
+            max-width: 1080px; margin: 0 auto;
+            padding: 0 32px; height: 64px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .logo { font-size: 20px; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 28px; }
+        .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 14px; font-weight: 500; transition: color .2s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .hero-mini {
+            max-width: 1080px; margin: 0 auto;
+            padding: 120px 32px 48px;
+            text-align: center;
+        }
+        .hero-mini h1 { font-size: 36px; font-weight: 800; margin-bottom: 12px; letter-spacing: -1px; }
+        .hero-mini p { font-size: 16px; color: var(--text-secondary); max-width: 480px; margin: 0 auto; line-height: 1.6; }
+
+        .faq {
+            max-width: 720px; margin: 0 auto;
+            padding: 0 32px 64px;
+        }
+        .faq-item {
+            background: var(--card);
+            border-radius: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.04);
+            overflow: hidden;
+        }
+        .faq-q {
+            padding: 20px 24px;
+            font-size: 16px; font-weight: 600;
+            cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+            user-select: none;
+        }
+        .faq-q::after {
+            content: '+'; font-size: 20px; font-weight: 300;
+            color: var(--text-tertiary); transition: transform .2s;
+        }
+        .faq-item.open .faq-q::after { content: '−'; }
+        .faq-a {
+            max-height: 0; overflow: hidden;
+            transition: max-height .3s ease, padding .3s ease;
+            padding: 0 24px;
+        }
+        .faq-item.open .faq-a {
+            max-height: 400px;
+            padding: 0 24px 20px;
+        }
+        .faq-a p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin: 0; }
+
+        .contact-section {
+            max-width: 720px; margin: 0 auto;
+            padding: 0 32px 80px;
+        }
+        .contact-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        .contact-card h2 {
+            font-size: 22px; font-weight: 700; margin-bottom: 8px;
+        }
+        .contact-card > p {
+            font-size: 14px; color: var(--text-secondary); margin-bottom: 28px; line-height: 1.6;
+        }
+        .contact-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+        }
+        .contact-box {
+            background: var(--bg);
+            border-radius: 14px;
+            padding: 24px;
+            text-align: center;
+        }
+        .contact-box .icon {
+            width: 48px; height: 48px;
+            margin: 0 auto 12px;
+            background: var(--primary);
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .contact-box .icon.warm { background: var(--warm); }
+        .contact-box .icon svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 2; }
+        .contact-box h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .contact-box p { font-size: 13px; color: var(--text-secondary); margin: 0; }
+        .contact-box a { color: var(--primary); text-decoration: none; font-size: 13px; font-weight: 500; }
+
+        .sys-req {
+            max-width: 720px; margin: 0 auto;
+            padding: 0 32px 64px;
+        }
+        .sys-req h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; }
+        .req-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+        .req-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.04);
+            text-align: center;
+        }
+        .req-card .label { font-size: 12px; color: var(--text-tertiary); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .req-card .value { font-size: 18px; font-weight: 700; color: var(--text); }
+
+        footer {
+            border-top: 1px solid rgba(0,0,0,0.06); padding: 40px 32px;
+        }
+        .footer-inner {
+            max-width: 1080px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+        }
+        .footer-inner p { font-size: 13px; color: var(--text-tertiary); }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; }
+        .footer-links a:hover { color: var(--primary); }
+
+        @media (max-width: 600px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            .req-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo">iMuouLight</a>
+        <div class="nav-links">
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="support.html">Support</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero-mini">
+    <h1>Support</h1>
+    <p>Find answers to common questions, troubleshoot issues, or get in touch with us.</p>
+</section>
+
+<section class="faq">
+    <div class="faq-item open">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I connect a new LED device?</div>
+        <div class="faq-a">
+            <p>Open the App, tap "Add Device" on the Home tab, and wait for the Bluetooth scan to discover nearby compatible devices. Make sure your LED device is powered on and within approximately 10 meters. When the device appears, tap "Connect" to pair it.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Why does the App ask for Bluetooth permission?</div>
+        <div class="faq-a">
+            <p>iMuouLight uses Bluetooth Low Energy (BLE) to communicate with your LED lights. iOS requires explicit user permission before any app can access Bluetooth. The permission dialog appears the first time you scan for devices, providing clear context for why Bluetooth access is needed.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">My device is not appearing in the scan results.</div>
+        <div class="faq-a">
+            <p>Try the following steps: (1) Ensure your LED device is powered on. (2) Move your iPhone closer to the device, ideally within 5 meters. (3) Check that Bluetooth is enabled in your iPhone's Settings. (4) Restart the LED device by turning it off and on again. (5) Force-close the App and reopen it, then try scanning again.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How accurate are the energy cost estimates?</div>
+        <div class="faq-a">
+            <p>Energy and cost figures are approximations based on the wattage of your device and the electricity rate you configure in Settings. Actual consumption depends on many factors including voltage fluctuations, device efficiency, and real-world usage patterns. These estimates are intended for informational purposes only.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does the App need an internet connection?</div>
+        <div class="faq-a">
+            <p>No. iMuouLight works entirely offline. All communication happens over Bluetooth between your iPhone and the LED device. All data is stored locally on your device. No internet connection is needed at any point.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I delete all my data?</div>
+        <div class="faq-a">
+            <p>Go to Settings tab within the App and tap "Reset All Data." This removes all saved devices, usage records, messages, and preferences. Alternatively, uninstalling the App also removes all associated data.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What color temperatures are available?</div>
+        <div class="faq-a">
+            <p>The App supports three color temperature presets: Cool (daylight white for focus and productivity), Neutral White (balanced everyday lighting), and Warm (amber tone for relaxation and evening ambiance). Availability depends on your LED device's hardware capabilities.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do auto-off timers work?</div>
+        <div class="faq-a">
+            <p>In the device detail screen, tap one of the timer presets (15 minutes, 30 minutes, 1 hour, or 2 hours). A countdown will appear showing the remaining time. When the timer reaches zero, the light turns off automatically and you receive an in-app notification. You can cancel an active timer at any time.</p>
+        </div>
+    </div>
+</section>
+
+<section class="sys-req">
+    <h2>System Requirements</h2>
+    <div class="req-grid">
+        <div class="req-card">
+            <div class="label">Platform</div>
+            <div class="value">iPhone</div>
+        </div>
+        <div class="req-card">
+            <div class="label">Minimum OS</div>
+            <div class="value">iOS 13.0</div>
+        </div>
+        <div class="req-card">
+            <div class="label">Connection</div>
+            <div class="value">Bluetooth</div>
+        </div>
+    </div>
+</section>
+
+<section class="contact-section">
+    <div class="contact-card">
+        <h2>Still need help?</h2>
+        <p>If you can't find the answer you're looking for, we're here to help.</p>
+        <div class="contact-grid">
+            <div class="contact-box">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <h3>Email</h3>
+                <p>Send us a detailed description of your issue.</p>
+                <a href="mailto:support@iMuouLight.app">support@iMuouLight.app</a>
+            </div>
+            <div class="contact-box">
+                <div class="icon warm">
+                    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <h3>App Store</h3>
+                <p>Leave feedback or report an issue.</p>
+                <a href="#">Write a Review</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-inner">
+        <p>&copy; 2026 iMuouLight. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="support.html">Support</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
