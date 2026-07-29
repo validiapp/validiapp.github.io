@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support — uPanelSwitch</title>
+    <style>
+        :root {
+            --blue: #2163d9;
+            --blue-light: #4085f5;
+            --blue-bg: #f0f5ff;
+            --text: #1a2332;
+            --text-secondary: #5a6577;
+            --bg: #ffffff;
+            --section-bg: #f8fafc;
+            --border: #e8ecf2;
+            --radius: 12px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 16px 0;
+        }
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        nav .logo {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--blue);
+            text-decoration: none;
+        }
+        nav .links { display: flex; gap: 28px; }
+        nav .links a {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        nav .links a:hover { color: var(--blue); }
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .content {
+            padding: 120px 0 80px;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 36px;
+        }
+        h2 {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 36px 0 12px;
+            color: var(--text);
+        }
+        p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+        }
+        ul {
+            padding-left: 20px;
+            margin-bottom: 14px;
+        }
+        ul li {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        .contact-box {
+            background: var(--blue-bg);
+            border-radius: var(--radius);
+            padding: 28px;
+            text-align: center;
+            margin: 24px 0;
+        }
+        .contact-box h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--blue);
+            margin-bottom: 6px;
+        }
+        .contact-box p { margin-bottom: 4px; color: var(--text-secondary); }
+        .faq-item {
+            background: var(--section-bg);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            margin-bottom: 12px;
+            border-left: 3px solid var(--blue);
+        }
+        .faq-item h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+        .faq-item p { margin-bottom: 0; font-size: 14px; }
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+        footer .links a {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        footer .links a:hover { color: var(--blue); }
+        footer .copy { font-size: 13px; color: var(--text-secondary); opacity: 0.7; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">uPanelSwitch</a>
+            <div class="links">
+                <a href="support.html">Support</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="container">
+            <h1>Support</h1>
+            <p class="subtitle">uPanelSwitch is a smart switch control app. We can help with connection issues, timer setup, and general questions.</p>
+
+            <div class="contact-box">
+                <h3>Contact support</h3>
+                <p>Email <strong>support@upanelswitch.com</strong></p>
+                <p>We'll reply as soon as reasonably possible.</p>
+            </div>
+
+            <h2>What we can help with</h2>
+            <ul>
+                <li>Pairing a new switch device via Bluetooth</li>
+                <li>Troubleshooting connection or signal issues</li>
+                <li>Setting up and editing on/off timer schedules</li>
+                <li>Assigning devices to rooms</li>
+                <li>General app questions and feedback</li>
+            </ul>
+
+            <h2>Getting started</h2>
+            <ul>
+                <li>Open uPanelSwitch and tap the + button</li>
+                <li>Grant Bluetooth permission when prompted</li>
+                <li>Ensure your switch device is powered on and in pairing mode</li>
+                <li>Tap "Connect" when the device appears</li>
+                <li>Your switch is ready to control</li>
+            </ul>
+
+            <h2>Frequently asked questions</h2>
+
+            <div class="faq-item">
+                <h3>My device doesn't appear in the scan list</h3>
+                <p>Confirm your switch is in pairing mode and Bluetooth is enabled in Settings. Try moving closer to the device and re-opening the Add Device screen.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>The switch doesn't respond to on/off commands</h3>
+                <p>Wait for the 3-second confirmation cycle to complete. If it still fails, try disconnecting and reconnecting the device from the app.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How do I set up a timer schedule?</h3>
+                <p>Open a device, tap "Edit" in the Timer Control section. Set your desired on and off times, choose repeat days, and save.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Can I control multiple switches?</h3>
+                <p>Yes. Add each switch individually through the Add Device flow. All connected switches appear on the Home screen.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Is my data stored in the cloud?</h3>
+                <p>No. All configuration data is stored locally on your device. Uninstalling the app removes all data permanently.</p>
+            </div>
+
+            <h2>System requirements</h2>
+            <ul>
+                <li>iOS 13.0 or later</li>
+                <li>Bluetooth 4.0 (BLE) capable device</li>
+                <li>Compatible uPanel smart switch hardware</li>
+            </ul>
+
+            <h2>Reporting a problem</h2>
+            <p>When contacting support, please include:</p>
+            <ul>
+                <li>Your iOS version and device model</li>
+                <li>Steps that led to the issue</li>
+                <li>What you expected and what happened instead</li>
+                <li>A screenshot if helpful (remove private info)</li>
+            </ul>
+
+            <h2>Useful links</h2>
+            <ul>
+                <li><a href="privacy.html" style="color: var(--blue);">Privacy Policy</a></li>
+                <li><a href="terms.html" style="color: var(--blue);">Terms of Service</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+            </div>
+            <p class="copy">&copy; 2026 uPanelSwitch. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
