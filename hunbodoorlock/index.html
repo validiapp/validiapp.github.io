@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HunboDoorLock - Smart Door Lock</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #1c2030;
+            background: #f2f5fa;
+            line-height: 1.6;
+        }
+        .nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 16px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 10px rgba(0,0,0,0.06);
+        }
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #387af6;
+            text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 28px; }
+        .nav-links a {
+            color: #4a5068;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: #387af6; }
+        .hero {
+            padding: 140px 24px 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #f2f5fa 0%, #e8eef8 100%);
+        }
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #1c2030;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+        .hero p {
+            font-size: 18px;
+            color: #6b7490;
+            max-width: 560px;
+            margin: 0 auto 36px;
+        }
+        .badge-row {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 18px;
+            background: white;
+            border-radius: 24px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #4a5068;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .badge svg { width: 16px; height: 16px; }
+        .features {
+            padding: 80px 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .features h2 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 48px;
+            color: #1c2030;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 22px;
+        }
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #1c2030;
+        }
+        .feature-card p {
+            font-size: 14px;
+            color: #6b7490;
+        }
+        .cta-section {
+            padding: 80px 24px;
+            text-align: center;
+            background: linear-gradient(135deg, #387af6 0%, #2558cc 100%);
+            color: white;
+        }
+        .cta-section h2 { font-size: 32px; margin-bottom: 12px; }
+        .cta-section p { font-size: 16px; opacity: 0.8; margin-bottom: 28px; }
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: white;
+            color: #387af6;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: transform 0.2s;
+        }
+        .cta-btn:hover { transform: scale(1.05); }
+        footer {
+            padding: 40px 24px;
+            text-align: center;
+            background: #1c2030;
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+        }
+        footer a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin: 0 12px;
+        }
+        footer a:hover { color: white; }
+        .footer-links { margin-bottom: 16px; }
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 32px; }
+            .nav-links { gap: 16px; }
+            .nav-links a { font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">HunboDoorLock</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="privacy-policy.html">Privacy</a>
+                <a href="support.html">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Your Home, Secured Smarter</h1>
+        <p>Control your door lock from anywhere. Manage access, set schedules, and monitor activity with our intuitive smart lock companion app.</p>
+        <div class="badge-row">
+            <span class="badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                Bluetooth Smart Lock
+            </span>
+            <span class="badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                Auto Schedules
+            </span>
+            <span class="badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Tamper Alerts
+            </span>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Key Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(56,122,246,0.1); color: #387af6;">&#128274;</div>
+                <h3>Remote Lock Control</h3>
+                <p>Lock or unlock your door from anywhere using your phone. Real-time status updates keep you informed at all times.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(76,175,80,0.1); color: #4CAF50;">&#128336;</div>
+                <h3>Smart Schedules</h3>
+                <p>Set automatic lock and unlock times. Perfect for nightly routines, vacation mode, or office hours management.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(97,181,245,0.1); color: #61b5f5;">&#128203;</div>
+                <h3>Access Timeline</h3>
+                <p>View a complete log of all lock and unlock events. Know who accessed your door, when, and how — via app, fingerprint, or keypad.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(255,152,0,0.1); color: #FF9800;">&#127917;</div>
+                <h3>Scene Automation</h3>
+                <p>Create custom scenes like "Away Mode" or "Welcome Home" to automate your lock behavior based on your lifestyle.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(156,39,176,0.1); color: #9C27B0;">&#128101;</div>
+                <h3>Guest Management</h3>
+                <p>Grant temporary or permanent access to family, friends, or service providers with fine-grained permission controls.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(244,67,54,0.1); color: #F44336;">&#128276;</div>
+                <h3>Security Alerts</h3>
+                <p>Receive instant notifications for tamper attempts, low battery warnings, and unusual access patterns.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Ready to Secure Your Home?</h2>
+        <p>Download HunboDoorLock and take control of your home security.</p>
+        <a href="#" class="cta-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            Download on the App Store
+        </a>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="support.html">Support</a>
+        </div>
+        <p>&copy; 2026 HunboDoorLock. All rights reserved.</p>
+    </footer>
+</body>
+</html>
