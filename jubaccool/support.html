@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Support - JubacCool Smart Fan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: #1a1f2e;
+            background: linear-gradient(135deg, #f5f9ff 0%, #e8f1ff 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding: 40px 30px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(31, 92, 184, 0.08);
+        }
+
+        .header .logo {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, #1f5cb8, #3498e6);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header .logo svg {
+            width: 36px;
+            height: 36px;
+            fill: white;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1f5cb8;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 32px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        .nav-tab {
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid #e8f1ff;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #6b7280;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .nav-tab:hover, .nav-tab.active {
+            background: #1f5cb8;
+            color: white;
+            border-color: #1f5cb8;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(31, 92, 184, 0.06);
+        }
+
+        .card h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1f5cb8;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h2 .icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #e8f1ff, #d4e6ff);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .card p, .card li {
+            color: #4b5563;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .card ul, .card ol {
+            padding-left: 20px;
+        }
+
+        .card li {
+            margin-bottom: 8px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .feature-item {
+            padding: 20px;
+            background: linear-gradient(135deg, #f8fbff, #f0f5ff);
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #e8f1ff;
+        }
+
+        .feature-item .feat-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .feature-item h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1f5cb8;
+            margin-bottom: 4px;
+        }
+
+        .feature-item p {
+            font-size: 12px;
+            color: #6b7280;
+            margin: 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #f0f5ff;
+            padding: 16px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1f2e;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .faq-item p {
+            font-size: 14px;
+            color: #6b7280;
+            margin: 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .contact-item {
+            padding: 20px;
+            background: #f8fbff;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #e8f1ff;
+        }
+
+        .contact-item .contact-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .contact-item h3 {
+            font-size: 14px;
+            color: #1f5cb8;
+            font-weight: 600;
+        }
+
+        .contact-item p {
+            font-size: 13px;
+            color: #6b7280;
+            margin: 4px 0 0;
+        }
+
+        .steps {
+            counter-reset: step;
+        }
+
+        .step {
+            position: relative;
+            padding: 16px 16px 16px 50px;
+            margin-bottom: 12px;
+            background: #f8fbff;
+            border-radius: 10px;
+            border: 1px solid #e8f1ff;
+        }
+
+        .step::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 26px;
+            height: 26px;
+            background: linear-gradient(135deg, #1f5cb8, #3498e6);
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .step h4 {
+            font-size: 14px;
+            color: #1a1f2e;
+            margin-bottom: 4px;
+        }
+
+        .step p {
+            font-size: 13px;
+            color: #6b7280;
+            margin: 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 32px;
+            color: #9ca3af;
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: #1f5cb8;
+            text-decoration: none;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 20px 16px;
+            }
+            .card {
+                padding: 24px 20px;
+            }
+            .header h1 {
+                font-size: 24px;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 11c0 .6-.2 1.1-.5 1.5l4.6 4.6c.4-.5.9-.9 1.4-1.4l-4.6-4.6c.3-.4.5-.9.5-1.5 0-1.4-1.1-2.5-2.5-2.5S8.4 8.2 8.4 9.6s1.1 2.5 2.5 2.5l.1-.1zM12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/>
+                </svg>
+            </div>
+            <h1>Technical Support</h1>
+            <p>We're here to help you get the most out of your smart fan</p>
+        </div>
+
+        <div class="nav-tabs">
+            <span class="nav-tab active">Features</span>
+            <span class="nav-tab">Setup Guide</span>
+            <span class="nav-tab">FAQ</span>
+            <span class="nav-tab">Contact</span>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">⚡</span> App Features</h2>
+            <p>JubacCool Smart Fan app provides comprehensive control over your smart fan device with the following features:</p>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feat-icon">🔌</div>
+                    <h3>Power Control</h3>
+                    <p>One-tap power on/off with visual feedback</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feat-icon">💨</div>
+                    <h3>10-Level Speed</h3>
+                    <p>Precise fan speed control from gentle to powerful</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feat-icon">↔️</div>
+                    <h3>Oscillation</h3>
+                    <p>Horizontal and vertical swing control</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feat-icon">⏰</div>
+                    <h3>Smart Timer</h3>
+                    <p>Schedule auto on/off times</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feat-icon">📊</div>
+                    <h3>Usage Analytics</h3>
+                    <p>Track daily and weekly usage patterns</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feat-icon">📶</div>
+                    <h3>Bluetooth Connect</h3>
+                    <p>Seamless wireless connectivity</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">🔧</span> Getting Started</h2>
+            <div class="steps">
+                <div class="step">
+                    <h4>Enable Bluetooth</h4>
+                    <p>Make sure Bluetooth is enabled on your iPhone in Settings > Bluetooth.</p>
+                </div>
+                <div class="step">
+                    <h4>Power On Your Fan</h4>
+                    <p>Press the power button on your JubacCool smart fan to enter pairing mode.</p>
+                </div>
+                <div class="step">
+                    <h4>Open the App</h4>
+                    <p>Launch JubacCool app and tap the "+" button on the Home screen.</p>
+                </div>
+                <div class="step">
+                    <h4>Grant Permission</h4>
+                    <p>Allow Bluetooth access when prompted to enable device discovery.</p>
+                </div>
+                <div class="step">
+                    <h4>Connect Device</h4>
+                    <p>Wait for your fan to appear in the scan results and tap "Connect".</p>
+                </div>
+                <div class="step">
+                    <h4>Start Using</h4>
+                    <p>You're all set! Control your fan from the Home tab.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">❓</span> Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>Why can't my app find the fan?</h3>
+                <p>Ensure Bluetooth is enabled on your iPhone, and your fan is in pairing mode. Try moving closer to the fan (within 10 meters) and restarting both the app and the fan.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I reset my fan?</h3>
+                <p>Press and hold the power button on your fan for 10 seconds until the LED blinks rapidly. Then try reconnecting via the app.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I control multiple fans?</h3>
+                <p>Currently, the app supports connecting to one fan at a time. Disconnect from the current fan before connecting to another.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Does the timer work when the app is closed?</h3>
+                <p>Yes, once a timer is set, the command is sent to the fan's firmware. The timer operates independently of the app.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What iOS version is required?</h3>
+                <p>JubacCool requires iOS 13.0 or later and supports all iPhones with Bluetooth 4.0+.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is my data stored on a server?</h3>
+                <p>No. All your usage data and preferences are stored locally on your device. We do not collect or transmit any personal information.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">📞</span> Contact Support</h2>
+            <p>If you need further assistance, please don't hesitate to reach out:</p>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email Support</h3>
+                    <p>support@jubaccool.com</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🕐</div>
+                    <h3>Response Time</h3>
+                    <p>Within 24 hours</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🌐</div>
+                    <h3>Available</h3>
+                    <p>Monday - Friday</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">📋</span> System Requirements</h2>
+            <ul>
+                <li>iOS 13.0 or later</li>
+                <li>iPhone with Bluetooth 4.0 or later</li>
+                <li>JubacCool Smart Fan (firmware v2.0+)</li>
+                <li>Approximately 50MB of free storage space</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 JubacCool. All rights reserved.</p>
+            <p><a href="privacy-policy.html">Privacy Policy</a></p>
+        </div>
+    </div>
+</body>
+</html>
