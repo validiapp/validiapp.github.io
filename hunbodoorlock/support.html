@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - HunboDoorLock</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #1c2030;
+            background: #f2f5fa;
+            line-height: 1.7;
+        }
+        .nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 16px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 10px rgba(0,0,0,0.06);
+        }
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #387af6;
+            text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 28px; }
+        .nav-links a {
+            color: #4a5068;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: #387af6; }
+        .hero-support {
+            padding: 120px 24px 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #387af6 0%, #2558cc 100%);
+            color: white;
+        }
+        .hero-support h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .hero-support p {
+            font-size: 16px;
+            opacity: 0.8;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .content {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 60px 24px 80px;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+        .contact-card {
+            background: white;
+            border-radius: 20px;
+            padding: 28px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .contact-card:hover { transform: translateY(-4px); }
+        .contact-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 24px;
+        }
+        .contact-card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #1c2030;
+        }
+        .contact-card p {
+            font-size: 14px;
+            color: #6b7490;
+        }
+        .faq-section h2 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+            color: #1c2030;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .faq-question {
+            padding: 20px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1c2030;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        .faq-question:hover { background: rgba(56,122,246,0.04); }
+        .faq-arrow {
+            font-size: 12px;
+            transition: transform 0.3s;
+            color: #387af6;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s;
+        }
+        .faq-answer-inner {
+            padding: 0 24px 20px;
+            font-size: 14px;
+            color: #3a4058;
+            line-height: 1.7;
+        }
+        .faq-item.active .faq-answer { max-height: 300px; }
+        .faq-item.active .faq-arrow { transform: rotate(180deg); }
+        .troubleshoot { margin-top: 48px; }
+        .troubleshoot h2 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+            color: #1c2030;
+        }
+        .step-list {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+        }
+        .step {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .step:last-child { margin-bottom: 0; }
+        .step-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(56,122,246,0.1);
+            color: #387af6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .step-content h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1c2030;
+            margin-bottom: 4px;
+        }
+        .step-content p {
+            font-size: 14px;
+            color: #6b7490;
+        }
+        footer {
+            padding: 40px 24px;
+            text-align: center;
+            background: #1c2030;
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+        }
+        footer a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin: 0 12px;
+        }
+        footer a:hover { color: white; }
+        .footer-links { margin-bottom: 16px; }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">HunboDoorLock</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="privacy-policy.html">Privacy</a>
+                <a href="support.html">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-support">
+        <h1>How Can We Help?</h1>
+        <p>Find answers to common questions or get in touch with our support team.</p>
+    </section>
+
+    <div class="content">
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon" style="background: rgba(56,122,246,0.1);">&#9993;</div>
+                <h3>Email Support</h3>
+                <p>support@hunbodoorlock.com</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon" style="background: rgba(76,175,80,0.1);">&#9201;</div>
+                <h3>Response Time</h3>
+                <p>Within 24 business hours</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon" style="background: rgba(97,181,245,0.1);">&#127760;</div>
+                <h3>System Requirements</h3>
+                <p>iOS 13.0 or later</p>
+            </div>
+        </div>
+
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    How do I connect my smart lock to the app?
+                    <span class="faq-arrow">&#9660;</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Open the app and navigate to the device setup screen. Make sure your smart lock is powered on and within Bluetooth range (approximately 10 meters). The app will automatically scan for nearby compatible devices. Once your lock appears, tap "Connect" to pair it with the app.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Can I control my lock when I'm away from home?
+                    <span class="faq-arrow">&#9660;</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        The app communicates with your smart lock via Bluetooth, so you need to be within Bluetooth range for direct control. However, scheduled operations will execute automatically based on your configured times, even when you're away.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    How do I set up automatic lock schedules?
+                    <span class="faq-arrow">&#9660;</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Go to the Access tab, then tap "Schedules" in the Quick Actions section. Here you can create new schedules by setting lock and unlock times, choosing which days to repeat, and enabling or disabling each schedule independently.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    What should I do if my lock is not responding?
+                    <span class="faq-arrow">&#9660;</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        First, check that your lock has sufficient battery power. Then, ensure Bluetooth is enabled on your phone and you are within range. Try closing and reopening the app. If the issue persists, try removing the device from the app and re-pairing it.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Is my data secure?
+                    <span class="faq-arrow">&#9660;</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Yes. All data is stored locally on your device and is not transmitted to external servers. Bluetooth communication with your smart lock uses encrypted protocols. We take your security and privacy seriously. Please review our <a href="privacy-policy.html" style="color:#387af6;">Privacy Policy</a> for more details.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    How do I remove a device from the app?
+                    <span class="faq-arrow">&#9660;</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Go to the Settings tab, scroll down to the "Danger Zone" section, and tap "Remove Device." This will remove your smart lock and all associated data from the app. You can always re-pair your device later.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="troubleshoot">
+            <h2>Troubleshooting Steps</h2>
+            <div class="step-list">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-content">
+                        <h4>Check Bluetooth</h4>
+                        <p>Ensure Bluetooth is turned on in your device settings and the app has Bluetooth permission.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-content">
+                        <h4>Verify Lock Power</h4>
+                        <p>Make sure your smart lock has sufficient battery. Replace batteries if the level is critically low.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-content">
+                        <h4>Move Closer</h4>
+                        <p>Bluetooth range is typically 10 meters. Move closer to your lock and try again.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <div class="step-content">
+                        <h4>Restart the App</h4>
+                        <p>Close the app completely and reopen it. This resolves most temporary connection issues.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">5</div>
+                    <div class="step-content">
+                        <h4>Re-pair Device</h4>
+                        <p>If all else fails, remove the device from Settings and pair it again from the setup screen.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="support.html">Support</a>
+        </div>
+        <p>&copy; 2026 HunboDoorLock. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            if (!isActive) { item.classList.add('active'); }
+        }
+    </script>
+</body>
+</html>
