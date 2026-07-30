@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Support - iNkuePower</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #f8faff;
+            color: #1e2333;
+            line-height: 1.8;
+        }
+        
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+        }
+        
+        .nav-brand {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #1440b3;
+            text-decoration: none;
+        }
+        
+        .nav-links a {
+            color: #4b5563;
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: #1440b3;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1440b3 0%, #3373f5 100%);
+            color: white;
+            padding: 120px 20px 60px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+        
+        .content {
+            max-width: 800px;
+            margin: -30px auto 60px;
+            background: white;
+            border-radius: 20px;
+            padding: 48px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+        }
+        
+        .faq-item {
+            margin-bottom: 28px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid #f0f4ff;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.1rem;
+            color: #1440b3;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .faq-item h3::before {
+            content: 'Q';
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: #e8f0ff;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #1440b3;
+            flex-shrink: 0;
+        }
+        
+        .faq-item p {
+            color: #4b5563;
+            font-size: 0.95rem;
+            padding-left: 36px;
+        }
+        
+        .contact-section {
+            background: #f0f4ff;
+            border-radius: 16px;
+            padding: 32px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            font-size: 1.4rem;
+            color: #1440b3;
+            margin-bottom: 12px;
+        }
+        
+        .contact-section p {
+            color: #4b5563;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-email {
+            display: inline-block;
+            background: linear-gradient(135deg, #1440b3, #3373f5);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .contact-email:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(20, 64, 179, 0.3);
+        }
+        
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #1e2333;
+        }
+        
+        .requirements {
+            background: #fefce8;
+            border-left: 4px solid #f59e0b;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 24px 0;
+        }
+        
+        .requirements h4 {
+            color: #92400e;
+            margin-bottom: 8px;
+        }
+        
+        .requirements ul {
+            padding-left: 20px;
+        }
+        
+        .requirements li {
+            color: #78350f;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+        
+        .footer {
+            background: #1e2333;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin: 0 16px;
+        }
+        
+        .footer p {
+            margin-top: 12px;
+            opacity: 0.5;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .content { margin: -20px 12px 40px; padding: 24px; }
+            .header h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="../" class="nav-brand">iNkuePower</a>
+        <div class="nav-links">
+            <a href="../">Home</a>
+            <a href="../privacy">Privacy</a>
+        </div>
+    </nav>
+
+    <div class="header">
+        <h1>Technical Support</h1>
+        <p>We're here to help you get the most out of iNkuePower</p>
+    </div>
+
+    <div class="content">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3>How do I add a new device?</h3>
+            <p>Open the app and tap the "+" button on the Home screen. Make sure your smart switch is powered on and within Bluetooth range. The app will automatically scan and display available devices. Tap on your device to pair it.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>My device won't connect. What should I do?</h3>
+            <p>First, ensure Bluetooth is enabled on your iPhone (Settings > Bluetooth). Make sure the smart switch is powered on and not connected to another device. Try restarting the switch by toggling its power, then scan again in the app.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>How do I set up a timer schedule?</h3>
+            <p>From the Home screen, find your device card and tap the "Timer" button. Set your desired on/off times, select which days to repeat, and toggle the enable switch. Tap "Save Timer" to activate the schedule.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>What are Scene Modes?</h3>
+            <p>Scene Modes are pre-configured lighting profiles optimized for different times of day or situations. Choose from Morning (bright), Evening (warm), Night (dim), Away (security), or create your own Custom scene.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Why does the switch take 3 seconds to respond?</h3>
+            <p>The brief delay ensures reliable Bluetooth communication between your phone and the smart switch. The app confirms the command was received and executed successfully before updating the status display.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>How do I remove a paired device?</h3>
+            <p>Go to Settings > Remove All Devices to clear all paired devices. Alternatively, you can swipe left on a device card on the Home screen to remove individual devices.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Does the app work without internet?</h3>
+            <p>Yes! iNkuePower uses Bluetooth Low Energy (BLE) for direct device communication. No internet connection or cloud service is required. All features work entirely offline.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>What is the Bluetooth range?</h3>
+            <p>The typical operating range is approximately 10-15 meters (30-50 feet) in open space. Walls and obstacles may reduce the effective range. For best performance, stay within 10 meters of your smart switch.</p>
+        </div>
+        
+        <div class="requirements">
+            <h4>System Requirements</h4>
+            <ul>
+                <li>iOS 13.0 or later</li>
+                <li>iPhone with Bluetooth 4.0+ (BLE)</li>
+                <li>Compatible iNkuePower smart switch hardware</li>
+            </ul>
+        </div>
+        
+        <div class="contact-section">
+            <h2>Still Need Help?</h2>
+            <p>If you couldn't find the answer to your question, our support team is ready to assist you.</p>
+            <a href="mailto:support@inkuepower.com" class="contact-email">Contact Support</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <a href="../">Home</a>
+        <a href="../privacy">Privacy</a>
+        <p>&copy; 2026 iNkuePower. All rights reserved.</p>
+    </footer>
+</body>
+</html>
