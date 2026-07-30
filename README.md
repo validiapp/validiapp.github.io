@@ -1,2 +1,1 @@
-# validiapp.github.io
-ReallyNight - Smart Light Control App
+Smart Device Control App
