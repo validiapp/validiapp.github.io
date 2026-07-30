@@ -3,263 +3,525 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iDoorHudon - Support</title>
+    <title>JubacCool - Smart Fan Controller</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #faf7f2;
-            color: #33261a;
-            line-height: 1.7;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #1a1f2e;
+            overflow-x: hidden;
         }
-        .header {
-            background: linear-gradient(135deg, #8c5a2b, #6b3f1a);
-            padding: 60px 20px;
-            text-align: center;
-            color: white;
-        }
-        .header h1 {
-            font-size: 2.4em;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        .header p {
-            font-size: 1.1em;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .nav {
-            background: white;
-            padding: 16px 20px;
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(160deg, #0a1628 0%, #1a3a6b 40%, #2563a8 100%);
             display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            gap: 30px;
-            border-bottom: 1px solid #e8ddd0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .nav a {
-            color: #8c5a2b;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95em;
-            transition: opacity 0.2s;
-        }
-        .nav a:hover { opacity: 0.7; }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 50px 20px;
-        }
-        .section {
-            background: white;
-            border-radius: 16px;
-            padding: 36px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 20px rgba(140, 90, 43, 0.06);
-        }
-        .section h2 {
-            color: #6b3f1a;
-            font-size: 1.5em;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid #f0e6d9;
-        }
-        .section h3 {
-            color: #8c5a2b;
-            font-size: 1.15em;
-            margin: 20px 0 10px;
-        }
-        .section p, .section li {
-            color: #5a4530;
-            font-size: 0.95em;
-            margin-bottom: 10px;
-        }
-        .section ul { padding-left: 20px; }
-        .section li { margin-bottom: 8px; }
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .feature-card {
-            background: #faf7f2;
-            border-radius: 12px;
-            padding: 24px;
             text-align: center;
+            padding: 80px 24px 60px;
+            position: relative;
+            overflow: hidden;
         }
-        .feature-card .icon {
-            font-size: 2em;
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(52, 152, 230, 0.15) 0%, transparent 70%);
+            top: -100px;
+            right: -100px;
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(52, 152, 230, 0.1) 0%, transparent 70%);
+            bottom: -50px;
+            left: -50px;
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 32px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #60a5fa, #a5d8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 500px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 16px 36px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            padding: 16px 36px;
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .phone-mockup {
+            margin-top: 60px;
+            width: 280px;
+            height: 560px;
+            background: #1a1f2e;
+            border-radius: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        .phone-screen {
+            width: 94%;
+            height: 96%;
+            background: linear-gradient(180deg, #f5f9ff 0%, #e8f1ff 100%);
+            border-radius: 36px;
+            padding: 40px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .phone-screen .mock-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1f5cb8;
+            margin-bottom: 20px;
+        }
+
+        .mock-fan {
+            width: 100px;
+            height: 100px;
+            border: 3px solid #d4e6ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .mock-fan svg {
+            width: 50px;
+            height: 50px;
+            fill: #1f5cb8;
+        }
+
+        .mock-controls {
+            width: 100%;
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .mock-btn {
+            flex: 1;
+            height: 36px;
+            background: linear-gradient(135deg, #1f5cb8, #3498e6);
+            border-radius: 18px;
+        }
+
+        .mock-slider {
+            width: 100%;
+            height: 8px;
+            background: #d4e6ff;
+            border-radius: 4px;
+            margin-top: 16px;
+            position: relative;
+        }
+
+        .mock-slider::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, #1f5cb8, #3498e6);
+            border-radius: 4px;
+        }
+
+        .section {
+            padding: 100px 24px;
+        }
+
+        .section-light {
+            background: #f8fbff;
+        }
+
+        .section-white {
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1a1f2e;
             margin-bottom: 12px;
         }
-        .feature-card h4 {
-            color: #6b3f1a;
+
+        .section-title p {
+            font-size: 16px;
+            color: #6b7280;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            padding: 32px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+            border: 1px solid #f0f5ff;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(31, 92, 184, 0.1);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #e8f1ff, #d4e6ff);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1f2e;
             margin-bottom: 8px;
         }
+
         .feature-card p {
-            font-size: 0.85em;
-            color: #7a6250;
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.6;
         }
-        .contact-box {
-            background: linear-gradient(135deg, #f8f0e6, #fff);
-            border: 1px solid #e8ddd0;
-            border-radius: 12px;
-            padding: 24px;
+
+        .cta-section {
+            background: linear-gradient(135deg, #0a1628, #1a3a6b);
             text-align: center;
-            margin-top: 20px;
+            padding: 80px 24px;
         }
-        .contact-box a {
-            color: #8c5a2b;
-            font-weight: 600;
+
+        .cta-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
         }
-        .faq-item {
-            border-bottom: 1px solid #f0e6d9;
-            padding: 16px 0;
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 32px;
+            font-size: 16px;
         }
-        .faq-item:last-child { border-bottom: none; }
-        .faq-item strong {
-            display: block;
-            color: #6b3f1a;
-            margin-bottom: 6px;
-        }
+
         .footer {
-            background: #33261a;
-            color: rgba(255,255,255,0.7);
+            background: #0a1628;
+            padding: 40px 24px;
             text-align: center;
-            padding: 30px 20px;
-            font-size: 0.85em;
         }
-        .footer a { color: #d4a574; text-decoration: none; }
-        @media (max-width: 600px) {
-            .header h1 { font-size: 1.8em; }
-            .section { padding: 24px; }
-            .nav { gap: 15px; font-size: 0.85em; }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 13px;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(10, 22, 40, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-brand {
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+            .section-title h2 {
+                font-size: 28px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .phone-mockup {
+                width: 220px;
+                height: 440px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>iDoorHudon</h1>
-        <p>Smart Lock Management - Technical Support</p>
-    </div>
+    <nav class="nav">
+        <div class="nav-brand">JubacCool</div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="support.html">Support</a>
+            <a href="privacy-policy.html">Privacy</a>
+        </div>
+    </nav>
 
-    <div class="nav">
-        <a href="#features">Features</a>
-        <a href="#setup">Setup</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
-        <a href="privacy.html">Privacy</a>
-    </div>
-
-    <div class="container">
-        <div class="section" id="features">
-            <h2>Key Features</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="icon">🔐</div>
-                    <h4>Remote Control</h4>
-                    <p>Lock and unlock your doors from anywhere using Bluetooth connectivity.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon">⏰</div>
-                    <h4>Auto Schedules</h4>
-                    <p>Set automated lock/unlock schedules to match your daily routine.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon">🎭</div>
-                    <h4>Scene Control</h4>
-                    <p>Create custom scenes like Away Mode, Night Mode, or Guest Access.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon">📊</div>
-                    <h4>Activity Logs</h4>
-                    <p>Monitor access history and receive real-time security notifications.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon">🔋</div>
-                    <h4>Battery Monitor</h4>
-                    <p>Track battery levels and get alerts before your lock runs low.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon">🛡️</div>
-                    <h4>Security First</h4>
-                    <p>End-to-end encryption protects all communication with your devices.</p>
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">Smart Home Companion</span>
+            <h1>Control Your Fan<br><span>Intelligently</span></h1>
+            <p>Transform your ordinary fan into a smart device. Precise speed control, scheduling, usage analytics — all from your iPhone.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary">Download on App Store</a>
+                <a href="#features" class="btn-secondary">Learn More</a>
+            </div>
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <div class="mock-title">My Fan</div>
+                    <div class="mock-fan">
+                        <svg viewBox="0 0 24 24"><path d="M12 12c0-1.1-.9-2-2-2s-2 .9-2 2 .9 2 2 2 2-.9 2-2zm-2-9c.7 0 1.4.1 2.1.3C11 4.5 10 6.6 10 9c0 .3 0 .6.1.9C8.6 9.3 7 7.8 7 6c0-1.7 1.3-3 3-3zm6.9 3.1c.5.5.9 1 1.3 1.6-1.3-.6-2.8-.7-4.2-.3-.1-.3-.2-.6-.2-.9 0-1.5.8-2.8 2-3.5.5.9.8 2 1.1 3.1zM18 12c0 .7-.1 1.4-.3 2.1 1.2-1.1 1.6-2.2 1.6-4.4 0-.3 0-.6-.1-.9 1.5.6 2.8 2.1 2.8 3.9 0 1.7-1.3 3-3 3-.3-.5-1-1.5-1-3.7zm-3.1 6.9c-.5.5-1 .9-1.6 1.3.6-1.3.7-2.8.3-4.2.3-.1.6-.2.9-.2 1.5 0 2.8.8 3.5 2-.9.5-2 .8-3.1 1.1zM6 12c0-.7.1-1.4.3-2.1C5.1 11 4.7 12.1 4.7 14.3c0 .3 0 .6.1.9C3.3 14.6 2 13.1 2 11.3 2 9.6 3.3 8.3 5 8.3c.3.5 1 1.5 1 3.7zm3.1-6.9c.5-.5 1-.9 1.6-1.3-.6 1.3-.7 2.8-.3 4.2-.3.1-.6.2-.9.2-1.5 0-2.8-.8-3.5-2 .9-.5 2-.8 3.1-1.1z"/></svg>
+                    </div>
+                    <div class="mock-slider"></div>
+                    <div class="mock-controls">
+                        <div class="mock-btn"></div>
+                        <div class="mock-btn"></div>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="section" id="setup">
-            <h2>Getting Started</h2>
-            <h3>System Requirements</h3>
-            <ul>
-                <li>iOS 13.0 or later</li>
-                <li>iPhone with Bluetooth 4.0+ capability</li>
-                <li>Compatible smart lock device</li>
-            </ul>
-
-            <h3>Initial Setup</h3>
-            <ol style="padding-left: 20px;">
-                <li style="margin-bottom: 10px;">Open iDoorHudon and navigate to the Door tab</li>
-                <li style="margin-bottom: 10px;">Tap the + button to begin device discovery</li>
-                <li style="margin-bottom: 10px;">Grant Bluetooth permission when prompted</li>
-                <li style="margin-bottom: 10px;">Ensure your smart lock is in pairing mode (refer to lock manual)</li>
-                <li style="margin-bottom: 10px;">Select your device from the list and follow on-screen instructions</li>
-            </ol>
-
-            <h3>Bluetooth Connectivity</h3>
-            <p>iDoorHudon uses Bluetooth Low Energy (BLE) to communicate with your smart lock. Ensure Bluetooth is enabled in your device settings and that you are within range (typically 10-15 meters) of your lock.</p>
+    <section id="features" class="section section-light">
+        <div class="section-title">
+            <h2>Powerful Features</h2>
+            <p>Everything you need to manage your smart fan experience</p>
         </div>
-
-        <div class="section" id="faq">
-            <h2>Frequently Asked Questions</h2>
-
-            <div class="faq-item">
-                <strong>Q: My lock is not appearing during scan?</strong>
-                <p>Ensure your lock is in pairing mode, Bluetooth is enabled, and you are within range. Try restarting both the app and your lock device.</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💨</div>
+                <h3>10-Level Speed Control</h3>
+                <p>Fine-tune airflow with 10 precise speed levels, from a gentle breeze to maximum cooling power.</p>
             </div>
-
-            <div class="faq-item">
-                <strong>Q: How secure is the connection?</strong>
-                <p>All communications between the app and your lock use AES-256 encryption. No lock credentials are stored on remote servers.</p>
+            <div class="feature-card">
+                <div class="feature-icon">↔️</div>
+                <h3>Smart Oscillation</h3>
+                <p>Independent horizontal and vertical oscillation control for optimal air distribution.</p>
             </div>
-
-            <div class="faq-item">
-                <strong>Q: Can I share access with family members?</strong>
-                <p>Yes, use the Guest Access scene or share temporary access through the app's sharing features.</p>
+            <div class="feature-card">
+                <div class="feature-icon">⏰</div>
+                <h3>Intelligent Scheduling</h3>
+                <p>Set auto on/off timers. Perfect for bedtime cooling that stops when you need it to.</p>
             </div>
-
-            <div class="faq-item">
-                <strong>Q: What happens if my phone battery dies?</strong>
-                <p>Your smart lock continues to operate normally. You can still use physical keys or keypad (if equipped) to access your lock.</p>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Usage Analytics</h3>
+                <p>Track your energy usage with beautiful charts. See daily, weekly, and monthly patterns.</p>
             </div>
-
-            <div class="faq-item">
-                <strong>Q: How do I update the lock firmware?</strong>
-                <p>Navigate to Settings > Firmware Update. The app will check for available updates and guide you through the process.</p>
+            <div class="feature-card">
+                <div class="feature-icon">📶</div>
+                <h3>Bluetooth Connectivity</h3>
+                <p>Instant, reliable connection via Bluetooth. No WiFi needed, no cloud dependency.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Beautiful Interface</h3>
+                <p>Intuitive, modern design that makes controlling your fan a delightful experience.</p>
             </div>
         </div>
+    </section>
 
-        <div class="section" id="contact">
-            <h2>Contact Support</h2>
-            <p>We're here to help with any issues or questions about iDoorHudon.</p>
-
-            <div class="contact-box">
-                <p><strong>Email Support</strong></p>
-                <p><a href="mailto:support@idoorhudon.com">support@idoorhudon.com</a></p>
-                <p style="margin-top: 12px; font-size: 0.85em; color: #7a6250;">Response time: within 24 hours on business days</p>
+    <section class="section section-white">
+        <div class="section-title">
+            <h2>How It Works</h2>
+            <p>Get started in three simple steps</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card" style="text-align: center;">
+                <div class="feature-icon" style="margin: 0 auto 20px; font-size: 32px;">1️⃣</div>
+                <h3>Pair Your Device</h3>
+                <p>Open the app and tap the "+" button to scan for your JubacCool smart fan nearby.</p>
+            </div>
+            <div class="feature-card" style="text-align: center;">
+                <div class="feature-icon" style="margin: 0 auto 20px; font-size: 32px;">2️⃣</div>
+                <h3>Connect & Control</h3>
+                <p>Tap to connect. Instantly gain full control over speed, oscillation, and timing.</p>
+            </div>
+            <div class="feature-card" style="text-align: center;">
+                <div class="feature-icon" style="margin: 0 auto 20px; font-size: 32px;">3️⃣</div>
+                <h3>Track & Optimize</h3>
+                <p>Monitor your usage patterns and optimize settings for comfort and efficiency.</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="footer">
-        <p>&copy; 2026 iDoorHudon. All rights reserved.</p>
-        <p style="margin-top: 8px;">
-            <a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp;
-            <a href="terms.html">Terms of Service</a>
-        </p>
-    </div>
+    <section class="cta-section">
+        <h2>Ready to Get Started?</h2>
+        <p>Download JubacCool and take control of your comfort today.</p>
+        <a href="#" class="btn-primary">Download Free on App Store</a>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="support.html">Technical Support</a>
+            <a href="mailto:support@jubaccool.com">Contact Us</a>
+        </div>
+        <p>&copy; 2026 JubacCool. All rights reserved.</p>
+    </footer>
 </body>
 </html>
