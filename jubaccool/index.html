@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iDoorHudon - Support</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #faf7f2;
+            color: #33261a;
+            line-height: 1.7;
+        }
+        .header {
+            background: linear-gradient(135deg, #8c5a2b, #6b3f1a);
+            padding: 60px 20px;
+            text-align: center;
+            color: white;
+        }
+        .header h1 {
+            font-size: 2.4em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .nav {
+            background: white;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            border-bottom: 1px solid #e8ddd0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav a {
+            color: #8c5a2b;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: opacity 0.2s;
+        }
+        .nav a:hover { opacity: 0.7; }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 36px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(140, 90, 43, 0.06);
+        }
+        .section h2 {
+            color: #6b3f1a;
+            font-size: 1.5em;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f0e6d9;
+        }
+        .section h3 {
+            color: #8c5a2b;
+            font-size: 1.15em;
+            margin: 20px 0 10px;
+        }
+        .section p, .section li {
+            color: #5a4530;
+            font-size: 0.95em;
+            margin-bottom: 10px;
+        }
+        .section ul { padding-left: 20px; }
+        .section li { margin-bottom: 8px; }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .feature-card {
+            background: #faf7f2;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+        }
+        .feature-card .icon {
+            font-size: 2em;
+            margin-bottom: 12px;
+        }
+        .feature-card h4 {
+            color: #6b3f1a;
+            margin-bottom: 8px;
+        }
+        .feature-card p {
+            font-size: 0.85em;
+            color: #7a6250;
+        }
+        .contact-box {
+            background: linear-gradient(135deg, #f8f0e6, #fff);
+            border: 1px solid #e8ddd0;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .contact-box a {
+            color: #8c5a2b;
+            font-weight: 600;
+        }
+        .faq-item {
+            border-bottom: 1px solid #f0e6d9;
+            padding: 16px 0;
+        }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item strong {
+            display: block;
+            color: #6b3f1a;
+            margin-bottom: 6px;
+        }
+        .footer {
+            background: #33261a;
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.85em;
+        }
+        .footer a { color: #d4a574; text-decoration: none; }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.8em; }
+            .section { padding: 24px; }
+            .nav { gap: 15px; font-size: 0.85em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>iDoorHudon</h1>
+        <p>Smart Lock Management - Technical Support</p>
+    </div>
+
+    <div class="nav">
+        <a href="#features">Features</a>
+        <a href="#setup">Setup</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a href="privacy.html">Privacy</a>
+    </div>
+
+    <div class="container">
+        <div class="section" id="features">
+            <h2>Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon">🔐</div>
+                    <h4>Remote Control</h4>
+                    <p>Lock and unlock your doors from anywhere using Bluetooth connectivity.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">⏰</div>
+                    <h4>Auto Schedules</h4>
+                    <p>Set automated lock/unlock schedules to match your daily routine.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🎭</div>
+                    <h4>Scene Control</h4>
+                    <p>Create custom scenes like Away Mode, Night Mode, or Guest Access.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📊</div>
+                    <h4>Activity Logs</h4>
+                    <p>Monitor access history and receive real-time security notifications.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔋</div>
+                    <h4>Battery Monitor</h4>
+                    <p>Track battery levels and get alerts before your lock runs low.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🛡️</div>
+                    <h4>Security First</h4>
+                    <p>End-to-end encryption protects all communication with your devices.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="setup">
+            <h2>Getting Started</h2>
+            <h3>System Requirements</h3>
+            <ul>
+                <li>iOS 13.0 or later</li>
+                <li>iPhone with Bluetooth 4.0+ capability</li>
+                <li>Compatible smart lock device</li>
+            </ul>
+
+            <h3>Initial Setup</h3>
+            <ol style="padding-left: 20px;">
+                <li style="margin-bottom: 10px;">Open iDoorHudon and navigate to the Door tab</li>
+                <li style="margin-bottom: 10px;">Tap the + button to begin device discovery</li>
+                <li style="margin-bottom: 10px;">Grant Bluetooth permission when prompted</li>
+                <li style="margin-bottom: 10px;">Ensure your smart lock is in pairing mode (refer to lock manual)</li>
+                <li style="margin-bottom: 10px;">Select your device from the list and follow on-screen instructions</li>
+            </ol>
+
+            <h3>Bluetooth Connectivity</h3>
+            <p>iDoorHudon uses Bluetooth Low Energy (BLE) to communicate with your smart lock. Ensure Bluetooth is enabled in your device settings and that you are within range (typically 10-15 meters) of your lock.</p>
+        </div>
+
+        <div class="section" id="faq">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <strong>Q: My lock is not appearing during scan?</strong>
+                <p>Ensure your lock is in pairing mode, Bluetooth is enabled, and you are within range. Try restarting both the app and your lock device.</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>Q: How secure is the connection?</strong>
+                <p>All communications between the app and your lock use AES-256 encryption. No lock credentials are stored on remote servers.</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>Q: Can I share access with family members?</strong>
+                <p>Yes, use the Guest Access scene or share temporary access through the app's sharing features.</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>Q: What happens if my phone battery dies?</strong>
+                <p>Your smart lock continues to operate normally. You can still use physical keys or keypad (if equipped) to access your lock.</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>Q: How do I update the lock firmware?</strong>
+                <p>Navigate to Settings > Firmware Update. The app will check for available updates and guide you through the process.</p>
+            </div>
+        </div>
+
+        <div class="section" id="contact">
+            <h2>Contact Support</h2>
+            <p>We're here to help with any issues or questions about iDoorHudon.</p>
+
+            <div class="contact-box">
+                <p><strong>Email Support</strong></p>
+                <p><a href="mailto:support@idoorhudon.com">support@idoorhudon.com</a></p>
+                <p style="margin-top: 12px; font-size: 0.85em; color: #7a6250;">Response time: within 24 hours on business days</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2026 iDoorHudon. All rights reserved.</p>
+        <p style="margin-top: 8px;">
+            <a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp;
+            <a href="terms.html">Terms of Service</a>
+        </p>
+    </div>
+</body>
+</html>
