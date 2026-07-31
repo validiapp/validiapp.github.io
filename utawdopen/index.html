@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uTawdOpen - Smart Lock Control</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --teal: #00C7C4;
+            --teal-dark: #008C8A;
+            --teal-light: #E0F7F7;
+            --bg: #F8FAFA;
+            --text: #1E2329;
+            --text-secondary: #737D8C;
+            --card-bg: #FFFFFF;
+            --shadow: rgba(0,0,0,0.06);
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            padding: 0 24px;
+        }
+        
+        .nav-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        
+        .nav-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--teal-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-logo svg { width: 28px; height: 28px; }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover { color: var(--teal); }
+        
+        .hero {
+            padding: 140px 24px 80px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--teal-light) 0%, var(--bg) 100%);
+        }
+        
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+        
+        .hero h1 span { color: var(--teal); }
+        
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto 36px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(0,199,196,0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,199,196,0.35);
+        }
+        
+        .btn-outline {
+            background: #fff;
+            color: var(--text);
+            border: 1.5px solid rgba(0,0,0,0.1);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--teal);
+            color: var(--teal);
+        }
+        
+        .features {
+            padding: 80px 24px;
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+        
+        .features h2 {
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        
+        .features .subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-size: 16px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 2px 12px var(--shadow);
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        }
+        
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            font-size: 24px;
+        }
+        
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .stats {
+            padding: 60px 24px;
+            background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+        }
+        
+        .stats-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .stat-num {
+            font-size: 40px;
+            font-weight: 800;
+            color: #fff;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.75);
+            margin-top: 4px;
+        }
+        
+        .cta {
+            padding: 80px 24px;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .cta p {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-size: 16px;
+        }
+        
+        footer {
+            padding: 48px 24px 32px;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+        
+        .footer-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        
+        .footer-links a:hover { color: var(--teal); }
+        
+        .footer-copy {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
+            .stats-grid { grid-template-columns: 1fr; gap: 24px; }
+            .feature-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="28" height="28" rx="7" fill="#00C7C4"/>
+                <path d="M14 6C11.2 6 9 8.2 9 11V13H8.5C7.67 13 7 13.67 7 14.5V21.5C7 22.33 7.67 23 8.5 23H19.5C20.33 23 21 22.33 21 21.5V14.5C21 13.67 20.33 13 19.5 13H19V11C19 8.2 16.8 6 14 6ZM14 8C15.66 8 17 9.34 17 11V13H11V11C11 9.34 12.34 8 14 8ZM14 16C14.83 16 15.5 16.67 15.5 17.5C15.5 18.08 15.17 18.59 14.7 18.84V20.5C14.7 20.88 14.39 21.2 14 21.2C13.61 21.2 13.3 20.88 13.3 20.5V18.84C12.83 18.59 12.5 18.08 12.5 17.5C12.5 16.67 13.17 16 14 16Z" fill="white"/>
+            </svg>
+            uTawdOpen
+        </a>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="support.html">Support</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>Your Door, <span>Smarter</span><br>Than Ever</h1>
+    <p>Control your smart lock from anywhere. Secure, instant, and beautifully simple. The future of home security is in your pocket.</p>
+    <div class="hero-buttons">
+        <a href="#" class="btn btn-primary">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M15.545 4.455A7 7 0 1 0 4.455 15.545 7 7 0 0 0 15.545 4.455zM10 16a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm-.75-9.25v4l3.5 2.1.5-.82-3-1.78V6.75h-1z"/></svg>
+            Download on App Store
+        </a>
+        <a href="#features" class="btn btn-outline">Explore Features</a>
+    </div>
+</section>
+
+<section class="features" id="features">
+    <h2>Everything You Need</h2>
+    <p class="subtitle">Powerful features designed for modern smart home security</p>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="feature-icon" style="background: rgba(0,199,196,0.1);">🔐</div>
+            <h3>Remote Lock Control</h3>
+            <p>Lock or unlock your door from anywhere in the world with a single tap. Real-time status updates keep you informed.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon" style="background: rgba(255,159,10,0.1);">⏰</div>
+            <h3>Smart Scheduling</h3>
+            <p>Set automatic lock and unlock schedules. Perfect for daily routines, recurring guests, or business hours.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon" style="background: rgba(142,68,222,0.1);">✨</div>
+            <h3>Scene Control</h3>
+            <p>Create custom scenes like Away Mode, Guest Mode, or Sleep Mode. Activate with one tap for instant security.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon" style="background: rgba(52,199,89,0.1);">📊</div>
+            <h3>Activity History</h3>
+            <p>View complete access logs with timestamps, action types, and trigger sources. Know who accessed your door and when.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon" style="background: rgba(0,122,255,0.1);">📡</div>
+            <h3>Bluetooth Connection</h3>
+            <p>Reliable BLE connection with automatic device discovery. Low energy consumption with strong signal quality.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon" style="background: rgba(255,69,58,0.1);">🔋</div>
+            <h3>Battery Monitoring</h3>
+            <p>Real-time battery level tracking with low battery alerts. Never get locked out due to a dead battery.</p>
+        </div>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="stats-grid">
+        <div>
+            <div class="stat-num">256-bit</div>
+            <div class="stat-label">AES Encryption</div>
+        </div>
+        <div>
+            <div class="stat-num">&lt; 1s</div>
+            <div class="stat-label">Response Time</div>
+        </div>
+        <div>
+            <div class="stat-num">24/7</div>
+            <div class="stat-label">Access Control</div>
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Ready to Secure Your Home?</h2>
+    <p>Download uTawdOpen and take control of your smart lock today.</p>
+    <a href="#" class="btn btn-primary">Get Started Free</a>
+</section>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-copy">&copy; 2026 uTawdOpen. All rights reserved.</div>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="support.html">Support</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
