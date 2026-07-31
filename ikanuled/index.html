@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iKanuLed - Smart LED Control</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fafbff;
+            color: #1c1c1e;
+            line-height: 1.6;
+        }
+        .hero {
+            background: linear-gradient(135deg, #7f3dff 0%, #a26eff 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
+        .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 12px; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        .container { max-width: 960px; margin: 0 auto; padding: 60px 20px; }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(127, 61, 255, 0.08);
+            transition: transform 0.2s;
+        }
+        .feature-card:hover { transform: translateY(-4px); }
+        .feature-card .icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #ede4ff, #f5f0ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        .feature-card h3 { font-size: 1.1rem; margin-bottom: 8px; color: #1c1c1e; }
+        .feature-card p { font-size: 0.9rem; color: #8e8e93; }
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #eee;
+            margin-top: 60px;
+        }
+        .footer a {
+            color: #7f3dff;
+            text-decoration: none;
+            margin: 0 16px;
+            font-weight: 500;
+        }
+        .footer a:hover { text-decoration: underline; }
+        .footer p { color: #8e8e93; margin-top: 16px; font-size: 0.85rem; }
+        .section-title { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 12px; }
+        .section-subtitle { text-align: center; color: #8e8e93; margin-bottom: 40px; }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>iKanuLed</h1>
+        <p>The intelligent way to control your LED lighting. Seamless Bluetooth connectivity, smart scheduling, and energy insights at your fingertips.</p>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title">Features</h2>
+        <p class="section-subtitle">Everything you need to create the perfect ambiance</p>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="icon">💡</div>
+                <h3>Smart Control</h3>
+                <p>Turn lights on/off, adjust brightness from 1-100%, and switch between cool, warm white, and warm color temperatures.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🎬</div>
+                <h3>Scene Presets</h3>
+                <p>Choose from preset scenes like Reading, Relaxing, Movie Night, and more. One tap to set the perfect mood.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">⏰</div>
+                <h3>Time Scheduling</h3>
+                <p>Set automatic on/off schedules with day-of-week repeat options. Your lights work around your routine.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">📊</div>
+                <h3>Energy Tracking</h3>
+                <p>Monitor daily and weekly power consumption. See usage trends and optimize your energy footprint.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">📡</div>
+                <h3>Bluetooth Connection</h3>
+                <p>Quick and reliable Bluetooth pairing with automatic device discovery. No hub or Wi-Fi required.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🎨</div>
+                <h3>Elegant Interface</h3>
+                <p>A clean, modern design with smooth animations. Controlling your lights has never felt this good.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <a href="privacy">Privacy Policy</a>
+        <a href="support">Technical Support</a>
+        <p>&copy; 2026 iKanuLed. All rights reserved.</p>
+    </footer>
+</body>
+</html>
