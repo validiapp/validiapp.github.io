@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Support - uTawdOpen</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --teal: #00C7C4;
+            --teal-dark: #008C8A;
+            --teal-light: #E0F7F7;
+            --bg: #F8FAFA;
+            --text: #1E2329;
+            --text-secondary: #737D8C;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            padding: 0 24px;
+        }
+        .nav-inner {
+            max-width: 800px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between; height: 64px;
+        }
+        .nav-logo {
+            font-size: 20px; font-weight: 700; color: var(--teal-dark);
+            text-decoration: none; display: flex; align-items: center; gap: 8px;
+        }
+        .nav-logo svg { width: 28px; height: 28px; }
+        .nav-back {
+            text-decoration: none; color: var(--teal); font-size: 14px; font-weight: 500;
+            display: flex; align-items: center; gap: 4px;
+        }
+        .content {
+            max-width: 800px; margin: 0 auto;
+            padding: 100px 24px 60px;
+        }
+        .page-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--teal-light); color: var(--teal-dark);
+            padding: 6px 14px; border-radius: 20px;
+            font-size: 13px; font-weight: 600; margin-bottom: 16px;
+        }
+        h1 {
+            font-size: 36px; font-weight: 800; letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            font-size: 16px; color: var(--text-secondary); margin-bottom: 40px;
+        }
+        .section {
+            background: #fff; border-radius: 16px;
+            padding: 28px 32px; margin-bottom: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+        .section h2 {
+            font-size: 20px; font-weight: 700; margin-bottom: 14px;
+            color: var(--teal-dark);
+        }
+        .section p, .section li {
+            font-size: 15px; color: var(--text-secondary); margin-bottom: 10px;
+        }
+        .section ul, .section ol {
+            padding-left: 20px; margin-bottom: 10px;
+        }
+        .section li { margin-bottom: 8px; }
+        .faq-item {
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            padding: 18px 0;
+        }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-q {
+            font-size: 16px; font-weight: 600; color: var(--text);
+            margin-bottom: 8px; cursor: pointer;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .faq-q::before {
+            content: "Q";
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 28px; height: 28px; border-radius: 8px;
+            background: var(--teal-light); color: var(--teal-dark);
+            font-size: 13px; font-weight: 700; flex-shrink: 0;
+        }
+        .faq-a {
+            font-size: 14px; color: var(--text-secondary);
+            padding-left: 38px; line-height: 1.7;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px; margin-top: 16px;
+        }
+        .contact-card {
+            background: var(--teal-light); border-radius: 14px;
+            padding: 20px; text-align: center;
+            transition: transform 0.2s;
+        }
+        .contact-card:hover { transform: translateY(-2px); }
+        .contact-icon {
+            font-size: 28px; margin-bottom: 10px;
+        }
+        .contact-card h3 {
+            font-size: 15px; font-weight: 600; color: var(--teal-dark);
+            margin-bottom: 4px;
+        }
+        .contact-card p {
+            font-size: 13px; color: var(--text-secondary); margin-bottom: 0;
+        }
+        .step-list {
+            counter-reset: steps;
+            list-style: none;
+            padding-left: 0;
+        }
+        .step-list li {
+            counter-increment: steps;
+            position: relative;
+            padding-left: 44px;
+            margin-bottom: 14px;
+        }
+        .step-list li::before {
+            content: counter(steps);
+            position: absolute; left: 0; top: 0;
+            width: 30px; height: 30px; border-radius: 10px;
+            background: var(--teal-light); color: var(--teal-dark);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px; font-weight: 700;
+        }
+        footer {
+            padding: 32px 24px; border-top: 1px solid rgba(0,0,0,0.06);
+            text-align: center;
+        }
+        .footer-links { display: flex; gap: 24px; justify-content: center; margin-bottom: 12px; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; }
+        .footer-links a:hover { color: var(--teal); }
+        .footer-copy { font-size: 13px; color: var(--text-secondary); }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <svg viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="7" fill="#00C7C4"/><path d="M14 6C11.2 6 9 8.2 9 11V13H8.5C7.67 13 7 13.67 7 14.5V21.5C7 22.33 7.67 23 8.5 23H19.5C20.33 23 21 22.33 21 21.5V14.5C21 13.67 20.33 13 19.5 13H19V11C19 8.2 16.8 6 14 6ZM14 8C15.66 8 17 9.34 17 11V13H11V11C11 9.34 12.34 8 14 8ZM14 16C14.83 16 15.5 16.67 15.5 17.5C15.5 18.08 15.17 18.59 14.7 18.84V20.5C14.7 20.88 14.39 21.2 14 21.2C13.61 21.2 13.3 20.88 13.3 20.5V18.84C12.83 18.59 12.5 18.08 12.5 17.5C12.5 16.67 13.17 16 14 16Z" fill="white"/></svg>
+            uTawdOpen
+        </a>
+        <a href="index.html" class="nav-back">← Back to Home</a>
+    </div>
+</nav>
+
+<div class="content">
+    <div class="page-badge">💬 Support</div>
+    <h1>Technical Support</h1>
+    <p class="subtitle">We're here to help you get the most out of your smart lock experience.</p>
+
+    <div class="section">
+        <h2>Getting Started</h2>
+        <ol class="step-list">
+            <li>Download and install uTawdOpen from the App Store on your iPhone.</li>
+            <li>Open the app and grant Bluetooth permissions when prompted on the Add Device screen.</li>
+            <li>Make sure your smart lock is powered on and in pairing mode.</li>
+            <li>Wait for the app to discover your lock device, then tap to connect.</li>
+            <li>Once connected, you can control your lock from the Home screen.</li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-q">Why can't the app find my smart lock?</div>
+            <div class="faq-a">Make sure Bluetooth is enabled on your iPhone and the smart lock is in pairing mode. Try moving closer to the lock (within 10 meters). If the issue persists, restart both your phone and the smart lock.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-q">How do I set up automatic lock schedules?</div>
+            <div class="faq-a">From the Home screen, tap your lock to open details. Select the "Schedule" tab, then tap the + button to create a new schedule. Choose the action (Lock/Unlock), set the time, and select which days to repeat.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-q">What are Scenes and how do I use them?</div>
+            <div class="faq-a">Scenes are preset configurations for your lock. For example, "Away Mode" automatically locks your door, while "Guest Mode" keeps it unlocked. Navigate to the Scenes tab in lock details to activate or deactivate scenes.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-q">Why does lock/unlock take a few seconds?</div>
+            <div class="faq-a">The app sends a secure encrypted command to your lock via Bluetooth. The brief processing time (approximately 3 seconds) ensures the command is securely transmitted and the lock mechanism completes its operation.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-q">How do I check my lock's battery level?</div>
+            <div class="faq-a">The battery level is displayed on the Home screen status card and in the lock details under the Control tab. You'll receive a notification when the battery drops below 20%.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-q">Can I remove and re-add my device?</div>
+            <div class="faq-a">Yes. Go to Settings > scroll down and tap "Remove Device". Then follow the initial setup process again to re-add your lock.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-q">Is my data secure?</div>
+            <div class="faq-a">Absolutely. All data is stored locally on your device. No data is sent to external servers. Bluetooth communication uses standard BLE security protocols, and your device data is encrypted when your iPhone is locked.</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Troubleshooting</h2>
+        <ul>
+            <li><strong>App crashes on launch:</strong> Try force-quitting and reopening the app. If the issue persists, reinstall from the App Store.</li>
+            <li><strong>Bluetooth connection drops:</strong> Ensure no other devices are interfering. Move closer to the lock and try reconnecting.</li>
+            <li><strong>Lock not responding:</strong> Check the lock's battery level. If the battery is depleted, replace it before attempting to connect.</li>
+            <li><strong>Schedule not executing:</strong> Make sure the schedule is enabled (toggle is on) and the app has the necessary background permissions.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>System Requirements</h2>
+        <ul>
+            <li>iPhone with iOS 13.0 or later</li>
+            <li>Bluetooth 4.0 (BLE) or later</li>
+            <li>Compatible smart lock with BLE support</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Contact Us</h2>
+        <p>Still need help? Reach out to us through any of the following channels:</p>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <h3>Email Support</h3>
+                <p>support@utawdopen.app</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">💬</div>
+                <h3>Response Time</h3>
+                <p>Within 24 hours</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📱</div>
+                <h3>App Version</h3>
+                <p>1.0.0 (2026.07)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="support.html">Support</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 uTawdOpen. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
