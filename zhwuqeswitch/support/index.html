@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Smart Switch</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f8fafc;
+            color: #1c2127;
+            line-height: 1.8;
+        }
+        .nav {
+            background: white;
+            padding: 16px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #1c2127;
+        }
+        .nav-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #2e78f2, #1a5af0);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+        .nav-logo span { font-weight: 700; font-size: 18px; }
+        .nav-links { display: flex; gap: 24px; }
+        .nav-links a {
+            color: #737983;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: #2e78f2; }
+        .hero {
+            background: linear-gradient(180deg, #eef3ff 0%, #f8fafc 100%);
+            padding: 60px 24px 40px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .hero p {
+            color: #737983;
+            font-size: 16px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+        .faq-section h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #e6eaf0;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: box-shadow 0.2s;
+        }
+        .faq-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .faq-question {
+            padding: 20px 24px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 20px;
+            color: #2e78f2;
+            font-weight: 300;
+            transition: transform 0.2s;
+        }
+        .faq-item.open .faq-question::after {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            padding: 0 24px 20px;
+            color: #4a5060;
+            font-size: 14px;
+            display: none;
+        }
+        .faq-item.open .faq-answer { display: block; }
+        .contact-section {
+            margin-top: 48px;
+        }
+        .contact-section h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .contact-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid #e6eaf0;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .contact-card:hover { transform: translateY(-2px); }
+        .contact-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+        .contact-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .contact-card p {
+            color: #737983;
+            font-size: 13px;
+        }
+        .troubleshoot {
+            margin-top: 48px;
+        }
+        .troubleshoot h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        .step-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .step-item {
+            display: flex;
+            gap: 16px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #e6eaf0;
+        }
+        .step-number {
+            width: 32px;
+            height: 32px;
+            background: #2e78f2;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .step-content h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .step-content p {
+            color: #4a5060;
+            font-size: 14px;
+        }
+        .footer {
+            background: #1c2127;
+            color: #a0a8b4;
+            padding: 32px 24px;
+            text-align: center;
+        }
+        .footer a { color: #a0a8b4; text-decoration: none; }
+        .footer a:hover { color: white; }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="../" class="nav-logo">
+                <div class="nav-logo-icon">⚡</div>
+                <span>Smart Switch</span>
+            </a>
+            <div class="nav-links">
+                <a href="../">Home</a>
+                <a href="../privacy/">Privacy</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>How Can We Help?</h1>
+        <p>Find answers to common questions and get the support you need.</p>
+    </section>
+
+    <div class="content">
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item open">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    How do I connect a new smart switch device?
+                </div>
+                <div class="faq-answer">
+                    Open the app, tap the "+" button on the Home screen. The app will request Bluetooth permission if not already granted. Once Bluetooth is enabled, the app will scan for nearby smart switch devices. When your device appears in the list, tap "Connect" to pair it.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    Why can't my app find my smart switch?
+                </div>
+                <div class="faq-answer">
+                    Make sure your smart switch is powered on and within Bluetooth range (typically 10 meters). Ensure Bluetooth is enabled on your phone in Settings. Try restarting both the app and your smart switch device. If the problem persists, try resetting the smart switch according to the manufacturer's instructions.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    How do I set up a timer schedule?
+                </div>
+                <div class="faq-answer">
+                    Navigate to the "Time" tab, then tap the "+" button. Select the desired time using the time picker, choose whether to turn the switch ON or OFF, select repeat days if needed, and tap "Save Schedule". Your schedule will be automatically executed at the specified times.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    What are Scenes and how do I use them?
+                </div>
+                <div class="faq-answer">
+                    Scenes are pre-configured automation presets that control one or more devices with a single tap. For example, a "Good Night" scene can turn off all lights simultaneously. Navigate to the "Time" tab, switch to the "Scenes" segment, and tap any scene to activate it.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    Does the app work without an internet connection?
+                </div>
+                <div class="faq-answer">
+                    Yes! Smart Switch communicates with your devices directly via Bluetooth. No internet connection or cloud service is required for basic on/off control and scheduling. All data is stored locally on your device.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    How do I view my power usage statistics?
+                </div>
+                <div class="faq-answer">
+                    On the Home screen, scroll down to the "Usage Overview" chart. You can toggle between weekly and monthly views using the segment control. The chart displays your daily device usage in hours, helping you understand your energy consumption patterns.
+                </div>
+            </div>
+        </div>
+
+        <div class="troubleshoot">
+            <h2>Troubleshooting Guide</h2>
+            <div class="step-list">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Check Bluetooth</h4>
+                        <p>Go to Settings > Bluetooth and ensure it is turned on. Also verify that Smart Switch has Bluetooth permission in Settings > Privacy > Bluetooth.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Restart the App</h4>
+                        <p>Force close the Smart Switch app by swiping it up in the app switcher, then reopen it. This resolves most connectivity issues.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Power Cycle Your Device</h4>
+                        <p>Turn your smart switch off and on again. Wait 10 seconds before attempting to reconnect from the app.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Update the App</h4>
+                        <p>Make sure you are running the latest version of Smart Switch. Check the App Store for available updates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h2>Still Need Help?</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email Support</h3>
+                    <p>Send us an email and we'll respond within 24 hours.</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">💬</div>
+                    <h3>In-App Feedback</h3>
+                    <p>Use the Settings > Support option within the app to send feedback.</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3>App Store Review</h3>
+                    <p>Leave a review or report issues directly on the App Store.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Smart Switch. All rights reserved. | <a href="../privacy/">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>
