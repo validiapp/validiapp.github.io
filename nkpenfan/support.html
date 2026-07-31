@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Support - nKpenFan</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f8faf9;
+            color: #21262d;
+            line-height: 1.7;
+        }
+        .nav {
+            background: #fff;
+            border-bottom: 1px solid #e9ecef;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #2db886;
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #2db886, #3dd19a);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-icon svg { width: 22px; height: 22px; fill: #fff; }
+        .nav-links { display: flex; gap: 28px; }
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #2db886; }
+        .header-section {
+            background: linear-gradient(180deg, #eaf7f1 0%, #f8faf9 100%);
+            padding: 60px 24px 48px;
+            text-align: center;
+        }
+        .header-section h1 {
+            font-size: 36px;
+            font-weight: 800;
+            color: #1a1d21;
+            margin-bottom: 12px;
+        }
+        .header-section p {
+            font-size: 16px;
+            color: #6b7280;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+        .faq-section { margin-bottom: 48px; }
+        .faq-section h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1d21;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .faq-section h2 .icon {
+            width: 36px;
+            height: 36px;
+            background: #eaf7f1;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        .faq-item {
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid #eef1ef;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .faq-item:hover { border-color: #2db886; }
+        .faq-question {
+            padding: 18px 22px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1d21;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-question .arrow {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s;
+            color: #2db886;
+        }
+        .faq-answer {
+            padding: 0 22px 18px;
+            font-size: 14px;
+            color: #4b5563;
+            display: none;
+        }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-item.open .arrow { transform: rotate(180deg); }
+        .troubleshoot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .troubleshoot-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 24px;
+            border: 1px solid #eef1ef;
+            transition: all 0.25s;
+        }
+        .troubleshoot-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.05); }
+        .troubleshoot-card .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: #2db886;
+            color: #fff;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .troubleshoot-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; color: #1a1d21; }
+        .troubleshoot-card p { font-size: 13px; color: #6b7280; }
+        .contact-section {
+            background: linear-gradient(135deg, #eaf7f1, #d4f0e4);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .contact-section h2 { font-size: 24px; font-weight: 700; margin-bottom: 12px; color: #1a1d21; }
+        .contact-section p { font-size: 15px; color: #4b5563; margin-bottom: 24px; max-width: 480px; margin-left: auto; margin-right: auto; }
+        .contact-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #2db886;
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-shadow: 0 4px 16px rgba(45,184,134,0.25);
+        }
+        .contact-email:hover { background: #24a077; transform: translateY(-1px); }
+        .footer {
+            background: #1a1d21;
+            color: #9ca3af;
+            padding: 32px 24px;
+            text-align: center;
+            font-size: 13px;
+        }
+        .footer a { color: #2db886; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .troubleshoot-grid { grid-template-columns: 1fr; }
+            .header-section h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 11c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6.3.6c-.1-.5-.2-1-.4-1.5l1.7-1.3c.2-.1.2-.4.1-.6l-1.6-2.8c-.1-.2-.4-.3-.6-.2l-2 .8c-.4-.3-.8-.6-1.3-.8L14 3.3c0-.2-.3-.4-.5-.4h-3.2c-.2 0-.5.2-.5.4l-.3 2c-.5.2-.9.5-1.3.8l-2-.8c-.2-.1-.5 0-.6.2L4 8.2c-.1.2-.1.5.1.6l1.7 1.3c-.2.5-.3 1-.4 1.5H3.3c-.2 0-.4.2-.4.5v3.2c0 .2.2.5.4.5h2.1c.1.5.2 1 .4 1.5L4.1 18.6c-.2.1-.2.4-.1.6l1.6 2.8c.1.2.4.3.6.2l2-.8c.4.3.8.6 1.3.8l.3 2c0 .2.3.4.5.4h3.2c.2 0 .5-.2.5-.4l.3-2c.5-.2.9-.5 1.3-.8l2 .8c.2.1.5 0 .6-.2l1.6-2.8c.1-.2.1-.5-.1-.6l-1.7-1.3c.2-.5.3-1 .4-1.5h2.1c.2 0 .4-.2.4-.5v-3.2c0-.2-.2-.5-.4-.5h-2.1zM12 17c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z"/></svg>
+                </div>
+                nKpenFan
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="support.html" class="active">Support</a>
+                <a href="privacy.html">Privacy</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="header-section">
+        <h1>Technical Support</h1>
+        <p>Get help with setting up, troubleshooting, and making the most of your nKpenFan experience.</p>
+    </section>
+
+    <div class="content">
+        <div class="faq-section">
+            <h2><span class="icon">&#10067;</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item open">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    How do I connect my fan to the app?
+                    <svg class="arrow" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </div>
+                <div class="faq-answer">
+                    Open the app and tap the "+" button in the top right corner of the Home screen. This will open the Add Device screen, which will automatically request Bluetooth permission if not already granted. The app will begin scanning for nearby compatible fan devices. When your fan appears, tap "Connect" to pair it. Make sure your fan is powered on and within Bluetooth range (approximately 10 meters).
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    What Bluetooth version does the app require?
+                    <svg class="arrow" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </div>
+                <div class="faq-answer">
+                    nKpenFan uses Bluetooth Low Energy (BLE), which requires Bluetooth 4.0 or later. All iPhones running iOS 13 or later support BLE. The app only requires Bluetooth permission &mdash; no other permissions (such as location or camera) are needed.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    How do I set a timer for my fan?
+                    <svg class="arrow" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </div>
+                <div class="faq-answer">
+                    From the Home screen, scroll down to the "Timer & Schedule" section. Tap "Manage" to open the scheduling interface. You can set quick timers (30 min, 1h, 2h, 4h) or create custom schedules with specific turn-on and turn-off times. Schedules can repeat on selected days of the week.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    Can I control multiple fans?
+                    <svg class="arrow" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </div>
+                <div class="faq-answer">
+                    Currently, nKpenFan supports connecting to one fan device at a time. Support for multiple simultaneous connections is planned for a future update. You can disconnect from one device and connect to another at any time.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    What do the oscillation modes do?
+                    <svg class="arrow" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </div>
+                <div class="faq-answer">
+                    nKpenFan supports two independent oscillation modes: <strong>Vertical (Up & Down)</strong> moves the fan head up and down, and <strong>Horizontal (Left & Right)</strong> rotates the fan side to side. Both can be enabled simultaneously for full-room air circulation.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    How are usage statistics calculated?
+                    <svg class="arrow" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </div>
+                <div class="faq-answer">
+                    Usage statistics are tracked locally on your device. The app records how long the fan runs each day, which speed levels are used, and calculates daily averages and totals. All data is stored on your iPhone and is never uploaded to external servers. Visit the "Sean" (Statistics) tab to view detailed usage charts and breakdowns.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h2><span class="icon">&#128295;</span> Troubleshooting</h2>
+
+            <div class="troubleshoot-grid">
+                <div class="troubleshoot-card">
+                    <div class="step-num">1</div>
+                    <h4>Fan Not Found</h4>
+                    <p>Ensure your fan is powered on and within 10m range. Check that Bluetooth is enabled in iOS Settings. Try toggling Bluetooth off and on, then restart the scan.</p>
+                </div>
+                <div class="troubleshoot-card">
+                    <div class="step-num">2</div>
+                    <h4>Connection Drops</h4>
+                    <p>Move closer to the fan. Avoid obstacles between your iPhone and the fan. If the problem persists, remove the device and re-pair it from the Add Device screen.</p>
+                </div>
+                <div class="troubleshoot-card">
+                    <div class="step-num">3</div>
+                    <h4>Controls Not Responding</h4>
+                    <p>Check the connection status indicator on the Home screen. If shown as "Disconnected", tap the fan card to reconnect. Ensure the fan has power.</p>
+                </div>
+                <div class="troubleshoot-card">
+                    <div class="step-num">4</div>
+                    <h4>App Crashes</h4>
+                    <p>Make sure you have the latest version of nKpenFan installed. Force-close the app and reopen it. If the issue persists, uninstall and reinstall the app.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h2><span class="icon">&#128187;</span> System Requirements</h2>
+            <div style="background: #fff; border-radius: 14px; padding: 24px; border: 1px solid #eef1ef;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr style="border-bottom: 1px solid #f0f0f0;">
+                        <td style="padding: 10px 0; font-weight: 600; color: #1a1d21; width: 40%;">Operating System</td>
+                        <td style="padding: 10px 0; color: #4b5563;">iOS 13.0 or later</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f0f0f0;">
+                        <td style="padding: 10px 0; font-weight: 600; color: #1a1d21;">Bluetooth</td>
+                        <td style="padding: 10px 0; color: #4b5563;">Bluetooth 4.0+ (BLE)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f0f0f0;">
+                        <td style="padding: 10px 0; font-weight: 600; color: #1a1d21;">Compatible Devices</td>
+                        <td style="padding: 10px 0; color: #4b5563;">iPhone 6s and later</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px 0; font-weight: 600; color: #1a1d21;">Storage</td>
+                        <td style="padding: 10px 0; color: #4b5563;">~25 MB</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h2>Still Need Help?</h2>
+            <p>Our support team is here to assist you. Send us an email and we'll get back to you within 24 hours.</p>
+            <a href="mailto:support@nkpenfan.com" class="contact-email">
+                &#9993; Contact Support
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 nKpenFan. All rights reserved. | <a href="index.html">Home</a> | <a href="support.html">Support</a> | <a href="privacy.html">Privacy</a></p>
+    </footer>
+</body>
+</html>
