@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Support - iKanuLed</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fafbff;
+            color: #1c1c1e;
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, #7f3dff 0%, #a26eff 100%);
+            padding: 50px 20px;
+            text-align: center;
+            color: white;
+        }
+        .header h1 { font-size: 2rem; font-weight: 700; }
+        .header p { opacity: 0.85; margin-top: 8px; }
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 48px 20px;
+        }
+        h2 {
+            font-size: 1.3rem;
+            color: #7f3dff;
+            margin-top: 36px;
+            margin-bottom: 12px;
+        }
+        p { margin-bottom: 16px; color: #3a3a3c; }
+        ul, ol { margin: 12px 0 16px 24px; color: #3a3a3c; }
+        li { margin-bottom: 8px; }
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 12px rgba(127, 61, 255, 0.06);
+        }
+        .faq-item h3 { font-size: 1rem; color: #1c1c1e; margin-bottom: 8px; }
+        .faq-item p { margin-bottom: 0; font-size: 0.9rem; }
+        .contact-card {
+            background: linear-gradient(135deg, #ede4ff, #f5f0ff);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .contact-card h3 { color: #7f3dff; margin-bottom: 8px; }
+        .contact-card a {
+            color: #7f3dff;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .contact-card a:hover { text-decoration: underline; }
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: #7f3dff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Technical Support</h1>
+        <p>iKanuLed - Smart LED Control</p>
+    </div>
+
+    <div class="container">
+        <p>We're here to help you get the most out of your iKanuLed experience. Below you'll find answers to common questions and troubleshooting steps.</p>
+
+        <h2>Getting Started</h2>
+        <ol>
+            <li>Ensure your KanuLed device is powered on and in pairing mode (LED should be blinking).</li>
+            <li>Open iKanuLed and tap the "+" button on the Home screen.</li>
+            <li>Grant Bluetooth permission when prompted.</li>
+            <li>Wait for your device to appear in the scan results.</li>
+            <li>Tap "Connect" to pair your device.</li>
+        </ol>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3>My device is not showing up during scan</h3>
+            <p>Make sure Bluetooth is enabled in your device Settings. Ensure the KanuLed light is in pairing mode (power cycle the light 3 times quickly). Move closer to the device and try scanning again.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>The app cannot connect to my light</h3>
+            <p>Try removing the device from your Bluetooth settings and re-pairing through the app. Make sure no other device is currently connected to the light. Restart both your phone and the KanuLed device.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Brightness slider is not responding</h3>
+            <p>The brightness control is only available when the light is turned on. Tap the power button first, then adjust the brightness slider.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Scheduled events are not triggering</h3>
+            <p>Ensure the app has Background Modes enabled for Bluetooth. Check that your schedule is toggled on and the correct days are selected. The device must be within Bluetooth range for schedules to execute.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I reset my device?</h3>
+            <p>To factory reset your KanuLed device, turn it off and on 5 times rapidly. The light will flash 3 times to confirm the reset. You can then re-pair it through the app.</p>
+        </div>
+
+        <h2>System Requirements</h2>
+        <ul>
+            <li>iOS 13.0 or later</li>
+            <li>Bluetooth 4.0 or later</li>
+            <li>Compatible KanuLed hardware device</li>
+        </ul>
+
+        <div class="contact-card">
+            <h3>Still Need Help?</h3>
+            <p>Contact our support team</p>
+            <p><a href="mailto:support@ikanuted.com">support@ikanuted.com</a></p>
+        </div>
+
+        <a href="../privacy" class="back-link">&larr; Privacy Policy</a>
+        <br>
+        <a href="../" class="back-link">&larr; Back to Home</a>
+    </div>
+</body>
+</html>
