@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Switch - Intelligent Remote Control</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f8fafc;
+            color: #1c2127;
+            line-height: 1.6;
+        }
+        .nav {
+            background: white;
+            padding: 16px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #1c2127;
+        }
+        .nav-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #2e78f2, #1a5af0);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+        .nav-logo span {
+            font-weight: 700;
+            font-size: 18px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+        .nav-links a {
+            color: #737983;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: #2e78f2; }
+        .hero {
+            padding: 80px 24px 60px;
+            text-align: center;
+            background: linear-gradient(180deg, #eef3ff 0%, #f8fafc 100%);
+        }
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #1a5af0, #2e78f2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 18px;
+            color: #737983;
+            max-width: 560px;
+            margin: 0 auto 32px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: #2e78f2;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .hero-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(46,120,242,0.3);
+        }
+        .features {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+        .features h2 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 48px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid #e6eaf0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+        }
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: #eef3ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 24px;
+        }
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .feature-card p {
+            color: #737983;
+            font-size: 14px;
+        }
+        .screenshots {
+            background: linear-gradient(180deg, #f8fafc 0%, #eef3ff 100%);
+            padding: 60px 24px;
+            text-align: center;
+        }
+        .screenshots h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .screenshots p {
+            color: #737983;
+            margin-bottom: 40px;
+        }
+        .screenshot-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .screenshot-placeholder {
+            width: 200px;
+            height: 400px;
+            background: white;
+            border-radius: 24px;
+            border: 1px solid #e6eaf0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b0b8c4;
+            font-size: 14px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+        .footer {
+            background: #1c2127;
+            color: #a0a8b4;
+            padding: 40px 24px;
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 16px;
+        }
+        .footer-links a {
+            color: #a0a8b4;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: white; }
+        .footer p { font-size: 13px; }
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 32px; }
+            .nav-links { gap: 16px; }
+            .feature-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <div class="nav-logo-icon">⚡</div>
+                <span>Smart Switch</span>
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="privacy/">Privacy</a>
+                <a href="support/">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Smart Switch</h1>
+        <p>Take full control of your smart switches from anywhere. Schedule, automate, and monitor your devices with a beautifully crafted interface.</p>
+        <a href="#features" class="hero-badge">Explore Features</a>
+    </section>
+
+    <section class="features" id="features">
+        <h2>Powerful Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔌</div>
+                <h3>Remote Control</h3>
+                <p>Turn your switches on or off from anywhere using Bluetooth connectivity. Instant response with real-time status feedback.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⏰</div>
+                <h3>Smart Scheduling</h3>
+                <p>Set up automated on/off schedules with flexible repeat options. Supports daily, weekday, weekend, and custom patterns.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎬</div>
+                <h3>Scene Control</h3>
+                <p>Create custom scenes like "Good Morning" or "Movie Time" to control multiple switches with a single tap.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Usage Analytics</h3>
+                <p>Track power consumption and usage patterns with detailed weekly and monthly charts to optimize your energy usage.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3>Calendar View</h3>
+                <p>Visualize all your scheduled events in an intuitive calendar interface. Never miss an automation again.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Beautiful Design</h3>
+                <p>Enjoy a clean, modern interface designed for ease of use. Smooth animations and intuitive navigation throughout.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="screenshots">
+        <h2>Designed for Simplicity</h2>
+        <p>An intuitive interface that puts you in control</p>
+        <div class="screenshot-grid">
+            <div class="screenshot-placeholder">Home Dashboard</div>
+            <div class="screenshot-placeholder">Timer Schedules</div>
+            <div class="screenshot-placeholder">Device Settings</div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="privacy/">Privacy Policy</a>
+            <a href="support/">Support</a>
+        </div>
+        <p>&copy; 2026 Smart Switch. All rights reserved.</p>
+    </footer>
+</body>
+</html>
