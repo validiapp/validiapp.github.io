@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Support - Nectarix</title>
+    <style>
+        :root {
+            --amber: #E6A817;
+            --amber-dark: #C48F12;
+            --amber-light: #FFF9E8;
+            --dark: #1A1208;
+            --text: #3D3422;
+            --gray: #6B6255;
+            --light-gray: #9E9588;
+            --bg: #FEFCF8;
+            --card-bg: #FFFFFF;
+            --border: #F0EBE3;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(254, 252, 248, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--dark);
+        }
+
+        .navbar .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--amber), var(--amber-dark));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar .logo-icon svg { width: 20px; height: 20px; fill: white; }
+        .navbar .logo span { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; }
+
+        .navbar nav { display: flex; gap: 6px; }
+        .navbar nav a {
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--gray);
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .navbar nav a:hover { background: var(--amber-light); color: var(--amber-dark); }
+        .navbar nav a.active { background: var(--amber); color: white; }
+
+        .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+        .page-header {
+            padding: 120px 0 48px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 48px;
+        }
+
+        .page-header h1 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--dark);
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            font-size: 16px;
+            color: var(--gray);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .content { padding-bottom: 80px; }
+
+        .content h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 40px 0 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .content p {
+            font-size: 15px;
+            color: var(--gray);
+            margin-bottom: 14px;
+        }
+
+        .content ul, .content ol {
+            padding-left: 24px;
+            margin-bottom: 14px;
+        }
+
+        .content li {
+            font-size: 15px;
+            color: var(--gray);
+            margin-bottom: 8px;
+        }
+
+        .step-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: steps;
+        }
+
+        .step-list li {
+            counter-increment: steps;
+            padding: 16px 20px 16px 60px;
+            position: relative;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .step-list li::before {
+            content: counter(steps);
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            background: var(--amber);
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 18px 20px;
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 20px;
+            color: var(--amber);
+            font-weight: 300;
+        }
+
+        .faq-answer {
+            padding: 0 20px 18px;
+            font-size: 14px;
+            color: var(--gray);
+            display: none;
+        }
+
+        .faq-item.open .faq-answer { display: block; }
+        .faq-item.open .faq-question::after { content: '−'; }
+
+        .feature-showcase {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin: 20px 0;
+        }
+
+        .showcase-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .showcase-card .icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .showcase-card h4 { font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 6px; }
+        .showcase-card p { font-size: 13px; color: var(--light-gray); margin: 0; line-height: 1.4; }
+
+        .tip-box {
+            background: var(--amber-light);
+            border: 1px solid rgba(230, 168, 23, 0.2);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            font-size: 14px;
+            color: var(--amber-dark);
+        }
+
+        .tip-box strong { display: block; margin-bottom: 4px; }
+
+        .contact-section {
+            background: linear-gradient(135deg, var(--amber-light), #FFF5E0);
+            border: 1px solid rgba(230, 168, 23, 0.2);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            margin-top: 48px;
+        }
+
+        .contact-section h3 { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+        .contact-section p { color: var(--gray); font-size: 14px; }
+        .contact-section a { color: var(--amber); font-weight: 600; text-decoration: none; }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 0;
+            text-align: center;
+        }
+
+        footer p { font-size: 13px; color: var(--light-gray); }
+        footer a { color: var(--amber); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 28px; }
+            .feature-showcase { grid-template-columns: 1fr; }
+            .navbar nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="container" style="max-width: 960px;">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L4 7v10l8 5 8-5V7l-8-5zm0 2.18L18 8v8l-6 3.82L6 16V8l6-3.82z"/></svg>
+                </div>
+                <span>Nectarix</span>
+            </a>
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="../privacy/index.html">Privacy</a>
+                <a href="index.html" class="active">Support</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Technical Support</h1>
+            <p>Everything you need to get started and make the most of Nectarix.</p>
+        </div>
+
+        <div class="content">
+            <h2>Getting Started</h2>
+            <p>Follow these steps to set up your beekeeping operation in Nectarix:</p>
+            <ol class="step-list">
+                <li>Open the <strong>Apiary</strong> tab and create your first apiary location</li>
+                <li>Switch to <strong>Colonies</strong> and add your hives to the apiary</li>
+                <li>Swipe left on a colony card to record an <strong>inspection</strong></li>
+                <li>Go to <strong>Nectar</strong> to add flora sources and log honey harvests</li>
+                <li>Use <strong>Seasons</strong> to plan and track seasonal activities</li>
+            </ol>
+
+            <h2>Features Overview</h2>
+            <div class="feature-showcase">
+                <div class="showcase-card">
+                    <div class="icon" style="background: rgba(230, 168, 23, 0.1);">🏠</div>
+                    <h4>Apiary Management</h4>
+                    <p>Multiple locations, hive counts, GPS coordinates, production stats dashboard.</p>
+                </div>
+                <div class="showcase-card">
+                    <div class="icon" style="background: rgba(76, 175, 80, 0.1);">🐝</div>
+                    <h4>Colony Tracking</h4>
+                    <p>Queen status, frame counts, weight logs, condition ratings, inspection history.</p>
+                </div>
+                <div class="showcase-card">
+                    <div class="icon" style="background: rgba(33, 150, 243, 0.1);">📋</div>
+                    <h4>Inspection Records</h4>
+                    <p>Brood frames, honey frames, temperament, population, observation notes.</p>
+                </div>
+                <div class="showcase-card">
+                    <div class="icon" style="background: rgba(255, 152, 0, 0.1);">🍯</div>
+                    <h4>Honey Production</h4>
+                    <p>Harvest logs, quality ratings, moisture tracking, source attribution, analytics charts.</p>
+                </div>
+                <div class="showcase-card">
+                    <div class="icon" style="background: rgba(156, 39, 176, 0.1);">🌸</div>
+                    <h4>Nectar Sources</h4>
+                    <p>Flora catalog, bloom calendars, abundance ratings, average yield data.</p>
+                </div>
+                <div class="showcase-card">
+                    <div class="icon" style="background: rgba(0, 150, 136, 0.1);">📅</div>
+                    <h4>Seasonal Planning</h4>
+                    <p>Task lists by season, priority levels, completion tracking, suggested activities.</p>
+                </div>
+            </div>
+
+            <h2>Tips & Tricks</h2>
+            <div class="tip-box">
+                <strong>Quick Delete</strong>
+                Swipe left on any card to reveal the delete action. Confirm to permanently remove the record.
+            </div>
+            <div class="tip-box">
+                <strong>Keyboard Dismiss</strong>
+                Tap the "Done" button above the keyboard to dismiss it, or tap anywhere outside the text field.
+            </div>
+            <div class="tip-box">
+                <strong>PDF Export</strong>
+                Go to Settings → Export Data to generate a comprehensive PDF report of all your records, then share via AirDrop, email, or save to Files.
+            </div>
+            <div class="tip-box">
+                <strong>Offline Mode</strong>
+                Nectarix works entirely offline. No internet connection is ever required. Your data is always accessible.
+            </div>
+
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item open">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">How is my data stored?</div>
+                <div class="faq-answer">All data is stored in a local SQLite database on your device. Nothing is ever sent to external servers. Your data is as secure as your device itself.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Can I backup my data?</div>
+                <div class="faq-answer">Yes. Use the Export Data feature in Settings to generate a PDF report. You can also rely on your device's built-in backup through iCloud device backup, which includes app data.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">What happens if I delete the app?</div>
+                <div class="faq-answer">All data stored within the app will be permanently removed. We strongly recommend exporting a PDF report before uninstalling.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Does the app need internet access?</div>
+                <div class="faq-answer">No. Nectarix is designed to work completely offline. All features function without any internet connection.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I record an inspection?</div>
+                <div class="faq-answer">Go to the Colonies tab, then either tap the Inspections sub-tab and use the + button, or swipe left on a colony card and tap "Inspect" to create an inspection linked to that specific colony.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Can I track multiple apiaries?</div>
+                <div class="faq-answer">Absolutely. You can create unlimited apiary locations, each with their own set of colonies. The dashboard shows aggregated statistics across all your apiaries.</div>
+            </div>
+
+            <h2>Troubleshooting</h2>
+            <ul>
+                <li><strong>App feels slow:</strong> Try closing and reopening the app. Performance may be affected with very large datasets.</li>
+                <li><strong>Data appears missing:</strong> Ensure you haven't accidentally deleted records. Check if you're viewing the correct filter/tab.</li>
+                <li><strong>PDF export fails:</strong> Ensure you have sufficient storage space on your device. Try restarting the app.</li>
+                <li><strong>Keyboard won't dismiss:</strong> Tap the "Done" button above the keyboard or tap outside the text field.</li>
+            </ul>
+
+            <div class="contact-section">
+                <h3>Still Need Help?</h3>
+                <p>Our support team is here to assist you.</p>
+                <p style="margin-top: 12px;"><a href="mailto:nectarix.app@outlook.com">nectarix.app@outlook.com</a></p>
+                <p style="font-size: 13px; margin-top: 8px; color: var(--light-gray);">We typically respond within 48 hours.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Nectarix. All rights reserved. | <a href="../privacy/index.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+</body>
+</html>
