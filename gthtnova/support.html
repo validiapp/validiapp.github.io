@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - GTHT Nova</title>
+    <style>
+        :root {
+            --primary: #2196F3;
+            --primary-light: #64B5F6;
+            --accent: #00BCD4;
+            --bg-dark: #0a0e27;
+            --bg-card: #111638;
+            --bg-card-alt: #161d48;
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+            --text-muted: #6b7a99;
+            --border: rgba(255,255,255,0.06);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+        .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border);
+            max-width: 1100px;
+            margin: 0 auto;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+        .nav-brand img { width: 32px; height: 32px; border-radius: 8px; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.88em;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 6px;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: white; background: rgba(255,255,255,0.05); }
+
+        header { text-align: center; padding: 60px 0 30px; }
+        header h1 {
+            font-size: 2.4em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        header p { color: var(--text-muted); margin-top: 8px; }
+
+        .faq-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 36px;
+            margin: 24px auto 24px;
+        }
+        .faq-section h2 {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            color: var(--primary-light);
+        }
+        .faq-item {
+            padding: 18px 20px;
+            background: var(--bg-card-alt);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border-left: 3px solid var(--primary);
+            transition: border-color 0.2s;
+        }
+        .faq-item:hover { border-color: var(--accent); }
+        .faq-item h3 {
+            font-size: 0.95em;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .faq-item p { color: var(--text-secondary); font-size: 0.88em; margin: 0; }
+
+        .contact-card {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 20px;
+            padding: 36px;
+            text-align: center;
+            margin: 24px auto;
+            box-shadow: 0 8px 40px rgba(33, 150, 243, 0.2);
+        }
+        .contact-card h2 { font-size: 1.5em; margin-bottom: 10px; }
+        .contact-card p { color: rgba(255,255,255,0.85); margin-bottom: 18px; }
+        .contact-card a {
+            color: white;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.1em;
+            background: rgba(255,255,255,0.15);
+            padding: 10px 24px;
+            border-radius: 10px;
+            display: inline-block;
+            transition: background 0.2s;
+        }
+        .contact-card a:hover { background: rgba(255,255,255,0.25); }
+
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            margin: 24px auto 60px;
+        }
+        .info-card h2 { font-size: 1.1em; margin-bottom: 16px; color: var(--primary-light); }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9em;
+        }
+        .info-row:last-child { border: none; }
+        .info-row .label { color: var(--text-muted); }
+        .info-row .value { font-weight: 600; }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.82em;
+        }
+        footer a { color: var(--primary-light); text-decoration: none; }
+
+        @media (max-width: 600px) {
+            .faq-section, .contact-card, .info-card { padding: 20px; }
+            header h1 { font-size: 1.8em; }
+            .nav-links { gap: 10px; }
+            .nav-links a { font-size: 0.8em; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-brand">
+            <img src="logo.png" alt="GTHT Nova">
+            GTHT Nova
+        </a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="support.html" class="active">Support</a>
+            <a href="privacy.html">Privacy</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Support</h1>
+        <p>We're here to help you breathe better.</p>
+    </header>
+
+    <div class="container">
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h3>How do I start a breathing session?</h3>
+                <p>Open the Breathe tab, select a mode from the horizontal list, then tap the play button. Adjust cycles before starting if needed.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I pause during a session?</h3>
+                <p>Yes. Tap the pause button during an active session. Tap play to resume exactly where you left off.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What breathing modes are available?</h3>
+                <p>6 modes: Relaxation (4-7-8), Box Breathing (4-4-4-4), Energize (6-0-2), Deep Calm (5-5-5), Focus (4-4-6), and Sleep (4-7-8).</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I customize the pattern?</h3>
+                <p>Yes. Go to Settings → Breathing Rhythm to adjust inhale, hold, exhale durations and cycle count independently.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Where is my data stored?</h3>
+                <p>All data lives on your device in a local database. Nothing is transmitted anywhere. Your sessions are 100% private.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I export my data?</h3>
+                <p>Settings → Data → Export Report. A PDF is generated locally and shared via the system share sheet (AirDrop, email, etc.).</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I delete all data?</h3>
+                <p>Settings → Data → Delete All Data. This permanently removes all sessions. Uninstalling also clears everything.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is the Science tab?</h3>
+                <p>It contains 7 evidence-based training protocols with detailed steps, benefits, and a progression path from beginner to advanced.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Does the app need internet?</h3>
+                <p>No. Every feature works 100% offline. The only network action is when you share an exported PDF.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How does streak tracking work?</h3>
+                <p>Complete at least one session per day. Your streak counts consecutive active days and resets if you miss one.</p>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <h2>Still need help?</h2>
+            <p>We'd love to hear from you — feedback, bugs, or feature ideas.</p>
+            <a href="mailto:validiapp@gmail.com">validiapp@gmail.com</a>
+        </div>
+
+        <div class="info-card">
+            <h2>App Details</h2>
+            <div class="info-row"><span class="label">Name</span><span class="value">GTHT Nova</span></div>
+            <div class="info-row"><span class="label">Version</span><span class="value">1.0.0</span></div>
+            <div class="info-row"><span class="label">Platform</span><span class="value">iOS 13.0+</span></div>
+            <div class="info-row"><span class="label">Data Storage</span><span class="value">Local only</span></div>
+            <div class="info-row"><span class="label">Internet</span><span class="value">Not required</span></div>
+            <div class="info-row"><span class="label">Account</span><span class="value">Not required</span></div>
+            <div class="info-row"><span class="label">Tracking</span><span class="value">None</span></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 GTHT Nova. All rights reserved.</p>
+        <p style="margin-top: 6px;"><a href="index.html">Home</a> · <a href="privacy.html">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>
