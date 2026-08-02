@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — AgentVault</title>
+    <style>
+        :root {
+            --primary: #2164C3;
+            --bg: #F5F7FA;
+            --card-bg: #FFFFFF;
+            --text: #1C2433;
+            --text-secondary: #6B778C;
+            --border: #E5E8EC;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 0 24px;
+        }
+
+        .nav-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+        }
+
+        .nav-brand {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-brand svg { width: 28px; height: 28px; }
+
+        .nav-links { display: flex; gap: 28px; }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        .content {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 100px 24px 80px;
+        }
+
+        .page-header {
+            margin-bottom: 48px;
+        }
+
+        .page-header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .page-header .date {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .card h2 {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+
+        .card p, .card li {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .card ul {
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+
+        .card li { margin-bottom: 6px; }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #F0F4FF 0%, #E8EEFF 100%);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-top: 16px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .highlight-box p {
+            font-size: 14px;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .footer {
+            background: var(--text);
+            color: rgba(255,255,255,0.7);
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover { color: white; }
+
+        .footer-copy { font-size: 13px; opacity: 0.6; }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand">
+                <svg viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="#2164C3"/><path d="M14 5L22 9V15C22 19.4 18.6 23.3 14 24C9.4 23.3 6 19.4 6 15V9L14 5Z" fill="white" fill-opacity="0.9"/><circle cx="14" cy="13" r="3" fill="#2164C3"/></svg>
+                AgentVault
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="support.html">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="page-header">
+            <h1>Privacy Policy</h1>
+            <p class="date">Last updated: August 2, 2026</p>
+        </div>
+
+        <div class="card">
+            <h2>Overview</h2>
+            <p>AgentVault is designed with your privacy as a core principle. This application operates entirely offline and does not collect, transmit, or share any personal data. All information you enter into the app remains exclusively on your device.</p>
+        </div>
+
+        <div class="card">
+            <h2>Data Collection</h2>
+            <p>AgentVault does <strong>not</strong> collect any of the following:</p>
+            <ul>
+                <li>Personal identification information (name, email, phone number)</li>
+                <li>Location data</li>
+                <li>Device identifiers or fingerprints</li>
+                <li>Usage analytics or behavioral data</li>
+                <li>Crash reports or diagnostic data</li>
+                <li>Cookies or tracking technologies</li>
+            </ul>
+            <div class="highlight-box">
+                <p>The app requires no internet connection to function. All features work completely offline.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Data Storage</h2>
+            <p>All data entered into AgentVault is stored locally on your device using the iOS standard data persistence mechanisms. This data includes:</p>
+            <ul>
+                <li>Workflow records and configurations you create</li>
+                <li>Activity logs and execution history</li>
+                <li>Your app preferences and settings</li>
+            </ul>
+            <p>This data is never transmitted to any server, third-party service, or external system. It resides solely within the application's sandboxed storage on your iOS device.</p>
+        </div>
+
+        <div class="card">
+            <h2>Third-Party Services</h2>
+            <p>AgentVault does not integrate with any third-party analytics, advertising, or data processing services. No SDKs or frameworks that collect user data are included in the application.</p>
+        </div>
+
+        <div class="card">
+            <h2>Data Deletion</h2>
+            <p>You have complete control over your data at all times:</p>
+            <ul>
+                <li>Use the "Clear All Data" option in Settings to permanently remove all stored information</li>
+                <li>Uninstalling the app will remove all associated data from your device</li>
+                <li>Individual records can be deleted through the standard app interface</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Children's Privacy</h2>
+            <p>AgentVault is a general-purpose utility application. It does not knowingly collect any information from children or any other users, as it collects no data whatsoever.</p>
+        </div>
+
+        <div class="card">
+            <h2>Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time. Any changes will be reflected with an updated date at the top of this page. We encourage you to review this policy periodically.</p>
+        </div>
+
+        <div class="card">
+            <h2>Contact</h2>
+            <p>If you have any questions about this Privacy Policy, please visit our <a href="support.html" style="color: var(--primary); font-weight: 600;">Support page</a> for contact information.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="support.html">Support</a>
+        </div>
+        <p class="footer-copy">&copy; 2026 AgentVault. All rights reserved.</p>
+    </footer>
+</body>
+</html>
