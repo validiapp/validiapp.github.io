@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucantra — Beetle Breeding Ledger</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #1B5E20;
+            --primary-light: #2E7D32;
+            --accent: #FF6F00;
+            --bg: #FAFAF5;
+            --card: #FFFFFF;
+            --text: #1A1A2E;
+            --text-secondary: #6B7280;
+            --border: #E8E8E0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250,250,245,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 0 24px;
+        }
+        
+        nav .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        
+        nav .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.3px;
+        }
+        
+        nav .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            margin-left: 32px;
+            transition: color 0.2s;
+        }
+        
+        nav .nav-links a:hover { color: var(--primary); }
+        
+        .hero {
+            padding: 160px 24px 100px;
+            text-align: center;
+            background: linear-gradient(180deg, #F0F7F0 0%, var(--bg) 100%);
+        }
+        
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+        
+        .hero h1 span { color: var(--primary); }
+        
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto 36px;
+            line-height: 1.7;
+        }
+        
+        .hero .cta-group {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(27,94,32,0.25);
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(27,94,32,0.3);
+        }
+        
+        .btn-secondary {
+            background: var(--card);
+            color: var(--text);
+            border: 1.5px solid var(--border);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 24px;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+        
+        .section h2 {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 700;
+            letter-spacing: -0.8px;
+            margin-bottom: 16px;
+        }
+        
+        .section > p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.7;
+            margin-bottom: 48px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .feature-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+            border-color: transparent;
+        }
+        
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 18px;
+        }
+        
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 24px;
+        }
+        
+        .step-number {
+            width: 44px;
+            height: 44px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0 auto 16px;
+        }
+        
+        .step h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .highlight-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 24px;
+            padding: 64px 48px;
+            color: #fff;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .highlight-section h2 {
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        
+        .highlight-section p {
+            color: rgba(255,255,255,0.85);
+            max-width: 560px;
+            margin: 0 auto;
+            font-size: 16px;
+        }
+        
+        .privacy-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 24px;
+        }
+        
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 48px 24px;
+            text-align: center;
+        }
+        
+        footer .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        footer .footer-links {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        footer .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        footer .footer-links a:hover { color: var(--primary); }
+        
+        footer .copyright {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 640px) {
+            .hero { padding: 120px 20px 60px; }
+            .section { padding: 60px 20px; }
+            .highlight-section { padding: 40px 24px; margin: 20px 0; }
+            nav .nav-links a { margin-left: 16px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="logo">Lucantra</a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="support.html">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Beetle breeding,<br><span>made accountable.</span></h1>
+        <p>Track every expense, monitor colony health, and manage your beetle breeding operation with a purpose-built financial ledger.</p>
+        <div class="cta-group">
+            <a href="#features" class="btn btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                Explore Features
+            </a>
+            <a href="support.html" class="btn btn-secondary">Get Support</a>
+        </div>
+    </section>
+
+    <section class="section" id="features">
+        <div class="section-title">Features</div>
+        <h2>Everything you need to run your colony.</h2>
+        <p>From daily feeding costs to specimen sales, Lucantra gives you full visibility into the financial side of beetle breeding.</p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #E8F5E9; color: #2E7D32;">📊</div>
+                <h3>Capital Overview</h3>
+                <p>See your net balance, monthly income and expenses at a glance with interactive charts and trend analysis.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #FFF3E0; color: #E65100;">📋</div>
+                <h3>Transaction Ledger</h3>
+                <p>Record every purchase, sale, and operational cost. Filter by date, category, or type with a built-in calendar view.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #F3E5F5; color: #7B1FA2;">🔬</div>
+                <h3>Science Lab</h3>
+                <p>Track specimen data including species, life stage, weight, length, substrate, temperature and humidity conditions.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #E3F2FD; color: #1565C0;">📈</div>
+                <h3>Expense Breakdown</h3>
+                <p>Visualise spending across categories like feeding, substrate, equipment, breeding, and veterinary care.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #FBE9E7; color: #BF360C;">🗂️</div>
+                <h3>Smart Categories</h3>
+                <p>Eleven built-in categories tailored to beetle breeding: feeding, substrate, equipment, housing, and more.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #E0F2F1; color: #00695C;">🔒</div>
+                <h3>Fully Offline</h3>
+                <p>All data stays on your device. No accounts, no cloud sync, no internet required. Your records belong to you.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-title">How It Works</div>
+        <h2>From first record to full visibility.</h2>
+        <p>Three steps to bring order to your beetle breeding finances.</p>
+        
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Add a Transaction</h3>
+                <p>Choose income or expense, pick a category, enter the amount, and save. It takes seconds.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Track Specimens</h3>
+                <p>Log species, life stage, measurements, and environment details for each colony or individual.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Review Trends</h3>
+                <p>Check monthly trends, category breakdowns, and net balance to make informed breeding decisions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="highlight-section">
+            <h2>Private by design.</h2>
+            <p>No registration, no email, no cloud. Lucantra stores everything locally on your device. Your breeding records and financial data never leave your phone.</p>
+            <div class="privacy-badge">
+                🛡️ Read the <a href="privacy.html" style="color: #fff; text-decoration: underline; margin-left: 4px;">Privacy Policy</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="support.html">Technical Support</a>
+                <a href="mailto:support@lucantra.app">Contact</a>
+            </div>
+            <p class="copyright">© 2026 Lucantra. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
