@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Herbloom</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --sage: #789978;
+            --sage-dark: #5a7a5a;
+            --sage-light: #d4e4d4;
+            --cream: #faf8f5;
+            --warm-dark: #c89a78;
+            --text: #2e2e33;
+            --text-secondary: #7a7a80;
+            --card-bg: #ffffff;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        nav {
+            padding: 20px 0;
+            background: rgba(250, 248, 245, 0.9);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(120, 153, 120, 0.1);
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--sage-dark);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        .logo span { color: var(--warm-dark); }
+        .nav-links { display: flex; gap: 32px; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--sage-dark); }
+        
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+        nav .container { max-width: 960px; }
+        
+        .page-header {
+            padding: 72px 0 40px;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 40px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+        
+        .content {
+            padding-bottom: 80px;
+        }
+        .content section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.03);
+        }
+        .content h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--sage-dark);
+        }
+        .content p, .content li {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        .content ul {
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+        .content li { margin-bottom: 6px; }
+        
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid rgba(120, 153, 120, 0.1);
+            text-align: center;
+        }
+        footer .container {
+            max-width: 960px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a {
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .footer-links a:hover { color: var(--sage-dark); }
+        
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 28px; }
+            footer .container { flex-direction: column; gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Herb<span>bloom</span></a>
+            <div class="nav-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="support.html">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p>Last updated: August 2, 2026</p>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="container">
+            <section>
+                <h2>Overview</h2>
+                <p>Herbloom is designed with privacy as a core principle. The application operates entirely offline and does not collect, transmit, or store any personal information on external servers. All data you create within the app remains exclusively on your device.</p>
+            </section>
+
+            <section>
+                <h2>Data Collection</h2>
+                <p>Herbloom does not collect any personal data. Specifically, the app does not collect or process:</p>
+                <ul>
+                    <li>Names, email addresses, or contact information</li>
+                    <li>Location or geolocation data</li>
+                    <li>Device identifiers or advertising identifiers</li>
+                    <li>Usage analytics or behavioral tracking data</li>
+                    <li>Financial account numbers or payment information</li>
+                    <li>Photos, contacts, or other device content</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Data Storage</h2>
+                <p>All transaction records, inventory items, theme preferences, and application settings are stored locally on your device using standard iOS storage mechanisms. This data never leaves your device and is not accessible to the developer or any third party.</p>
+            </section>
+
+            <section>
+                <h2>Third-Party Services</h2>
+                <p>Herbloom does not integrate with any third-party analytics, advertising, or data collection services. The app does not contain any advertising SDKs, tracking pixels, or external data collection frameworks.</p>
+            </section>
+
+            <section>
+                <h2>Network Access</h2>
+                <p>Herbloom does not require an internet connection to function. The app does not make any network requests, API calls, or server connections. All functionality is available completely offline.</p>
+            </section>
+
+            <section>
+                <h2>Data Deletion</h2>
+                <p>You can delete all stored data at any time through the Settings section within the app. Uninstalling the application will also permanently remove all associated data from your device.</p>
+            </section>
+
+            <section>
+                <h2>Children's Privacy</h2>
+                <p>Herbloom does not knowingly collect information from children under the age of 13. The app does not require any form of registration or personal information input to operate.</p>
+            </section>
+
+            <section>
+                <h2>Changes to This Policy</h2>
+                <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated revision date. We encourage you to review this policy periodically.</p>
+            </section>
+
+            <section>
+                <h2>Contact</h2>
+                <p>If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:support@herbloom.app" style="color: var(--sage-dark);">support@herbloom.app</a>.</p>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Herbloom. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="support.html">Technical Support</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
