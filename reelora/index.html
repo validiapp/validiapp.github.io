@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reelora — Beetle Breeding Ledger</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #1565C0;
+            --primary-light: #42A5F5;
+            --primary-dark: #0D47A1;
+            --accent: #E3F2FD;
+            --text: #1A1A2E;
+            --subtitle: #6B7280;
+            --bg: #F8FAFE;
+            --card: #FFFFFF;
+            --success: #22C55E;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        
+        nav .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        nav .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        
+        nav .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        
+        nav .nav-links a {
+            text-decoration: none;
+            color: var(--subtitle);
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        nav .nav-links a:hover { color: var(--primary); }
+        
+        .hero {
+            padding: 160px 24px 100px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 56px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            color: var(--subtitle);
+            max-width: 560px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+        
+        .hero .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 16px rgba(21,101,192,0.3);
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(21,101,192,0.4);
+        }
+        
+        .btn-secondary {
+            background: var(--accent);
+            color: var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background: #d0e8ff;
+            transform: translateY(-2px);
+        }
+        
+        section {
+            padding: 100px 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            margin-bottom: 16px;
+        }
+        
+        .section-title p {
+            font-size: 17px;
+            color: var(--subtitle);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .feature-card {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 36px 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+        
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .feature-card p {
+            font-size: 15px;
+            color: var(--subtitle);
+            line-height: 1.6;
+        }
+        
+        .steps-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 28px;
+            padding: 72px 48px;
+            color: white;
+            margin: 0 24px;
+            max-width: 1100px;
+        }
+        
+        @media (min-width: 1148px) {
+            .steps-section { margin: 0 auto; }
+        }
+        
+        .steps-section h2 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 56px;
+        }
+        
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+        }
+        
+        .step {
+            text-align: center;
+        }
+        
+        .step-number {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 800;
+            margin: 0 auto 16px;
+        }
+        
+        .step h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            font-size: 14px;
+            opacity: 0.85;
+            line-height: 1.6;
+        }
+        
+        .privacy-note {
+            text-align: center;
+            padding: 80px 24px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .privacy-note .lock-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 24px;
+        }
+        
+        .privacy-note h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .privacy-note p {
+            color: var(--subtitle);
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+        
+        footer {
+            border-top: 1px solid rgba(0,0,0,0.06);
+            padding: 40px 24px;
+            text-align: center;
+        }
+        
+        footer .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        footer .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+        
+        footer .footer-links a {
+            color: var(--subtitle);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        
+        footer .footer-links a:hover { color: var(--primary); }
+        
+        footer .copyright {
+            color: var(--subtitle);
+            font-size: 13px;
+        }
+        
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 32px; }
+            .steps-section { padding: 48px 24px; margin: 0 16px; }
+            nav .nav-links { gap: 16px; }
+            footer .footer-inner { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="/" class="logo">Reelora</a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="privacy">Privacy</a></li>
+                <li><a href="support">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Beetle breeding, beautifully tracked.</h1>
+        <p>Manage your entire beetle collection, track breeding expenses, and organize care tasks — all in one elegant, offline-first app.</p>
+        <div class="cta-group">
+            <a href="#features" class="btn btn-primary">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-1 14V8l6 4-6 4z"/></svg>
+                Explore Features
+            </a>
+            <a href="support" class="btn btn-secondary">Get Support</a>
+        </div>
+    </div>
+
+    <section id="features">
+        <div class="section-title">
+            <h2>Everything you need, nothing you don't.</h2>
+            <p>Purpose-built tools for beetle breeders who care about detail and organization.</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #E8F5E9;">🪲</div>
+                <h3>Reserve Collection</h3>
+                <p>Track every beetle by species, life stage, gender, weight, and length. Monitor their progress from egg through adult.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #E3F2FD;">📊</div>
+                <h3>Financial Balance</h3>
+                <p>Record income and expenses across categories like feeding, housing, breeding, and sales. See monthly trends at a glance.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #FFF3E0;">✅</div>
+                <h3>Task Management</h3>
+                <p>Never miss a feeding schedule or substrate change. Organize tasks by priority with calendar integration.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #FCE4EC;">📈</div>
+                <h3>Visual Analytics</h3>
+                <p>Beautiful charts show your spending patterns, income trends, and category breakdowns over the past six months.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #F3E5F5;">🔒</div>
+                <h3>Fully Offline</h3>
+                <p>All data stays on your device. No account required, no cloud sync, no tracking. Your collection, your privacy.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #E0F7FA;">🎨</div>
+                <h3>Clean Design</h3>
+                <p>A polished, intuitive interface with smooth animations that makes managing your collection a pleasure.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="steps-section">
+        <h2>From first beetle to full breeding program.</h2>
+        <div class="steps-grid">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Add Your Beetles</h3>
+                <p>Record species, nickname, life stage, and measurements for each specimen in your collection.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Track Finances</h3>
+                <p>Log every purchase and sale with detailed categories to understand your breeding economics.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Manage Tasks</h3>
+                <p>Set reminders for feeding, substrate changes, and health checks with priority levels.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Review Insights</h3>
+                <p>See trends, charts, and summaries that help you make better breeding decisions.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="privacy-note">
+        <div class="lock-icon">🔐</div>
+        <h3>Private by design.</h3>
+        <p>Reelora stores everything locally on your device. No registration, no cloud accounts, no data collection. Your beetle records never leave your phone.</p>
+        <a href="privacy" class="btn btn-secondary">Read the Privacy Policy</a>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <span class="copyright">&copy; 2026 Reelora. All rights reserved.</span>
+            <ul class="footer-links">
+                <li><a href="privacy">Privacy Policy</a></li>
+                <li><a href="support">Technical Support</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
