@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oakora - Vintage Furniture Care</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8fafe 0%, #e8f0fa 100%);
+            color: #1e2430;
+            line-height: 1.6;
+        }
+        .hero {
+            background: linear-gradient(135deg, #2e73c2 0%, #1a3d6b 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+        }
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #e8f2ff, #d0e4fa);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        .feature-card h3 {
+            font-size: 1.2em;
+            margin-bottom: 8px;
+            color: #1a3d6b;
+        }
+        .feature-card p {
+            color: #6b7280;
+            font-size: 0.95em;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2em;
+            color: #1a3d6b;
+            margin-bottom: 12px;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+        .footer {
+            background: #1a2740;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .footer a {
+            color: #7ab3e8;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .footer p {
+            margin-top: 16px;
+            opacity: 0.6;
+            font-size: 0.9em;
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 24px;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 24px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            font-size: 0.95em;
+            transition: background 0.3s;
+        }
+        .nav a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        .screenshots {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+        .screenshot-placeholder {
+            width: 200px;
+            height: 380px;
+            background: linear-gradient(180deg, #2e73c2, #4a90d9);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9em;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 8px 30px rgba(46, 115, 194, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Oakora</h1>
+        <p>Your dedicated companion for preserving and maintaining vintage furniture collections with care and precision.</p>
+        <div class="nav">
+            <a href="privacy">Privacy Policy</a>
+            <a href="support">Support</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h2 class="section-title">Features</h2>
+        <p class="section-subtitle">Everything you need to care for your treasured furniture</p>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">📦</div>
+                <h3>Digital Archive</h3>
+                <p>Catalog your entire furniture collection with detailed records including origin, material, dimensions, and condition tracking.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Care Scheduling</h3>
+                <p>Set up recurring maintenance reminders for cleaning, polishing, inspection, and restoration tasks.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Collection Insights</h3>
+                <p>Visualize your collection's value, maintenance spending, and condition trends with beautiful charts.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>Maintenance History</h3>
+                <p>Keep detailed records of every maintenance activity, cost, and service provider for each piece.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Offline First</h3>
+                <p>All data stored locally on your device. No internet required, no cloud sync, complete privacy.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3>Calendar View</h3>
+                <p>See all upcoming care tasks in a calendar interface. Never miss a maintenance window again.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Preview</h2>
+        <p class="section-subtitle">Designed for furniture enthusiasts</p>
+        
+        <div class="screenshots">
+            <div class="screenshot-placeholder">Archive<br>Your Collection</div>
+            <div class="screenshot-placeholder">Schedule<br>Care Tasks</div>
+            <div class="screenshot-placeholder">Track<br>Insights</div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <a href="privacy">Privacy Policy</a>
+        <a href="support">Technical Support</a>
+        <p>&copy; 2026 Oakora. All rights reserved.</p>
+    </div>
+</body>
+</html>
