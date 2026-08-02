@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgentVault — Organize Your Digital Workflows</title>
+    <style>
+        :root {
+            --primary: #2164C3;
+            --primary-light: #3B82E0;
+            --primary-dark: #14479A;
+            --bg: #F5F7FA;
+            --card-bg: #FFFFFF;
+            --text: #1C2433;
+            --text-secondary: #6B778C;
+            --text-tertiary: #9EA7B3;
+            --accent: #339AF5;
+            --success: #22BA72;
+            --border: #E5E8EC;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 0 24px;
+        }
+
+        .nav-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+        }
+
+        .nav-brand {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-brand svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        .hero {
+            padding: 140px 24px 80px;
+            text-align: center;
+            background: linear-gradient(165deg, #0B2E66 0%, #1D54A8 45%, #2B6CD4 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59,130,224,0.25) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.85;
+            max-width: 560px;
+            margin: 0 auto 36px;
+            line-height: 1.7;
+            position: relative;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: var(--primary);
+            font-size: 15px;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        .section {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 80px 24px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 48px;
+            max-width: 540px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid var(--border);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+        }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .steps-section { background: white; }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .step h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .step p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .privacy-highlight {
+            background: linear-gradient(135deg, #F0F4FF 0%, #E8EEFF 100%);
+            border-radius: 20px;
+            padding: 48px;
+            text-align: center;
+            border: 1px solid rgba(33,100,195,0.1);
+        }
+
+        .privacy-highlight h2 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .privacy-highlight p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin: 0 auto 24px;
+        }
+
+        .privacy-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .privacy-link:hover { text-decoration: underline; }
+
+        .footer {
+            background: var(--text);
+            color: rgba(255,255,255,0.7);
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: white; }
+
+        .footer-copy {
+            font-size: 13px;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 640px) {
+            .nav-links { gap: 16px; }
+            .privacy-highlight { padding: 32px 20px; }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand">
+                <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="28" height="28" rx="6" fill="#2164C3"/>
+                    <path d="M14 5L22 9V15C22 19.4 18.6 23.3 14 24C9.4 23.3 6 19.4 6 15V9L14 5Z" fill="white" fill-opacity="0.9"/>
+                    <circle cx="14" cy="13" r="3" fill="#2164C3"/>
+                    <circle cx="10" cy="16" r="1.5" fill="#2164C3" fill-opacity="0.6"/>
+                    <circle cx="18" cy="16" r="1.5" fill="#2164C3" fill-opacity="0.6"/>
+                    <line x1="14" y1="13" x2="10" y2="16" stroke="#2164C3" stroke-width="1" stroke-opacity="0.4"/>
+                    <line x1="14" y1="13" x2="18" y2="16" stroke="#2164C3" stroke-width="1" stroke-opacity="0.4"/>
+                </svg>
+                AgentVault
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="support.html">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Organize Your<br>Digital Workflows</h1>
+        <p>A simple, secure tool to record and manage your automated task activities. Everything stays on your device.</p>
+        <a href="#features" class="hero-cta">
+            Explore Features
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </a>
+    </section>
+
+    <section class="section" id="features">
+        <h2 class="section-title">Everything You Need</h2>
+        <p class="section-subtitle">Comprehensive tools for tracking and managing your automated workflows, entirely offline.</p>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">&#x1F4CB;</div>
+                <h3>Task Registry</h3>
+                <p>Create detailed records for each automated process, including platform, category, and custom tags for easy organization.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#x1F4CA;</div>
+                <h3>Visual Analytics</h3>
+                <p>Interactive charts and dashboards showing performance trends, success rates, and activity distribution at a glance.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#x1F4C5;</div>
+                <h3>Activity Timeline</h3>
+                <p>Calendar-integrated activity feed with filtering by event type. See what happened and when, with full detail.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#x1F50D;</div>
+                <h3>Smart Search</h3>
+                <p>Instantly find records by name, tag, platform, or description. Filter by status to focus on what matters.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#x1F512;</div>
+                <h3>Fully Offline</h3>
+                <p>All data is stored locally on your device. No accounts, no cloud sync, no data collection. Your information stays private.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#x26A1;</div>
+                <h3>Performance Metrics</h3>
+                <p>Track success rates, execution counts, and runtime duration for each workflow with detailed log entries.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="steps-section">
+        <div class="section" style="padding-top: 64px; padding-bottom: 64px;">
+            <h2 class="section-title">Getting Started</h2>
+            <p class="section-subtitle">Begin organizing your automated workflows in three simple steps.</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>
+                        <h3>Register a Workflow</h3>
+                        <p>Add a new record with the name, category, platform, and a brief description of what it does.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>
+                        <h3>Log Activities</h3>
+                        <p>Record execution events with outcomes and timestamps to build a complete history.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>
+                        <h3>Review Insights</h3>
+                        <p>Use the analytics dashboard to spot trends, identify issues, and optimize your processes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="privacy-highlight">
+            <h2>Private by Design</h2>
+            <p>No registration required. No email addresses collected. No cloud storage. All your data lives exclusively on your device.</p>
+            <a href="privacy.html" class="privacy-link">
+                Read the Privacy Policy
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="support.html">Support</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 AgentVault. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
