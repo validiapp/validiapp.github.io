@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Support - NeedleLace</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #1B3A4B;
+            --secondary: #3D5A80;
+            --accent: #E07A5F;
+            --bg: #F8F6F2;
+            --card: #FFFFFF;
+            --text: #1C1C1E;
+            --text-secondary: #8E8E93;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 48px 20px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        header p {
+            opacity: 0.8;
+            font-size: 15px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 16px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .back-link:hover { color: white; }
+        
+        .content {
+            max-width: 720px;
+            margin: -24px auto 0;
+            padding: 0 20px 60px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .support-card {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 40px 36px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            margin-bottom: 24px;
+        }
+        
+        .support-card h2 {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+        
+        .support-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+        
+        .contact-box {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 16px;
+            padding: 28px;
+            color: white;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        
+        .contact-box h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+        
+        .contact-box a {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid #E5E5EA;
+            padding: 20px 0;
+        }
+        
+        .faq-item:last-child { border-bottom: none; }
+        
+        .faq-item h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .faq-item h3::before {
+            content: '▸';
+            color: var(--accent);
+            font-size: 14px;
+            transition: transform 0.3s;
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            padding-left: 22px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin: 16px 0;
+        }
+        
+        .feature-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            color: var(--text-secondary);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .feature-list li span {
+            font-size: 20px;
+        }
+        
+        .feature-list li:last-child { border-bottom: none; }
+        
+        .system-req {
+            background: var(--bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+        }
+        
+        .system-req p {
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+        
+        footer a { color: var(--accent); text-decoration: none; }
+        
+        @media (max-width: 640px) {
+            header h1 { font-size: 28px; }
+            .support-card { padding: 28px 22px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../" class="back-link">&larr; Back to Home</a>
+        <h1>Technical Support</h1>
+        <p>We're here to help you get the most out of NeedleLace</p>
+    </header>
+
+    <div class="content">
+        <div class="contact-box">
+            <h3>Need Help?</h3>
+            <p style="opacity: 0.8; margin-bottom: 12px;">Reach out to our support team</p>
+            <a href="mailto:support@needlelace.app">support@needlelace.app</a>
+        </div>
+
+        <div class="support-card">
+            <h2>App Features</h2>
+            <ul class="feature-list">
+                <li><span>📊</span> Revenue dashboard with income, profit, and cash flow tracking</li>
+                <li><span>📒</span> Complete financial ledger for materials, labor, and order expenses</li>
+                <li><span>🧵</span> Embroidery commission management with status tracking</li>
+                <li><span>⏱</span> Work hour logging with hourly rate calculations</li>
+                <li><span>📈</span> Interactive charts for financial analysis and trends</li>
+                <li><span>💰</span> Automatic profit and margin calculations per order</li>
+                <li><span>📅</span> Due date tracking and overdue alerts</li>
+                <li><span>🔒</span> Fully offline — all data stored locally on your device</li>
+            </ul>
+        </div>
+
+        <div class="support-card">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <h3>How do I add a new transaction?</h3>
+                <p>Navigate to the Ledger tab and tap the "+" button at the bottom right. Select the transaction type (income, material cost, order expense, etc.), enter the amount, add a note, and select the date.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>How do I create a new commission order?</h3>
+                <p>Go to the Commissions tab and tap the "+" button. Fill in the client name, project title, technique, estimated hours, hourly rate, material costs, and quoted price. Set a due date and add any relevant notes.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>How do I track work hours?</h3>
+                <p>Open any order from the Commissions tab and tap "Log Hours". Enter the number of hours worked, and they will be added to the order's actual hours. The progress bar and profit calculations update automatically.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Can I view financial trends over time?</h3>
+                <p>Yes! The Revenue tab shows a 6-month bar chart comparing income vs. expenses, along with a pie chart showing your expense breakdown by category.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Is my data backed up?</h3>
+                <p>All data is stored locally on your device and will be included in your standard iOS backup (iCloud or computer backup). We recommend keeping regular backups of your device.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>How do I clear all data?</h3>
+                <p>Go to Settings and tap "Clear Data". You will be asked to confirm before any data is deleted. This action cannot be undone.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Does the app require internet?</h3>
+                <p>No. NeedleLace works entirely offline. No internet connection is needed to use any feature of the app.</p>
+            </div>
+        </div>
+
+        <div class="support-card">
+            <h2>System Requirements</h2>
+            <div class="system-req">
+                <p><strong>Platform:</strong> iOS</p>
+                <p><strong>Minimum Version:</strong> iOS 14.0</p>
+                <p><strong>Device:</strong> iPhone</p>
+                <p><strong>Storage:</strong> Minimal — data stored efficiently on device</p>
+                <p><strong>Network:</strong> Not required</p>
+            </div>
+        </div>
+
+        <div class="support-card">
+            <h2>Getting Started</h2>
+            <p>1. <strong>Set up your first order:</strong> Go to the Commissions tab and add your current embroidery projects with client details, pricing, and deadlines.</p>
+            <p>2. <strong>Record transactions:</strong> Use the Ledger tab to log income from completed orders and track material purchases and other expenses.</p>
+            <p>3. <strong>Monitor your finances:</strong> Check the Revenue tab regularly to see your income trends, profit margins, and financial overview.</p>
+            <p>4. <strong>Track progress:</strong> Log hours against your orders and update their status as you work through each commission.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 NeedleLace. All rights reserved. | <a href="../privacy/">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>
