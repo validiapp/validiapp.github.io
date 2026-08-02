@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinerva - Finger Dexterity Training</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+            background: #f8fdf8;
+            color: #262630;
+            line-height: 1.6;
+        }
+        .nav {
+            background: white;
+            padding: 18px 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #262630;
+        }
+        .nav-brand img {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+        }
+        .nav-brand span {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #2eb870;
+        }
+        .hero {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 24px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #1a1a2e;
+        }
+        .hero h1 span {
+            color: #2eb870;
+        }
+        .hero p {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 36px;
+        }
+        .features {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 24px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(46,184,112,0.1);
+        }
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            background: rgba(46,184,112,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            font-size: 24px;
+        }
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1a1a2e;
+        }
+        .feature-card p {
+            font-size: 14px;
+            color: #777;
+            line-height: 1.7;
+        }
+        .cta-section {
+            text-align: center;
+            padding: 80px 24px;
+            background: linear-gradient(135deg, #e8f8f0 0%, #f0fdf5 100%);
+            margin-top: 40px;
+        }
+        .cta-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1a1a2e;
+        }
+        .cta-section p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .btn-primary {
+            display: inline-block;
+            padding: 14px 36px;
+            background: #2eb870;
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .btn-primary:hover {
+            background: #25a060;
+            transform: translateY(-2px);
+        }
+        .footer {
+            background: white;
+            padding: 40px 24px;
+            text-align: center;
+            border-top: 1px solid #eef5f0;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            text-decoration: none;
+            color: #666;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: #2eb870;
+        }
+        .footer p {
+            font-size: 13px;
+            color: #999;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 16px; }
+            .nav-links { display: none; }
+            .features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">
+                <span>Kinerva</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="privacy">Privacy Policy</a></li>
+                <li><a href="support">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Train Your <span>Finger Dexterity</span></h1>
+        <p>A comprehensive tool designed to help you improve hand coordination, finger flexibility, and fine motor control through guided daily exercises.</p>
+    </section>
+
+    <section class="features" id="features">
+        <div class="feature-card">
+            <div class="feature-icon">&#9995;</div>
+            <h3>Guided Exercises</h3>
+            <p>Multiple exercise types targeting different finger movements including tapping, spreading, gripping, and sequential patterns.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">&#128200;</div>
+            <h3>Progress Tracking</h3>
+            <p>Detailed statistics and visual charts to monitor your improvement over time with daily, weekly, and monthly breakdowns.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">&#128161;</div>
+            <h3>Smart Insights</h3>
+            <p>Personalized recommendations based on your performance data to help you focus on areas that need improvement.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">&#127942;</div>
+            <h3>Streak & Goals</h3>
+            <p>Stay motivated with daily streaks, weekly goals, and achievement milestones that celebrate your consistency.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">&#128338;</div>
+            <h3>Session Timer</h3>
+            <p>Built-in timer with real-time tracking of duration, repetitions, and accuracy for each exercise session.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">&#128274;</div>
+            <h3>Privacy First</h3>
+            <p>All data is stored locally on your device. No internet connection required, no data collection, complete privacy.</p>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Start Training Today</h2>
+        <p>Improve your finger dexterity with just a few minutes of daily practice.</p>
+        <a href="https://apps.apple.com" class="btn-primary">Download on App Store</a>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="privacy">Privacy Policy</a>
+            <a href="support">Technical Support</a>
+            <a href="mailto:support@kinerva.app">Contact Us</a>
+        </div>
+        <p>&copy; 2026 Kinerva. All rights reserved.</p>
+    </footer>
+</body>
+</html>
