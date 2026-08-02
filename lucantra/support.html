@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Support — Lucantra</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #1B5E20;
+            --primary-light: #2E7D32;
+            --bg: #FAFAF5;
+            --card: #FFFFFF;
+            --text: #1A1A2E;
+            --text-secondary: #6B7280;
+            --border: #E8E8E0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250,250,245,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 0 24px;
+        }
+        
+        nav .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        
+        nav .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        nav .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            margin-left: 32px;
+            transition: color 0.2s;
+        }
+        
+        nav .nav-links a:hover { color: var(--primary); }
+        
+        .content {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 120px 24px 80px;
+        }
+        
+        .page-badge {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            background: #E8F5E9;
+            padding: 6px 14px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            letter-spacing: -0.3px;
+        }
+        
+        p { font-size: 15px; color: var(--text-secondary); margin-bottom: 16px; }
+        
+        .faq-list { margin-top: 24px; }
+        
+        .faq-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+            margin-bottom: 14px;
+            transition: all 0.25s ease;
+        }
+        
+        .faq-item:hover {
+            border-color: var(--primary-light);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+        }
+        
+        .faq-item h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+        
+        .faq-item p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+        
+        .support-channels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+        
+        .channel-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px 24px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.25s ease;
+        }
+        
+        .channel-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            border-color: transparent;
+        }
+        
+        .channel-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+        
+        .channel-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        
+        .channel-card p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+        
+        .guide-section {
+            background: linear-gradient(135deg, #E8F5E9, #F1F8E9);
+            border-radius: 16px;
+            padding: 32px;
+            margin-top: 40px;
+        }
+        
+        .guide-section h2 {
+            margin-top: 0;
+            font-size: 20px;
+        }
+        
+        .guide-steps {
+            counter-reset: guide;
+            margin-top: 20px;
+        }
+        
+        .guide-step {
+            counter-increment: guide;
+            padding: 12px 0 12px 40px;
+            position: relative;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .guide-step::before {
+            content: counter(guide);
+            position: absolute;
+            left: 0;
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+        }
+        
+        .guide-step strong { color: var(--text); }
+        
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 36px 24px;
+            text-align: center;
+        }
+        
+        footer .footer-links {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        
+        footer .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        footer .copyright {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="logo">Lucantra</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="support.html">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="page-badge">Help Center</div>
+        <h1>Technical Support</h1>
+        <p class="subtitle">Find answers to common questions or reach out to our team for assistance.</p>
+        
+        <h2>Contact Us</h2>
+        <div class="support-channels">
+            <a href="mailto:support@lucantra.app" class="channel-card">
+                <div class="channel-icon">✉️</div>
+                <h3>Email Support</h3>
+                <p>support@lucantra.app</p>
+            </a>
+            <a href="mailto:support@lucantra.app?subject=Bug Report" class="channel-card">
+                <div class="channel-icon">🐛</div>
+                <h3>Report a Bug</h3>
+                <p>Help us improve the app</p>
+            </a>
+            <a href="mailto:support@lucantra.app?subject=Feature Request" class="channel-card">
+                <div class="channel-icon">💡</div>
+                <h3>Feature Request</h3>
+                <p>Share your ideas</p>
+            </a>
+        </div>
+
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <h3>Is my data secure?</h3>
+                <p>All data is stored locally on your device. Lucantra does not connect to the internet and does not transmit any data. Your financial and breeding records never leave your phone.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I add a new transaction?</h3>
+                <p>Navigate to the Accounts tab and tap the "+" button in the upper right corner. Choose between Income and Expense, enter the details, select a category, and tap Save.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I record beetle specimen data?</h3>
+                <p>Go to the Science tab and tap "+". Fill in the species, life stage, measurements, and environment data. You can track weight, length, temperature, humidity, and substrate type.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I filter transactions by date?</h3>
+                <p>Yes. Tap the calendar icon on the Accounts tab to open the date picker. Days with recorded transactions are marked with a dot. Select any date to view transactions from that day.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I delete a record?</h3>
+                <p>Long-press on any transaction or beetle record to reveal the context menu, then select "Delete". You can also delete records from the detail view.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I clear all data?</h3>
+                <p>Go to Settings and tap "Clear Data". You will be asked to confirm before all transactions and beetle records are permanently deleted.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What categories are available for transactions?</h3>
+                <p>Lucantra includes 11 categories designed for beetle breeding: Feeding, Substrate, Equipment, Breeding, Sales, Purchase, Veterinary, Shipping, Housing, Supplements, and Other.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Which beetle species are supported?</h3>
+                <p>The app includes presets for Dynastes hercules, Lucanus cervus, Chalcosoma atlas, Megasoma mars, Allomyrina dichotoma, Prosopocoilus giraffa, Dorcus titanus, and a custom "Other" option.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Does the app require an internet connection?</h3>
+                <p>No. Lucantra works entirely offline. You can use all features without any internet connection.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What iOS version is required?</h3>
+                <p>Lucantra requires iOS 14.0 or later. It is compatible with iPhone and iPad.</p>
+            </div>
+        </div>
+
+        <div class="guide-section">
+            <h2>Quick Start Guide</h2>
+            <div class="guide-steps">
+                <div class="guide-step"><strong>Open the Capital tab</strong> to see your financial overview with charts showing income and expense trends.</div>
+                <div class="guide-step"><strong>Go to Accounts</strong> to add your first transaction. Tap "+" and fill in the details.</div>
+                <div class="guide-step"><strong>Visit Science</strong> to track your beetle colonies. Add specimen records with species and stage data.</div>
+                <div class="guide-step"><strong>Check Settings</strong> to access support links, privacy policy, and data management options.</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="support.html">Technical Support</a>
+        </div>
+        <p class="copyright">© 2026 Lucantra. All rights reserved.</p>
+    </footer>
+</body>
+</html>
