@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Support — Herbloom</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --sage: #789978;
+            --sage-dark: #5a7a5a;
+            --sage-light: #d4e4d4;
+            --cream: #faf8f5;
+            --warm-dark: #c89a78;
+            --text: #2e2e33;
+            --text-secondary: #7a7a80;
+            --card-bg: #ffffff;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        nav {
+            padding: 20px 0;
+            background: rgba(250, 248, 245, 0.9);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(120, 153, 120, 0.1);
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--sage-dark);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        .logo span { color: var(--warm-dark); }
+        .nav-links { display: flex; gap: 32px; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--sage-dark); }
+        
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+        nav .container { max-width: 960px; }
+        
+        .page-header {
+            padding: 72px 0 40px;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 40px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+        
+        .content { padding-bottom: 80px; }
+        
+        .faq-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.03);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .faq-card:hover { transform: translateY(-2px); }
+        .faq-card h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .faq-card h3::before {
+            content: "Q";
+            background: var(--sage-light);
+            color: var(--sage-dark);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .faq-card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            padding-left: 40px;
+            line-height: 1.7;
+        }
+        
+        .contact-section {
+            margin-top: 48px;
+        }
+        .contact-section h2 {
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .contact-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.03);
+            transition: transform 0.2s;
+        }
+        .contact-card:hover { transform: translateY(-2px); }
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--sage-light);
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 14px;
+        }
+        .contact-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .contact-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .contact-card a {
+            color: var(--sage-dark);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .contact-card a:hover { text-decoration: underline; }
+        
+        .info-section {
+            margin-top: 48px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 36px 32px;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.03);
+        }
+        .info-section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--sage-dark);
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .info-item {
+            padding: 12px 0;
+        }
+        .info-item .label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        .info-item .value {
+            font-size: 15px;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+        
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid rgba(120, 153, 120, 0.1);
+            text-align: center;
+        }
+        footer .container {
+            max-width: 960px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        footer p { font-size: 13px; color: var(--text-secondary); }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a {
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .footer-links a:hover { color: var(--sage-dark); }
+        
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 28px; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .info-grid { grid-template-columns: 1fr; }
+            footer .container { flex-direction: column; gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Herb<span>bloom</span></a>
+            <div class="nav-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="support.html">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Technical Support</h1>
+            <p>Find answers to common questions or reach out to our team.</p>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="container">
+            <div class="faq-card">
+                <h3>How do I add a new transaction?</h3>
+                <p>Open the Ledger tab and tap the "+" button in the top right corner. Choose between income or expense, fill in the amount, title, and category, then tap Save.</p>
+            </div>
+
+            <div class="faq-card">
+                <h3>Can I edit or delete a recorded entry?</h3>
+                <p>In the Ledger view, swipe left on any transaction to reveal the delete option. To modify an entry, you can delete it and create a new corrected record.</p>
+            </div>
+
+            <div class="faq-card">
+                <h3>Where is my data stored?</h3>
+                <p>All data is stored locally on your device. No information is sent to any server or cloud service. Your records are completely private and accessible only on your device.</p>
+            </div>
+
+            <div class="faq-card">
+                <h3>How do I change the color theme?</h3>
+                <p>Go to the Settings tab and tap "Color Theme." You can choose from six curated palettes: Lavender, Rosewood, Sage, Goldenrod, Dusty Blue, and Terracotta.</p>
+            </div>
+
+            <div class="faq-card">
+                <h3>What happens if I clear all data?</h3>
+                <p>Clearing data from the Settings menu will permanently remove all transactions and inventory items. This action cannot be undone, so please use it with caution.</p>
+            </div>
+
+            <div class="faq-card">
+                <h3>How do I manage my flower inventory?</h3>
+                <p>Navigate to the Bloomstock tab to view and manage your stock. Tap the "+" button to add new dried flower items with name, quantity, unit cost, and category.</p>
+            </div>
+
+            <div class="faq-card">
+                <h3>Does the app work without internet?</h3>
+                <p>Yes, Herbloom is designed to work completely offline. No internet connection is needed for any feature within the app.</p>
+            </div>
+
+            <div class="contact-section">
+                <h2>Still need help?</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">&#9993;</div>
+                        <h3>Email Support</h3>
+                        <p><a href="mailto:support@herbloom.app">support@herbloom.app</a></p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">&#128172;</div>
+                        <h3>Response Time</h3>
+                        <p>We typically respond within 24–48 hours on business days.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>App Information</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="label">Platform</div>
+                        <div class="value">iOS 14.0 and later</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="label">Current Version</div>
+                        <div class="value">1.0</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="label">Category</div>
+                        <div class="value">Finance / Productivity</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="label">Languages</div>
+                        <div class="value">English</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Herbloom. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="support.html">Technical Support</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
