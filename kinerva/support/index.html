@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Support - Kinerva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+            background: #f8fdf8;
+            color: #333;
+            line-height: 1.8;
+        }
+        .nav {
+            background: white;
+            padding: 18px 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-brand {
+            text-decoration: none;
+            color: #262630;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .nav-back {
+            text-decoration: none;
+            color: #2eb870;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: 800;
+            color: #1a1a2e;
+            margin-bottom: 12px;
+        }
+        .subtitle {
+            font-size: 16px;
+            color: #777;
+            margin-bottom: 48px;
+        }
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+        .support-card {
+            background: white;
+            border-radius: 14px;
+            padding: 28px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+            transition: transform 0.2s;
+        }
+        .support-card:hover {
+            transform: translateY(-3px);
+        }
+        .support-icon {
+            font-size: 28px;
+            margin-bottom: 14px;
+        }
+        .support-card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+        .support-card p {
+            font-size: 14px;
+            color: #666;
+        }
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            padding: 22px 26px;
+            margin-bottom: 14px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .faq-item h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+        .faq-item p {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+        .contact-section {
+            background: linear-gradient(135deg, #e8f8f0 0%, #f0fdf5 100%);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 48px;
+        }
+        .contact-section h2 {
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+        .contact-section p {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .contact-btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background: #2eb870;
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+        .contact-btn:hover {
+            background: #25a060;
+        }
+        .footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid #eef5f0;
+            margin-top: 60px;
+        }
+        .footer p {
+            font-size: 13px;
+            color: #999;
+        }
+        .footer a {
+            color: #2eb870;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .support-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="../" class="nav-brand">Kinerva</a>
+            <a href="../" class="nav-back">&larr; Back to Home</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Technical Support</h1>
+        <p class="subtitle">We're here to help you get the most out of your finger training experience.</p>
+
+        <div class="support-grid">
+            <div class="support-card">
+                <div class="support-icon">&#128214;</div>
+                <h3>Getting Started</h3>
+                <p>Open the app and select any exercise from the Practice tab. Tap to begin your session and track your repetitions in real time.</p>
+            </div>
+            <div class="support-card">
+                <div class="support-icon">&#128202;</div>
+                <h3>Track Progress</h3>
+                <p>Visit the Progress tab to view your training history, weekly statistics, and daily streaks. Charts show your improvement over time.</p>
+            </div>
+            <div class="support-card">
+                <div class="support-icon">&#9881;</div>
+                <h3>Manage Data</h3>
+                <p>All settings are available in the Settings tab. You can clear training data, send feedback, or review the privacy policy.</p>
+            </div>
+        </div>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h4>Does the app require an internet connection?</h4>
+            <p>No. Kinerva works completely offline. All your training data is stored locally on your device and never sent to any server.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>How do I reset my training data?</h4>
+            <p>Go to Settings and tap "Clear Data". This will permanently remove all your training records, progress statistics, and streak information.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>What exercises are available?</h4>
+            <p>The app includes 8 different exercise types: Finger Tapping, Pinch Grip, Finger Spread, Thumb Opposition, Wrist Rotation, Finger Sequence, Grip Strength, and Finger Flexion.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>How is accuracy calculated?</h4>
+            <p>Accuracy is measured based on your repetition rate relative to the session duration and difficulty level. Higher consistency results in better accuracy scores.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>What are difficulty levels?</h4>
+            <p>Each exercise can be performed at four levels: Beginner, Intermediate, Advanced, and Expert. Choose based on your current ability and progress gradually.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>How do streaks work?</h4>
+            <p>Complete at least one exercise session per day to maintain your streak. Missing a day resets your current streak, but your longest streak record is preserved.</p>
+        </div>
+
+        <div class="contact-section">
+            <h2>Still Need Help?</h2>
+            <p>If you can't find the answer to your question, feel free to reach out to our support team.</p>
+            <a href="mailto:support@kinerva.app" class="contact-btn">Contact Support</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2026 Kinerva. All rights reserved. | <a href="../privacy">Privacy Policy</a></p>
+    </div>
+</body>
+</html>
