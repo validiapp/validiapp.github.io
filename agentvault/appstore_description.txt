@@ -1,0 +1,9 @@
+English (150 words):
+
+A lightweight offline utility designed for professionals who manage multiple automated workflows and digital processes. Effortlessly create detailed records for each task, track execution history with timestamped activity logs, and gain valuable insights through interactive visual analytics including performance charts, status distribution, and trend analysis. The built-in calendar view helps you review past activities by date, while smart search and filtering options make it easy to locate specific records instantly. Organize entries with custom categories, tags, and status indicators to maintain a clear overview of all your processes. Every piece of data stays exclusively on your device with no account registration, no cloud storage, and no data collection of any kind. The clean, intuitive interface is built for daily use, helping you stay organized and make informed decisions about your workflows without compromising your privacy.
+
+---
+
+中文 (150字):
+
+一款轻量级离线工具，专为管理多个自动化工作流和数字任务的专业人士打造。轻松创建详细的任务记录，通过带时间戳的活动日志追踪执行历史，借助交互式可视化分析获取有价值的洞察，包括性能图表、状态分布和趋势分析。内置日历视图帮助您按日期回顾历史活动，智能搜索和筛选功能让您即时定位特定记录。使用自定义分类、标签和状态指示器整理条目，保持对所有流程的清晰概览。所有数据完全存储在您的设备上，无需注册账户，无云端存储，不收集任何数据。简洁直观的界面专为日常使用而设计，帮助您保持有序并做出明智决策，同时充分保护您的隐私。
