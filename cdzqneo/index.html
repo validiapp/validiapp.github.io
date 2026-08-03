@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDZQneo - Balance Training</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f0fe 100%);
+            color: #1e2330;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+        header {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+        .logo-icon {
+            width: 80px; height: 80px;
+            background: linear-gradient(135deg, #2e73d1, #5c99eb);
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 24px rgba(46, 115, 209, 0.25);
+        }
+        .logo-icon svg { width: 44px; height: 44px; fill: white; }
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #1a2b4a;
+            margin-bottom: 12px;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: #5a6070;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .hero {
+            background: white;
+            border-radius: 20px;
+            padding: 48px 40px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            transition: transform 0.2s;
+        }
+        .feature-card:hover { transform: translateY(-4px); }
+        .feature-icon {
+            width: 48px; height: 48px;
+            background: #e8f0fe;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 22px;
+        }
+        .feature-card h3 { font-size: 1.05rem; margin-bottom: 8px; color: #1a2b4a; }
+        .feature-card p { font-size: 0.9rem; color: #5a6070; }
+        .links {
+            text-align: center;
+            padding: 40px 0;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .links a {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #2e73d1;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .links a:hover { background: #1d5bb8; }
+        .links a.secondary {
+            background: transparent;
+            color: #2e73d1;
+            border: 1.5px solid #2e73d1;
+        }
+        .links a.secondary:hover { background: #e8f0fe; }
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #8890a0;
+            font-size: 0.85rem;
+        }
+        @media (max-width: 600px) {
+            header { padding: 40px 0 24px; }
+            h1 { font-size: 1.8rem; }
+            .hero { padding: 28px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C13.1 2 14 2.9 14 4S13.1 6 12 6 10 5.1 10 4 10.9 2 12 2ZM21 9H15V22H13V16H11V22H9V9H3V7H21V9Z"/></svg>
+            </div>
+            <h1>CDZQneo</h1>
+            <p class="subtitle">Your personal balance training companion. Track progress, build consistency, and improve stability every day.</p>
+        </header>
+
+        <div class="hero">
+            <h2 style="text-align:center; margin-bottom:16px; color:#1a2b4a;">Train Smarter, Balance Better</h2>
+            <p style="text-align:center; color:#5a6070; max-width:600px; margin:0 auto;">
+                CDZQneo helps you develop better balance through structured training sessions, 
+                detailed progress tracking, and personalized daily challenges. All data stays on your device.
+            </p>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">⏱</div>
+                <h3>Precision Timer</h3>
+                <p>High-accuracy training timer with multiple modes including single leg, eyes closed, and left/right tracking.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Progress Analytics</h3>
+                <p>Visualize your improvement with weekly charts, symmetry scores, and personal best tracking.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔥</div>
+                <h3>Streak System</h3>
+                <p>Build consistency with daily streaks, challenges, and milestone achievements to stay motivated.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📓</div>
+                <h3>Training Journal</h3>
+                <p>Record thoughts, track mood, and reflect on your balance journey with a built-in journal.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Daily Challenges</h3>
+                <p>Fresh challenges every day at varying difficulty levels to push your limits progressively.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Privacy First</h3>
+                <p>All data stored locally on your device. No accounts, no cloud sync, no data collection.</p>
+            </div>
+        </div>
+
+        <div class="links">
+            <a href="privacy">Privacy Policy</a>
+            <a href="support" class="secondary">Support</a>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 CDZQneo. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
