@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoltNest - Hardware Storage Manager</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fafafa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .hero {
+            background: linear-gradient(135deg, #F25A2B 0%, #FF8C4D 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: transform 0.2s;
+        }
+        .feature-card:hover { transform: translateY(-4px); }
+        .feature-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #F25A2B;
+        }
+        .feature-card p { font-size: 0.9rem; color: #666; }
+        .feature-icon {
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, #F25A2B, #FF8C4D);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 16px;
+            font-size: 1.4rem;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .section-sub {
+            text-align: center;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #eee;
+            color: #999;
+            font-size: 0.85rem;
+        }
+        .footer a { color: #F25A2B; text-decoration: none; }
+        .nav-links { margin-top: 20px; }
+        .nav-links a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            margin: 0 16px;
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 2px;
+        }
+        .nav-links a:hover { border-bottom-color: white; }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>BoltNest</h1>
+        <p>Professional hardware inventory management, right in your pocket.</p>
+        <div class="nav-links">
+            <a href="privacy">Privacy Policy</a>
+            <a href="support">Technical Support</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">Core Features</h2>
+        <p class="section-sub">Everything you need to manage hardware storage efficiently and keep your workshop organized.</p>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">📦</div>
+                <h3>Inventory Overview</h3>
+                <p>Real-time dashboard showing stock levels, total value, and low-stock alerts at a glance.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>Quick Search</h3>
+                <p>Find any item instantly by name, SKU, or category with intelligent search results.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🗄️</div>
+                <h3>Shelf Management</h3>
+                <p>Organize items by zone, rack, level, and position for efficient warehouse navigation.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>Transaction Records</h3>
+                <p>Complete history of stock-in, stock-out operations with detailed timestamps and notes.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚠️</div>
+                <h3>Low Stock Alerts</h3>
+                <p>Never run out of critical supplies with customizable threshold notifications.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Audit History</h3>
+                <p>Track inventory audits, discrepancies, and maintain accountability over time.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 BoltNest. All rights reserved.</p>
+        <p style="margin-top: 8px;">
+            <a href="privacy">Privacy Policy</a> &nbsp;|&nbsp; <a href="support">Technical Support</a>
+        </p>
+    </div>
+</body>
+</html>
