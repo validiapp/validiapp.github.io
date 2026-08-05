@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Support - BoltNest</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fafafa;
+            color: #333;
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, #F25A2B 0%, #FF8C4D 100%);
+            padding: 48px 20px;
+            text-align: center;
+            color: white;
+        }
+        .header h1 { font-size: 2rem; font-weight: 700; }
+        .header p { opacity: 0.85; margin-top: 8px; }
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 48px 20px;
+        }
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-top: 36px;
+            margin-bottom: 12px;
+            color: #F25A2B;
+        }
+        p { margin-bottom: 16px; color: #555; }
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+        .faq-item h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: #222;
+        }
+        .faq-item p { margin-bottom: 0; font-size: 0.9rem; }
+        .contact-card {
+            background: linear-gradient(135deg, #F25A2B 0%, #FF8C4D 100%);
+            border-radius: 16px;
+            padding: 32px;
+            color: white;
+            margin-top: 40px;
+            text-align: center;
+        }
+        .contact-card h3 { font-size: 1.2rem; margin-bottom: 8px; }
+        .contact-card p { color: rgba(255,255,255,0.9); margin-bottom: 0; }
+        .contact-card a { color: white; font-weight: 600; }
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: #F25A2B;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        ul { margin-left: 20px; margin-bottom: 16px; color: #555; }
+        li { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Technical Support</h1>
+        <p>BoltNest - Hardware Storage Manager</p>
+    </div>
+
+    <div class="container">
+        <p>We're here to help you get the most out of BoltNest. Below you'll find answers to common questions and guidance on using the app.</p>
+
+        <h2>Getting Started</h2>
+        <p>BoltNest is designed to help you manage hardware inventory with ease. Here's how to get started:</p>
+        <ul>
+            <li><strong>Workbench:</strong> Your main dashboard showing inventory overview, quick search, and low-stock alerts.</li>
+            <li><strong>Shelves:</strong> Organize items by zone (A/B), manage categories, and record precise shelf locations.</li>
+            <li><strong>Records:</strong> Track all stock-in and stock-out operations, and maintain audit history.</li>
+            <li><strong>Settings:</strong> Configure alerts, manage data, and access support resources.</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3>How do I add a new inventory item?</h3>
+            <p>Navigate to the Shelves tab and tap the "+" button in the top right corner. Fill in the item details including name, SKU, category, quantity, and shelf location.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I record stock movement?</h3>
+            <p>Go to the Records tab and tap the "+" button to create a new record. Select the item, choose stock-in or stock-out, enter the quantity, and add an optional note.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Where is my data stored?</h3>
+            <p>All data is stored locally on your device. Nothing is sent to external servers. Your inventory information stays completely private and under your control.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I reset my data?</h3>
+            <p>Go to Settings → Data Management → Reset All Data. Please note this action cannot be undone and will permanently delete all inventory items and records.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Does the app work offline?</h3>
+            <p>Yes, BoltNest works entirely offline. No internet connection is required for any functionality.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I search for items?</h3>
+            <p>Use the Quick Search on the Workbench tab. You can search by item name, SKU code, or category name.</p>
+        </div>
+
+        <div class="contact-card">
+            <h3>Still Need Help?</h3>
+            <p>If you have additional questions or encounter any issues, please contact us at<br><a href="mailto:support@boltnest.app">support@boltnest.app</a></p>
+        </div>
+
+        <a href="../" class="back-link">← Back to Home</a>
+    </div>
+</body>
+</html>
