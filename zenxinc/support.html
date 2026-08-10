@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support — Zenxinc</title>
+    <style>
+        :root {
+            --primary: #1A73E8;
+            --accent: #00B8D4;
+            --bg: #0F1923;
+            --surface: #1A2733;
+            --card: #1E2D3D;
+            --text: #E8EDF2;
+            --text-secondary: #8899AA;
+            --text-dim: #5A6B7C;
+            --success: #00C853;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        nav {
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(136,153,170,0.08);
+        }
+
+        nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        nav span { color: var(--text-dim); font-size: 14px; }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-top: 36px;
+            margin-bottom: 16px;
+        }
+
+        .faq-item {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(136,153,170,0.06);
+        }
+
+        .faq-q {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .faq-a {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .guide-section {
+            margin-top: 40px;
+        }
+
+        .guide-step {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(26,115,232,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .step-content h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .step-content p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(26,115,232,0.08), rgba(0,184,212,0.06));
+            border: 1px solid rgba(26,115,232,0.15);
+            border-radius: 18px;
+            padding: 32px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .contact-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .contact-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .contact-card a {
+            display: inline-block;
+            padding: 10px 28px;
+            background: var(--primary);
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+            margin-top: 16px;
+        }
+
+        .tip {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 20px;
+            border: 1px solid rgba(136,153,170,0.06);
+        }
+
+        .tip-icon { font-size: 22px; margin-bottom: 10px; }
+        .tip h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+        .tip p { font-size: 13px; color: var(--text-dim); }
+
+        footer {
+            padding: 32px 24px;
+            text-align: center;
+            border-top: 1px solid rgba(136,153,170,0.08);
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 16px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .copyright { margin-top: 12px; font-size: 12px; color: var(--text-dim); }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 26px; }
+            .tips-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="https://validiapp.github.io/skelva/">Zenxinc</a>
+        <span>/</span>
+        <span>Support</span>
+    </nav>
+
+    <div class="container">
+        <h1>Support</h1>
+        <p class="subtitle">Answers to common questions and guidance for getting started</p>
+
+        <h2>Getting Started</h2>
+        <div class="guide-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+                <h4>Start a Session</h4>
+                <p>Open the Glide tab and tap the "Quick Start" button. Select your track distance (111m, 222m, 333m, 500m, 1000m, or 1500m), add optional notes, then tap Start.</p>
+            </div>
+        </div>
+        <div class="guide-step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+                <h4>Record Laps</h4>
+                <p>While the timer is running, tap the flag button each time you complete a lap. The app records individual lap times and cumulative split times.</p>
+            </div>
+        </div>
+        <div class="guide-step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+                <h4>Finish and Review</h4>
+                <p>Tap "Finish" to save the session. View your lap time chart and detailed breakdown on the session detail screen.</p>
+            </div>
+        </div>
+        <div class="guide-step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+                <h4>Track Progress</h4>
+                <p>Head to the Flow tab to see weekly and monthly volume, training consistency, and performance trends over time.</p>
+            </div>
+        </div>
+
+        <h2>Quick Tips</h2>
+        <div class="tips-grid">
+            <div class="tip">
+                <div class="tip-icon">⏱</div>
+                <h4>Faster Laps</h4>
+                <p>Enable haptic feedback in Settings for a vibration on each lap tap, so you can keep eyes on the track.</p>
+            </div>
+            <div class="tip">
+                <div class="tip-icon">📊</div>
+                <h4>Export Records</h4>
+                <p>Go to Settings → Export Data to generate a PDF with all your sessions, lap times, and personal bests.</p>
+            </div>
+            <div class="tip">
+                <div class="tip-icon">🎯</div>
+                <h4>Set Goals</h4>
+                <p>Set a weekly distance target in Settings to stay motivated and build consistency.</p>
+            </div>
+            <div class="tip">
+                <div class="tip-icon">📱</div>
+                <h4>Offline Access</h4>
+                <p>Zenxinc works entirely offline. No account, no sign-up, no internet needed.</p>
+            </div>
+        </div>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <p class="faq-q">Where is my data stored?</p>
+            <p class="faq-a">All training data is stored locally on your device in a private SQLite database. Nothing is uploaded to any server or cloud service.</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">Can I switch between metric and imperial units?</p>
+            <p class="faq-a">Yes. Go to Settings → Units and toggle between Metric (meters, kilometres) and Imperial (yards, miles).</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">How do I delete a training session?</p>
+            <p class="faq-a">On the Glide tab, long-press any session in the recent list and confirm the deletion. To delete all data, go to Settings → Clear All Data.</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">Does the app use my location or camera?</p>
+            <p class="faq-a">No. Zenxinc does not access your location, camera, microphone, or any other device sensors beyond the vibration motor for haptic feedback.</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">What track distances are supported?</p>
+            <p class="faq-a">The app supports 111m (standard short track), 222m, 333m, 500m, 1000m, and 1500m track configurations.</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">Can I export my training data?</p>
+            <p class="faq-a">Yes. Navigate to Settings → Export Data (PDF). A comprehensive PDF report will be generated and the system share sheet will open so you can save or send it.</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">How do personal bests work?</p>
+            <p class="faq-a">After each completed session, the app checks if any lap time beats your existing record for that track distance. If so, it automatically updates your personal best.</p>
+        </div>
+
+        <div class="contact-card">
+            <h3>Still need assistance?</h3>
+            <p>We're here to help with any questions about the app</p>
+            <a href="mailto:support@zenxinc.app">Contact Support</a>
+        </div>
+    </div>
+
+    <footer>
+        <div>
+            <a href="https://validiapp.github.io/skelva/">Home</a>
+            <a href="https://validiapp.github.io/skelva/privacy">Privacy Policy</a>
+        </div>
+        <p class="copyright">&copy; 2026 Zenxinc. All rights reserved.</p>
+    </footer>
+</body>
+</html>
