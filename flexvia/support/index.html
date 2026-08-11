@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support — Flexvia</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: #F9F9FB;
+            color: #1E1E2E;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        .header {
+            background: linear-gradient(135deg, #5B78FA 0%, #8C5CF5 100%);
+            padding: 60px 20px 40px;
+            text-align: center;
+            color: white;
+        }
+        .header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+        .header p {
+            font-size: 15px;
+            opacity: 0.85;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 16px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .back-link:hover { color: white; }
+        .content {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 48px 20px 80px;
+        }
+        .content h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-top: 36px;
+            margin-bottom: 14px;
+            color: #1E1E2E;
+        }
+        .content p {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 14px;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 14px;
+            box-shadow: 0 2px 12px rgba(30,30,46,0.05);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30,30,46,0.08);
+        }
+        .faq-question {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1E1E2E;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .faq-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .faq-answer {
+            font-size: 14px;
+            color: #73738A;
+            margin-top: 12px;
+            padding-left: 44px;
+            line-height: 1.6;
+        }
+        .contact-card {
+            background: linear-gradient(135deg, #5B78FA 0%, #8C5CF5 100%);
+            border-radius: 18px;
+            padding: 32px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+        .contact-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .contact-card p {
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 20px;
+        }
+        .contact-btn {
+            display: inline-block;
+            background: white;
+            color: #5B78FA;
+            padding: 12px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: transform 0.2s;
+        }
+        .contact-btn:hover { transform: scale(1.05); }
+        .requirements {
+            background: white;
+            border-radius: 14px;
+            padding: 22px;
+            margin-top: 24px;
+            box-shadow: 0 2px 12px rgba(30,30,46,0.05);
+        }
+        .requirements h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .requirements ul {
+            list-style: none;
+            padding: 0;
+        }
+        .requirements ul li {
+            font-size: 14px;
+            color: #555;
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .requirements ul li::before {
+            content: '✓';
+            color: #5B78FA;
+            font-weight: 700;
+        }
+        .footer {
+            background: #1E1E2E;
+            color: rgba(255,255,255,0.7);
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 13px;
+        }
+        .footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+        .footer a:hover { color: white; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="../" class="back-link">← Back to Home</a>
+        <h1>Support</h1>
+        <p>We are here to help. Find answers to common questions below.</p>
+    </div>
+
+    <div class="content">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="faq-icon" style="background: rgba(91,120,250,0.1); color: #5B78FA;">?</span>
+                How do I log an energy reading?
+            </div>
+            <div class="faq-answer">
+                Navigate to the Pulse tab and tap the + button in the top right corner. Set your energy level using the slider, enter your heart rate, select your current mood, and optionally add a note. Tap "Log Reading" to save.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="faq-icon" style="background: rgba(76,217,100,0.1); color: #4CD964;">☾</span>
+                How do I record a rest session?
+            </div>
+            <div class="faq-answer">
+                Go to the Naps tab and tap the + button. Set the start and end time for your rest period, rate the quality, choose your resting environment, and add an optional note. The app will automatically calculate the duration.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="faq-icon" style="background: rgba(245,166,35,0.1); color: #F5A623;">↗</span>
+                How are streaks calculated?
+            </div>
+            <div class="faq-answer">
+                Streaks count consecutive days where you complete a habit. If you miss a day, the streak resets. Your best streak is displayed in the Progress tab to help motivate consistent practice.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="faq-icon" style="background: rgba(240,90,97,0.1); color: #F05A61;">⟳</span>
+                Can I recover deleted data?
+            </div>
+            <div class="faq-answer">
+                Once data is deleted or reset through the Settings page, it cannot be recovered. We recommend being certain before using the reset function. All data is stored locally on your device.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="faq-icon" style="background: rgba(140,92,245,0.1); color: #8C5CF5;">🔒</span>
+                Is my data secure?
+            </div>
+            <div class="faq-answer">
+                Yes. All data is stored locally on your device and benefits from iOS built-in encryption and security features. No data is transmitted to external servers. Your information never leaves your device.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="faq-icon" style="background: rgba(91,120,250,0.1); color: #5B78FA;">⚙</span>
+                How do I set rest reminders?
+            </div>
+            <div class="faq-answer">
+                Go to Settings, enable "Rest Reminders" and set your preferred reminder time. Make sure notifications are also enabled. The app will send a gentle reminder at your chosen time each day.
+            </div>
+        </div>
+
+        <div class="requirements">
+            <h3>System Requirements</h3>
+            <ul>
+                <li>iOS 15.0 or later</li>
+                <li>Compatible with iPhone and iPad</li>
+                <li>Approximately 30 MB of storage</li>
+                <li>No internet connection required</li>
+            </ul>
+        </div>
+
+        <div class="contact-card">
+            <h3>Still Need Help?</h3>
+            <p>We are happy to assist you with any questions or feedback about Flexvia.</p>
+            <a href="mailto:flexvia.app@outlook.com" class="contact-btn">Contact Support</a>
+        </div>
+
+        <div style="text-align: center; margin-top: 32px; color: #73738A; font-size: 13px;">
+            Response time: within 48 hours
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="../">Flexvia</a> &nbsp;·&nbsp; <a href="../privacy/">Privacy Policy</a> &nbsp;·&nbsp; <a href="mailto:flexvia.app@outlook.com">Contact</a>
+        <br><br>
+        &copy; 2026 Flexvia. All rights reserved.
+    </div>
+</body>
+</html>
