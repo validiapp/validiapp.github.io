@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Cubique</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f9fa;
+            color: #2d3436;
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, #2d3436 0%, #3d4749 100%);
+            color: white;
+            padding: 48px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .header p {
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 16px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .back-link:hover {
+            color: white;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 48px 20px;
+        }
+        h2 {
+            font-size: 1.3rem;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            color: #2d3436;
+        }
+        p {
+            margin-bottom: 16px;
+            color: #4a5568;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 12px;
+            border: 1px solid #dfe6e9;
+            transition: box-shadow 0.2s;
+        }
+        .faq-item:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        }
+        .faq-item h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: #2d3436;
+        }
+        .faq-item p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        .contact-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            border: 1px solid #dfe6e9;
+            margin-top: 32px;
+        }
+        .contact-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+        .contact-card p {
+            color: #636e72;
+        }
+        .contact-card a {
+            display: inline-block;
+            margin-top: 16px;
+            background: #e17055;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .contact-card a:hover {
+            background: #d35843;
+        }
+        .system-req {
+            background: white;
+            border-radius: 12px;
+            padding: 20px 24px;
+            border: 1px solid #dfe6e9;
+        }
+        .system-req ul {
+            list-style: none;
+            padding: 0;
+        }
+        .system-req li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .system-req li:last-child {
+            border-bottom: none;
+        }
+        .system-req .label {
+            color: #636e72;
+        }
+        .system-req .value {
+            font-weight: 500;
+        }
+        .footer {
+            text-align: center;
+            padding: 32px 20px;
+            border-top: 1px solid #dfe6e9;
+            color: #636e72;
+            font-size: 0.85rem;
+        }
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .tip-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #dfe6e9;
+            text-align: center;
+        }
+        .tip-card .tip-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        .tip-card h4 {
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+        .tip-card p {
+            font-size: 0.8rem;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="." class="back-link">← Back to Home</a>
+        <h1>Technical Support</h1>
+        <p>Get help with Cubique</p>
+    </div>
+
+    <div class="container">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3>How do I start a training session?</h3>
+            <p>Navigate to the Sprint tab, select your preferred category (OLL or PLL), choose a time limit, and tap "Start Sprint". You'll get a 3-second countdown before the session begins.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How does the recall system work?</h3>
+            <p>When you mark an answer as wrong during a Sprint session, it's automatically added to your Recall list. You can review these formulas later and remove them once you've mastered them by swiping left.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Can I export my progress?</h3>
+            <p>Yes! Go to Settings and tap "Export Report". This generates a PDF with your complete training history, accuracy statistics, and session details. You can share it via any app on your device.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Does the app need internet?</h3>
+            <p>No. Cubique works completely offline. All formulas, progress data, and features are available without an internet connection.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I reset my data?</h3>
+            <p>Go to Settings → Reset All Data. This will permanently delete all training progress, session history, and recall items. This action cannot be undone.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What do the pattern diagrams mean?</h3>
+            <p>The 3×3 grid diagrams show the top-face orientation of the last layer. Yellow cells represent correctly oriented pieces, while grey cells show pieces that need to be oriented.</p>
+        </div>
+
+        <h2>Training Tips</h2>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-icon">🎯</div>
+                <h4>Focus on Recognition</h4>
+                <p>Learn to identify cases quickly before memorizing algorithms</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">⏱️</div>
+                <h4>Short Sessions</h4>
+                <p>30-60 second sprints are more effective than long sessions</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">🔄</div>
+                <h4>Review Mistakes</h4>
+                <p>Regularly check your Recall list and practice weak algorithms</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">👆</div>
+                <h4>Finger Tricks</h4>
+                <p>Use the step-by-step view to learn efficient finger techniques</p>
+            </div>
+        </div>
+
+        <h2>System Requirements</h2>
+        <div class="system-req">
+            <ul>
+                <li>
+                    <span class="label">Platform</span>
+                    <span class="value">iOS 12.0+</span>
+                </li>
+                <li>
+                    <span class="label">Storage</span>
+                    <span class="value">~30 MB</span>
+                </li>
+                <li>
+                    <span class="label">Internet</span>
+                    <span class="value">Not required</span>
+                </li>
+                <li>
+                    <span class="label">In-App Purchases</span>
+                    <span class="value">None</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="contact-card">
+            <h3>Still need help?</h3>
+            <p>If you can't find the answer you're looking for, feel free to reach out to us directly.</p>
+            <a href="mailto:validiapp@outlook.com">Contact Support</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Cubique. All rights reserved.</p>
+        <p style="margin-top: 8px;"><a href="privacy" style="color: #e17055; text-decoration: none;">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>
