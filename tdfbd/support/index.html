@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Support - Astrev</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f9fe;
+            color: #1a1b4b;
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+        .header {
+            background: linear-gradient(135deg, #1a1b4b 0%, #3949ab 100%);
+            padding: 60px 24px 40px;
+            text-align: center;
+        }
+        .header h1 { color: #fff; font-size: 2em; font-weight: 800; margin-bottom: 8px; }
+        .header p { color: rgba(255,255,255,0.7); font-size: 0.95em; }
+        .container { max-width: 720px; margin: 0 auto; padding: 40px 24px; }
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+        h2 { font-size: 1.2em; color: #5c6bc0; margin-bottom: 12px; font-weight: 700; }
+        h3 { font-size: 1em; margin-bottom: 8px; color: #1a1b4b; }
+        p { margin-bottom: 12px; color: #444; font-size: 0.95em; }
+        .faq-item { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0; }
+        .faq-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .badge {
+            display: inline-block;
+            background: #e8eaf6;
+            color: #5c6bc0;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #5c6bc0;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .contact-box {
+            background: linear-gradient(135deg, #5c6bc0, #7c4dff);
+            border-radius: 16px;
+            padding: 32px;
+            color: #fff;
+            text-align: center;
+        }
+        .contact-box h2 { color: #fff; }
+        .contact-box p { color: rgba(255,255,255,0.8); }
+        .contact-box a { color: #fff; font-weight: 700; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Technical Support</h1>
+        <p>Astrev - Deep Sky Observation Log</p>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h2>Getting Started</h2>
+            <p>Astrev is a deep sky observation logging tool designed for amateur astronomers. Here's how to get started:</p>
+            <div class="faq-item">
+                <span class="badge">Observe</span>
+                <h3>Starting an Observation Session</h3>
+                <p>Navigate to the Observe tab, enter your target name (e.g., M31, NGC 7000), select the object type, set your seeing and transparency conditions, then tap "Start Observation" to begin timing your session.</p>
+            </div>
+            <div class="faq-item">
+                <span class="badge">Records</span>
+                <h3>Viewing Past Observations</h3>
+                <p>The Records tab shows all your completed observation sessions. You can sort by date, name, or seeing conditions. Swipe left on any record to delete it.</p>
+            </div>
+            <div class="faq-item">
+                <span class="badge">Export</span>
+                <h3>Exporting Your Data</h3>
+                <p>Tap the PDF icon in the Records tab or go to Settings > Export Data to generate a formatted PDF of all your observations. The file is shared through your device's native share sheet.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>Does the app require an internet connection?</h3>
+                <p>No. Astrev works entirely offline. All data is stored locally on your device.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I add my equipment?</h3>
+                <p>Go to the Gear tab and tap the + button. Select the equipment type (telescope, eyepiece, filter, camera, mount, or accessory) and fill in the details.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I recover deleted data?</h3>
+                <p>No. Once data is deleted, it cannot be recovered. We recommend exporting your observations regularly as a backup.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What deep sky targets are included?</h3>
+                <p>The built-in catalog includes popular Messier objects and select NGC targets. You can search, filter by type, and mark favorites for quick access.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How is the seeing condition scale defined?</h3>
+                <p>Seeing is rated on a scale of 1 to 5, where 1 represents poor atmospheric stability and 5 represents excellent, steady conditions ideal for high-magnification viewing.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>System Requirements</h2>
+            <p>Astrev requires iOS 12.0 or later. The app is compatible with iPhone and iPad.</p>
+        </div>
+
+        <div class="contact-box">
+            <h2>Need More Help?</h2>
+            <p>If you experience any issues or have feature suggestions, please reach out to us.</p>
+            <p style="margin-top: 16px;"><a href="mailto:support@astrev.app">support@astrev.app</a></p>
+        </div>
+
+        <a href="../" class="back-link">&larr; Back to Home</a>
+    </div>
+</body>
+</html>
