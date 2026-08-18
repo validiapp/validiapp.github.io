@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Support — ArcVanta</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --orange: #FF6B35;
+            --charcoal: #2D2D2D;
+            --warm-grey: #8C8C8C;
+            --light-bg: #F8F6F3;
+            --card-bg: #FFFFFF;
+            --subtle: #E8E5E1;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--light-bg);
+            color: var(--charcoal);
+            line-height: 1.7;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--charcoal) 0%, #3a3a3a 100%);
+            color: #fff;
+            padding: 48px 24px;
+            text-align: center;
+        }
+        .header h1 { font-size: 1.8em; font-weight: 800; }
+        .header p { color: #b0b0b0; font-size: 0.9em; margin-top: 8px; }
+        .content {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+        .content h2 {
+            font-size: 1.15em;
+            font-weight: 700;
+            margin: 32px 0 12px;
+            color: var(--orange);
+        }
+        .content p {
+            font-size: 0.92em;
+            color: #555;
+            margin-bottom: 16px;
+        }
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--subtle);
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-bottom: 12px;
+        }
+        .faq-item h3 {
+            font-size: 0.95em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--charcoal);
+        }
+        .faq-item p {
+            font-size: 0.88em;
+            color: #666;
+            margin-bottom: 0;
+        }
+        .contact-card {
+            background: var(--charcoal);
+            color: #fff;
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        .contact-card h3 { font-size: 1.15em; margin-bottom: 12px; }
+        .contact-card p {
+            color: #b0b0b0;
+            font-size: 0.9em;
+            margin-bottom: 0;
+        }
+        .contact-card a {
+            color: var(--orange);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 16px;
+            color: var(--orange);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover { text-decoration: underline; }
+        footer {
+            text-align: center;
+            padding: 24px;
+            font-size: 0.8em;
+            color: var(--warm-grey);
+            border-top: 1px solid var(--subtle);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Technical Support</h1>
+        <p>Find answers to common questions</p>
+    </div>
+
+    <div class="content">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3>How do I record a welding session?</h3>
+            <p>Open the Pulse tab and tap the + button in the top right corner. Fill in your arc parameters (amperage, voltage, wire speed), material details, and quality score, then tap Save.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Can I export my data?</h3>
+            <p>Yes. Go to Settings → Export Data and choose which data set to export (Sessions, Competitions, or Archive). The app generates a PDF and opens your device's share sheet so you can save or send it.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Does the app require an internet connection?</h3>
+            <p>No. ArcVanta works entirely offline. All data is stored locally on your device.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I delete my data?</h3>
+            <p>You can delete individual records by swiping left on them, or go to Settings → Clear All Data to remove everything. Uninstalling the app will also delete all data.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What welding types are supported?</h3>
+            <p>ArcVanta supports MIG, TIG, Stick (SMAW), Flux-Cored (FCAW), and Multi-Process entries.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How does the daily goal work?</h3>
+            <p>The Pulse screen shows a breathing ring animation that fills as you log sessions throughout the day. It tracks your progress toward a daily session target.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Can I switch between metric and imperial units?</h3>
+            <p>Yes. Go to Settings → Units and select your preferred measurement system. You can also switch gas flow units between L/min and CFH.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How is my data kept private?</h3>
+            <p>All data is stored in a local database on your device. We do not collect, transmit, or store any information on external servers. Read our <a href="../privacy" style="color: var(--orange);">Privacy Policy</a> for full details.</p>
+        </div>
+
+        <div class="contact-card">
+            <h3>Still Need Help?</h3>
+            <p>If your question isn't answered above, feel free to reach out:<br>
+            <a href="mailto:support@arcvanta.app">support@arcvanta.app</a></p>
+        </div>
+
+        <a href="../" class="back-link">← Back to Home</a>
+    </div>
+
+    <footer>&copy; 2026 ArcVanta. All rights reserved.</footer>
+</body>
+</html>
