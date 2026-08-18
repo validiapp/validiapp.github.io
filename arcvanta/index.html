@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArcVanta — Arc Welding Training & Competition Records</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --orange: #FF6B35;
+            --charcoal: #2D2D2D;
+            --warm-grey: #8C8C8C;
+            --light-bg: #F8F6F3;
+            --card-bg: #FFFFFF;
+            --subtle: #E8E5E1;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--light-bg);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 80px 24px 60px;
+            background: linear-gradient(135deg, var(--charcoal) 0%, #3a3a3a 100%);
+            color: #fff;
+        }
+        .hero-icon {
+            width: 80px; height: 80px;
+            background: var(--orange);
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 36px;
+        }
+        .hero h1 {
+            font-size: 2.2em;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+        .hero h1 span { color: var(--orange); }
+        .hero p {
+            font-size: 1.1em;
+            color: #b0b0b0;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Section */
+        section { padding: 60px 0; }
+        section h2 {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        /* Feature grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--subtle);
+            border-radius: 16px;
+            padding: 28px 24px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .feature-card:hover { transform: translateY(-4px); }
+        .feature-card .icon {
+            width: 48px; height: 48px;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 16px;
+        }
+        .feature-card h3 {
+            font-size: 1em;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .feature-card p {
+            font-size: 0.85em;
+            color: var(--warm-grey);
+        }
+
+        /* Steps */
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: center;
+        }
+        .step {
+            background: var(--card-bg);
+            border: 1px solid var(--subtle);
+            border-radius: 16px;
+            padding: 28px;
+            flex: 1;
+            min-width: 200px;
+            max-width: 240px;
+            text-align: center;
+        }
+        .step-num {
+            width: 36px; height: 36px;
+            background: var(--orange);
+            color: #fff;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        .step h3 { font-size: 0.95em; margin-bottom: 8px; }
+        .step p { font-size: 0.82em; color: var(--warm-grey); }
+
+        /* Privacy callout */
+        .callout {
+            background: var(--charcoal);
+            color: #fff;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin: 40px auto;
+            max-width: 600px;
+        }
+        .callout h3 { font-size: 1.2em; margin-bottom: 12px; }
+        .callout p { color: #b0b0b0; font-size: 0.9em; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--subtle);
+        }
+        footer a {
+            color: var(--orange);
+            text-decoration: none;
+            margin: 0 12px;
+            font-size: 0.9em;
+        }
+        footer a:hover { text-decoration: underline; }
+        footer .copy {
+            margin-top: 16px;
+            font-size: 0.8em;
+            color: var(--warm-grey);
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-icon">⚡</div>
+        <h1>Arc<span>Vanta</span></h1>
+        <p>Track your arc welding training sessions, compete in challenges, and build a detailed technical archive — all offline, all private.</p>
+    </div>
+
+    <section class="container">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <h3>Record a Session</h3>
+                <p>Log amperage, voltage, wire speed, material, position, and score each weld.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <h3>Track Progress</h3>
+                <p>Animated pulse ring shows daily goal completion; bar charts reveal weekly trends.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <h3>Compete & Archive</h3>
+                <p>Enter match results, compare scores, and archive finished projects with score reports.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2>Features</h2>
+        <div class="features">
+            <div class="feature-card">
+                <div class="icon">❤️</div>
+                <h3>Pulse</h3>
+                <p>Breathing ring animation, daily goal tracker, training rhythm visualizer, and session history.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🥊</div>
+                <h3>Arena</h3>
+                <p>Competition records with win/loss tracking, score comparison charts, and opponent data.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">📁</div>
+                <h3>Archive</h3>
+                <p>Technical project archive with multi-dimension score reports: penetration, appearance, consistency.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">⚙️</div>
+                <h3>Settings</h3>
+                <p>Unit management, PDF export via share sheet, data backup, and privacy controls.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="callout">
+            <h3>Private by Design</h3>
+            <p>All data is stored locally on your device. No accounts, no cloud sync, no tracking. Your training records stay yours.</p>
+        </div>
+    </div>
+
+    <footer>
+        <a href="privacy">Privacy Policy</a>
+        <a href="support">Technical Support</a>
+        <div class="copy">&copy; 2026 ArcVanta. All rights reserved.</div>
+    </footer>
+</body>
+</html>
