@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HoldAtlas - Map Your Climbing Journey</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #2673D9;
+            --primary-dark: #144DA0;
+            --primary-light: #5A99EB;
+            --bg: #F5F7FA;
+            --card: #FFFFFF;
+            --text: #1F2433;
+            --text-secondary: #737B8C;
+            --shadow: rgba(0, 0, 0, 0.06);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0A1C59, #1A3E8F, #2673D9, #3580E8);
+            color: white;
+            padding: 80px 20px 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='rgba(255,255,255,0.05)' d='M0,224L48,208C96,192,192,160,288,170.7C384,181,480,235,576,234.7C672,235,768,181,864,165.3C960,149,1056,171,1152,186.7C1248,203,1344,213,1392,218.7L1440,224L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'/%3E%3C/svg%3E") no-repeat center;
+            background-size: cover;
+        }
+
+        .hero-content { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+
+        .hero-icon {
+            width: 80px; height: 80px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 24px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero-icon svg { width: 40px; height: 40px; fill: white; }
+
+        .hero h1 {
+            font-size: 42px; font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.8;
+            max-width: 500px;
+            margin: 0 auto 32px;
+        }
+
+        .hero-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+        .hero-links a {
+            padding: 10px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .hero-links a.primary-btn {
+            background: white;
+            color: var(--primary-dark);
+        }
+
+        .hero-links a.secondary-btn {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .hero-links a:hover { transform: translateY(-2px); }
+
+        .section { max-width: 960px; margin: 0 auto; padding: 60px 20px; }
+
+        .section-title {
+            font-size: 28px; font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 2px 12px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .feature-icon svg { width: 22px; height: 22px; fill: white; }
+
+        .feature-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+        .feature-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+
+        .stats-bar {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .stats-bar .section {
+            display: flex; justify-content: space-around; flex-wrap: wrap;
+            padding: 0; gap: 20px;
+        }
+
+        .stat-item { text-align: center; }
+        .stat-item .number { font-size: 36px; font-weight: 800; }
+        .stat-item .label { font-size: 13px; opacity: 0.7; margin-top: 4px; }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 30px; }
+            .hero p { font-size: 16px; }
+            .section-title { font-size: 24px; }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2L2 19h20L12 2zm0 4l6.5 11h-13L12 6z"/></svg>
+            </div>
+            <h1>HoldAtlas</h1>
+            <p>A quiet companion for climbers who log every route, study every crux, and watch their progress unfold.</p>
+            <div class="hero-links">
+                <a href="privacy" class="secondary-btn">Privacy Policy</a>
+                <a href="support" class="secondary-btn">Support</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 19h20L12 2zm0 4l6.5 11h-13L12 6z"/></svg>
+                </div>
+                <h3>Crux Analysis</h3>
+                <p>Pinpoint and describe the hardest section of every route. Break down complex moves and track what makes each problem challenging.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8m0 0v4m0-4h-4"/></svg>
+                </div>
+                <h3>Route Logging</h3>
+                <p>Record detailed route info including V-grade, wall angle, hold types, location, and quality ratings with searchable filtering.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <h3>Attempt Timer</h3>
+                <p>Built-in climbing and rest timers. Log each attempt with result tracking, felt difficulty, and session notes.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6m8 0V9a2 2 0 012-2h2a2 2 0 012 2v10m4 0v-4a2 2 0 00-2-2h-2a2 2 0 00-2 2v4"/></svg>
+                </div>
+                <h3>Visual Progress</h3>
+                <p>Charts for weekly activity, monthly volume, grade distribution, and send rates. See your growth at a glance.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zm-4 7a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                </div>
+                <h3>Personal Profile</h3>
+                <p>Track achievements, climbing streaks, session totals, and personal bests. Your climbing identity in one place.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                </div>
+                <h3>Hold Types & Angles</h3>
+                <p>Categorize routes by hold types (crimp, sloper, pinch, pocket) and wall angles (slab, vertical, overhang, roof).</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="stats-bar">
+        <div class="section">
+            <div class="stat-item">
+                <div class="number">V0-V12</div>
+                <div class="label">Grade Range</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">8</div>
+                <div class="label">Hold Types</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">4</div>
+                <div class="label">Wall Angles</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">5</div>
+                <div class="label">Result Types</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 HoldAtlas. All rights reserved.</p>
+        <p style="margin-top: 8px;">
+            <a href="privacy">Privacy Policy</a>
+            <a href="support">Support</a>
+        </p>
+    </footer>
+</body>
+</html>
