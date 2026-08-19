@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - HoldAtlas</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #2673D9;
+            --primary-dark: #144DA0;
+            --primary-light: #5A99EB;
+            --bg: #F5F7FA;
+            --card: #FFFFFF;
+            --text: #1F2433;
+            --text-secondary: #737B8C;
+            --shadow: rgba(0, 0, 0, 0.06);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0A1C59, #1A3E8F, #2673D9);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .header h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; }
+        .header p { font-size: 14px; opacity: 0.7; }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 16px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover { color: white; }
+
+        .content {
+            max-width: 720px;
+            margin: -30px auto 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .support-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 20px var(--shadow);
+            margin-bottom: 20px;
+        }
+
+        .support-card h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .support-card h2 .icon-circle {
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .support-card h2 .icon-circle svg { width: 18px; height: 18px; fill: white; }
+
+        .support-card p { font-size: 15px; color: #3A4055; margin-bottom: 10px; }
+
+        .faq-item {
+            border-bottom: 1px solid #E8EDF5;
+            padding: 16px 0;
+        }
+
+        .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .faq-item:first-child { padding-top: 0; }
+
+        .faq-item h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .faq-item p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .contact-item {
+            background: #F0F5FD;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .contact-item .contact-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .contact-item h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+        .contact-item p { font-size: 13px; color: var(--text-secondary); margin-bottom: 0; }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #E8EDF5;
+            font-size: 14px;
+        }
+
+        .tips-list li:last-child { border-bottom: none; }
+
+        .tip-number {
+            width: 28px; height: 28px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px; font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .tip-content h4 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+        .tip-content p { color: var(--text-secondary); margin-bottom: 0; }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        footer a { color: var(--primary); text-decoration: none; margin: 0 12px; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 640px) {
+            .content { margin: -20px 12px 30px; }
+            .support-card { padding: 20px; }
+            .header h1 { font-size: 26px; }
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="../" class="back-link">&larr; Back to HoldAtlas</a>
+        <h1>Support</h1>
+        <p>We are here to help you climb higher</p>
+    </div>
+
+    <div class="content">
+        <div class="support-card">
+            <h2>
+                <span class="icon-circle">
+                    <svg viewBox="0 0 24 24"><path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </span>
+                Frequently Asked Questions
+            </h2>
+
+            <div class="faq-item">
+                <h3>How do I add a new route?</h3>
+                <p>Navigate to the Routes tab and tap the + button in the top right corner. Fill in the route details including name, grade, location, wall angle, and hold types.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How does the attempt timer work?</h3>
+                <p>Go to the Attempts tab and use the built-in timer. Tap play to start timing your climb, and stop when you finish. You can also use the rest timer between attempts.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What does the Crux tab show?</h3>
+                <p>The Crux tab is your dashboard showing your hardest grade sent, send rate, active projects, grade distribution, and key crux moves across all your routes.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Where is my data stored?</h3>
+                <p>All data is stored locally on your device. Nothing is uploaded to any server. If you delete the app, your data will be removed.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What grade scale does the app use?</h3>
+                <p>HoldAtlas uses the V-scale (Hueco scale) from V0 to V12, which is the standard bouldering grade system.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Can I track multiple climbing locations?</h3>
+                <p>Yes, each route can have its own location. Your Profile tab will show your most visited spot, and you can filter routes by location.</p>
+            </div>
+        </div>
+
+        <div class="support-card">
+            <h2>
+                <span class="icon-circle">
+                    <svg viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                </span>
+                Getting Started Tips
+            </h2>
+
+            <ul class="tips-list">
+                <li>
+                    <span class="tip-number">1</span>
+                    <div class="tip-content">
+                        <h4>Set up your profile</h4>
+                        <p>Go to Profile and tap the edit button to add your name, home gym, and bio.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="tip-number">2</span>
+                    <div class="tip-content">
+                        <h4>Log your first route</h4>
+                        <p>Add a route with its grade, holds, and the crux description for the hardest move.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="tip-number">3</span>
+                    <div class="tip-content">
+                        <h4>Track your attempts</h4>
+                        <p>Use the timer to track climbing time and log each attempt with its result.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="tip-number">4</span>
+                    <div class="tip-content">
+                        <h4>Watch your progress</h4>
+                        <p>Check the Progress tab for charts showing your weekly activity and grade progression.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="support-card">
+            <h2>
+                <span class="icon-circle">
+                    <svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                </span>
+                Contact Us
+            </h2>
+            <p>Need further assistance? We are happy to help.</p>
+
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">&#9993;</div>
+                    <h4>Email</h4>
+                    <p>holdatlas@support.com</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">&#128172;</div>
+                    <h4>Response Time</h4>
+                    <p>Within 48 hours</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 HoldAtlas. All rights reserved.</p>
+        <p style="margin-top: 8px;">
+            <a href="../">Home</a>
+            <a href="../privacy">Privacy Policy</a>
+        </p>
+    </footer>
+</body>
+</html>
