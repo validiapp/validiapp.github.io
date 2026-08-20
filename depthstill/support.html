@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技术支持 - 无声深度</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0A84FF;
+            --deep: #0055D4;
+            --dark: #001A4D;
+            --light: #E8F4FD;
+            --surface: #F8FBFF;
+            --text: #1A2B4A;
+            --text-secondary: #6B7B99;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+            background: var(--surface);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--deep), var(--dark));
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.2em;
+            color: white;
+            margin-bottom: 8px;
+        }
+        .header p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1em;
+        }
+        .nav {
+            background: white;
+            padding: 16px 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+        }
+        .nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95em;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav a:hover { color: var(--primary); }
+        .nav a.active { color: var(--primary); font-weight: 600; }
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 48px 20px 80px;
+        }
+        .content {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 32px;
+            box-shadow: 0 4px 16px rgba(10,132,255,0.06);
+        }
+        .content h2 {
+            font-size: 1.3em;
+            color: var(--text);
+            margin: 32px 0 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--light);
+        }
+        .content h2:first-child { margin-top: 0; }
+        .content p {
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+        .faq-item {
+            margin: 20px 0;
+            border: 1px solid var(--light);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 16px 20px;
+            background: var(--light);
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .faq-question::before {
+            content: 'Q';
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            font-size: 0.85em;
+            flex-shrink: 0;
+        }
+        .faq-answer {
+            padding: 16px 20px;
+            color: var(--text-secondary);
+        }
+        .contact-card {
+            background: linear-gradient(135deg, var(--primary), var(--deep));
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            margin-top: 32px;
+            color: white;
+        }
+        .contact-card h3 {
+            font-size: 1.2em;
+            margin-bottom: 12px;
+        }
+        .contact-card p {
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 4px;
+        }
+        .contact-card a {
+            color: white;
+            text-decoration: underline;
+        }
+        .system-req {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .req-item {
+            background: var(--light);
+            padding: 12px 16px;
+            border-radius: 8px;
+        }
+        .req-item strong {
+            display: block;
+            font-size: 0.85em;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        .req-item span {
+            font-size: 0.9em;
+            color: var(--text);
+        }
+        .footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 32px 20px;
+            margin-top: 60px;
+        }
+        .footer a { color: var(--primary); text-decoration: none; }
+        @media (max-width: 640px) {
+            .content { padding: 24px 16px; }
+            .header h1 { font-size: 1.8em; }
+            .system-req { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>技术支持</h1>
+        <p>我们随时为您提供帮助</p>
+    </div>
+    
+    <nav class="nav">
+        <a href="index.html">首页</a>
+        <a href="privacy.html">数据保护</a>
+        <a href="support.html" class="active">技术支持</a>
+    </nav>
+    
+    <div class="container">
+        <div class="content">
+            <h2>系统要求</h2>
+            <div class="system-req">
+                <div class="req-item">
+                    <strong>操作系统</strong>
+                    <span>iOS 15.0 或更高</span>
+                </div>
+                <div class="req-item">
+                    <strong>设备</strong>
+                    <span>iPhone 6s 及以上</span>
+                </div>
+                <div class="req-item">
+                    <strong>存储空间</strong>
+                    <span>约 50MB</span>
+                </div>
+                <div class="req-item">
+                    <strong>网络</strong>
+                    <span>无需联网</span>
+                </div>
+            </div>
+            
+            <h2>常见问题</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">数据如何备份？</div>
+                <div class="faq-answer">训练数据随 iCloud 备份或 iTunes/Finder 本地备份一并保存。更换设备时通过备份恢复即可迁移数据。应用内也提供数据导出功能。</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">是否需要网络连接？</div>
+                <div class="faq-answer">无需网络连接。所有功能均可离线使用，数据存储在设备本地，适合在信号不佳的海域或旅途中使用。</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">如何记录一次训练？</div>
+                <div class="faq-answer">在「下潜」页面点击右上角添加按钮，按步骤填写深度、时长、类型等参数即可。支持选择日期补录历史记录。</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">呼吸训练模式如何选择？</div>
+                <div class="faq-answer">建议初学者从「放松呼吸」开始。有一定基础后可尝试「CO2耐受」和「O2耐受」模式。每种模式的参数均可自定义调整。</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">如何删除训练记录？</div>
+                <div class="faq-answer">在记录列表中左滑相应记录即可删除。删除操作不可撤销，请谨慎操作。</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">位置权限的用途？</div>
+                <div class="faq-answer">仅用于辅助标记训练地点坐标，方便日后在地图上回顾训练轨迹。该权限完全可选，不授权不影响其他功能使用。</div>
+            </div>
+            
+            <h2>版本信息</h2>
+            <p>当前版本：1.0.0</p>
+            <p>如遇到任何使用问题或有功能建议，欢迎通过以下方式联系我们。</p>
+            
+            <div class="contact-card">
+                <h3>联系我们</h3>
+                <p>邮箱：<a href="mailto:support@silentdepth.app">support@silentdepth.app</a></p>
+                <p style="margin-top: 8px; font-size: 0.9em;">工作日 24 小时内回复</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <p><a href="index.html">返回首页</a> · <a href="privacy.html">数据保护说明</a></p>
+        <p style="margin-top: 12px;">&copy; 2026 无声深度. All rights reserved.</p>
+    </footer>
+</body>
+</html>
