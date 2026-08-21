@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Windtide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #1a1a2e;
+            line-height: 1.8;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1B5E7D 0%, #2E86AB 100%);
+            padding: 50px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 16px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 1;
+        }
+
+        .container {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        .content {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            margin-top: 32px;
+            margin-bottom: 12px;
+            color: #1B5E7D;
+        }
+
+        h2:first-child {
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 12px;
+            color: #444;
+            font-size: 0.95rem;
+        }
+
+        .faq-item {
+            background: #f9fbfd;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 3px solid #2E86AB;
+        }
+
+        .faq-item h3 {
+            font-size: 1rem;
+            color: #1B5E7D;
+            margin-bottom: 8px;
+        }
+
+        .faq-item p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .feature-item {
+            background: #f9fbfd;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .feature-item .icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .feature-item h4 {
+            font-size: 0.9rem;
+            color: #1a1a2e;
+            margin-bottom: 4px;
+        }
+
+        .feature-item p {
+            font-size: 0.8rem;
+            color: #777;
+            margin-bottom: 0;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #E8F4FD, #f5f7fa);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        .contact-section h3 {
+            color: #1B5E7D;
+            margin-bottom: 8px;
+        }
+
+        .contact-section p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: #2E86AB;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            .content { padding: 24px; }
+            .header h1 { font-size: 1.5rem; }
+            .feature-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Support</h1>
+        <p>Windtide - Sailing Wind Training</p>
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <h2>Getting Started</h2>
+            <p>Windtide is your comprehensive sailing wind training companion. Here's how to make the most of it:</p>
+
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="icon">🚢</div>
+                    <h4>Drift</h4>
+                    <p>Overview of your sailing activity and current conditions</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">💨</div>
+                    <h4>Gust</h4>
+                    <p>Record wind speed, gusts, and direction</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🗺️</div>
+                    <h4>Route</h4>
+                    <p>Log your sailing routes and distances</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">📦</div>
+                    <h4>Vault</h4>
+                    <p>Access training history and analytics</p>
+                </div>
+            </div>
+
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h3>How do I record a wind speed?</h3>
+                <p>Navigate to the Gust tab, tap the + button, enter the wind speed and gust speed in knots, select the wind direction, and optionally add a note. The Beaufort scale is calculated automatically.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How do I start a training session?</h3>
+                <p>On the Drift (home) page, tap "New Session" in the Quick Actions section. This will create a new training session that you can track over time.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How do I export my data?</h3>
+                <p>You can export your wind records as a PDF report. Go to the Gust page and tap the PDF icon in the top right, or use Settings → Export All Data. The report will be shared using your device's share sheet.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Is my data backed up?</h3>
+                <p>All data is stored locally on your device. If you have iCloud backup enabled for your device, your app data will be included in device backups. We recommend regularly exporting PDF reports for safekeeping.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How do I delete my data?</h3>
+                <p>Go to Settings → Clear All Data. This will permanently delete all your wind records, sessions, and routes. This action cannot be undone.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What is the Beaufort Scale?</h3>
+                <p>The Beaufort Scale is a standardized scale (0-12) for measuring wind speed based on observed conditions. Windtide automatically calculates the Beaufort number from your wind speed recordings.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Can I change speed units?</h3>
+                <p>Yes! Go to Settings → Speed Unit and choose from Knots, km/h, m/s, or mph.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Does the app require internet?</h3>
+                <p>No. Windtide works completely offline. All data is stored locally on your device and no internet connection is required.</p>
+            </div>
+
+            <div class="contact-section">
+                <h3>Need More Help?</h3>
+                <p>If you have questions not covered here, please reach out to us through the App Store review section or contact our support team. We're happy to help!</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Windtide. All rights reserved.</p>
+        <p style="margin-top: 8px;"><a href="index.html">Home</a> &middot; <a href="privacy.html">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>
