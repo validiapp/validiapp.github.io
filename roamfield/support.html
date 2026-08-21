@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Roamfield</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafe;
+            min-height: 100vh;
+            color: #212121;
+        }
+        .header {
+            background: linear-gradient(135deg, #1976D2 0%, #2196F3 100%);
+            color: white;
+            padding: 60px 20px 40px;
+            text-align: center;
+        }
+        .header h1 { font-size: 2rem; margin-bottom: 8px; }
+        .header p { opacity: 0.8; font-size: 0.95rem; }
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 16px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav a {
+            text-decoration: none;
+            color: #2196F3;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        .nav a:hover { background: #e3f2fd; }
+        .content {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .content h2 {
+            font-size: 1.3rem;
+            color: #1976D2;
+            margin: 32px 0 16px;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            transition: box-shadow 0.3s;
+        }
+        .faq-item:hover {
+            box-shadow: 0 4px 20px rgba(33,150,243,0.1);
+        }
+        .faq-item h3 {
+            font-size: 1rem;
+            color: #212121;
+            margin-bottom: 8px;
+        }
+        .faq-item p {
+            font-size: 0.9rem;
+            color: #616161;
+            line-height: 1.6;
+        }
+        .contact-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            margin-top: 24px;
+        }
+        .contact-card h3 {
+            color: #1976D2;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+        .contact-card p {
+            color: #757575;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .contact-email {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #2196F3;
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        .contact-email:hover { background: #1976D2; }
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .tip-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+        .tip-card .icon { font-size: 2rem; margin-bottom: 8px; }
+        .tip-card h4 { font-size: 0.9rem; color: #212121; margin-bottom: 4px; }
+        .tip-card p { font-size: 0.8rem; color: #757575; }
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #9e9e9e;
+            font-size: 0.85rem;
+        }
+        .footer a { color: #2196F3; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Help & Support</h1>
+        <p>We're here to help you get the most from Roamfield</p>
+    </div>
+
+    <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="support.html">Support</a>
+    </nav>
+
+    <div class="content">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3>How do I add a new journey?</h3>
+            <p>Go to the Journey tab and tap the "+" button in the top right corner. Fill in the destination, title, and notes, then tap Save.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I add a new contact?</h3>
+            <p>Navigate to the People tab and tap the person+ icon. Enter their details including name, phone, email, and where you met them.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is my data backed up?</h3>
+            <p>All data is stored locally on your device. It is included in your device's automatic iCloud backup if enabled. We recommend keeping regular device backups.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Can I export my data?</h3>
+            <p>Currently, data is stored locally. Future updates may include export capabilities. Your device backup will preserve all app data.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What happens if I delete the app?</h3>
+            <p>Deleting the app will permanently remove all locally stored data including journeys, contacts, and moments. Please back up your device before uninstalling.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I categorize contacts?</h3>
+            <p>When adding or editing a contact, you can assign them to categories like Good, VIP, or Casual. Use the filter chips on the People tab to view by category.</p>
+        </div>
+
+        <h2>Quick Tips</h2>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="icon">📍</div>
+                <h4>Record Locations</h4>
+                <p>Add where you met each person for better memories</p>
+            </div>
+            <div class="tip-card">
+                <div class="icon">🏷️</div>
+                <h4>Use Categories</h4>
+                <p>Organize contacts by relationship type</p>
+            </div>
+            <div class="tip-card">
+                <div class="icon">📝</div>
+                <h4>Add Notes</h4>
+                <p>Write down memorable details about each encounter</p>
+            </div>
+        </div>
+
+        <h2>Contact Support</h2>
+        <div class="contact-card">
+            <h3>Need More Help?</h3>
+            <p>If you couldn't find the answer to your question above, feel free to reach out to us. We typically respond within 24-48 hours.</p>
+            <a href="mailto:support@roamfield.app" class="contact-email">Email Support</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2026 Roamfield. All rights reserved.</p>
+        <p style="margin-top: 8px;">
+            <a href="index.html">Home</a> &middot;
+            <a href="privacy.html">Privacy Policy</a>
+        </p>
+    </div>
+</body>
+</html>
