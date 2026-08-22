@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技术支持 - 轻体之间</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #F7F8FC;
+            color: #1A1D26;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4A90D9, #6EC6CA);
+            padding: 60px 20px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.85;
+        }
+
+        .nav-back {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 8px 16px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 100;
+            transition: background 0.2s;
+        }
+
+        .nav-back:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .content {
+            max-width: 720px;
+            margin: -20px auto 0;
+            padding: 40px 32px;
+            background: white;
+            border-radius: 20px 20px 0 0;
+            min-height: calc(100vh - 150px);
+            box-shadow: 0 -4px 24px rgba(0,0,0,0.06);
+        }
+
+        .content h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 32px 0 12px;
+            color: #1A1D26;
+            padding-left: 12px;
+            border-left: 3px solid #4A90D9;
+        }
+
+        .content h2:first-child {
+            margin-top: 0;
+        }
+
+        .content p {
+            font-size: 15px;
+            color: #6B7280;
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .faq-item {
+            background: #F7F8FC;
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin-bottom: 14px;
+            transition: background 0.2s;
+        }
+
+        .faq-item:hover {
+            background: #E8F1FB;
+        }
+
+        .faq-item .question {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1A1D26;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .faq-item .question::before {
+            content: 'Q';
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: #4A90D9;
+            color: white;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .faq-item .answer {
+            font-size: 14px;
+            color: #6B7280;
+            padding-left: 34px;
+            line-height: 1.7;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, #E8F1FB, #E0F5F5);
+            border-radius: 16px;
+            padding: 28px;
+            margin: 24px 0;
+            text-align: center;
+        }
+
+        .contact-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1A1D26;
+            margin-bottom: 8px;
+        }
+
+        .contact-card p {
+            font-size: 14px;
+            color: #6B7280;
+            margin-bottom: 16px;
+        }
+
+        .contact-card .email {
+            display: inline-block;
+            background: #4A90D9;
+            color: white;
+            padding: 10px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .contact-card .email:hover {
+            background: #3A7BC8;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+            margin: 20px 0;
+        }
+
+        .feature-tag {
+            background: #F7F8FC;
+            border-radius: 10px;
+            padding: 14px 18px;
+            font-size: 14px;
+            color: #4A90D9;
+            font-weight: 500;
+            text-align: center;
+            border: 1px solid #E5E7EB;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            color: #A0A7B4;
+            font-size: 13px;
+        }
+
+        @media (max-width: 640px) {
+            .content { padding: 30px 20px; }
+            .header h1 { font-size: 26px; }
+        }
+    </style>
+</head>
+<body>
+    <a href="./" class="nav-back">← 返回首页</a>
+
+    <div class="header">
+        <h1>技术支持</h1>
+        <p>轻体之间 使用帮助与常见问题</p>
+    </div>
+
+    <div class="content">
+        <h2>应用介绍</h2>
+        <p>轻体之间是一款简洁高效的身体数据追踪工具，帮助用户记录和分析体重、身高、腰围等多项身体数据的变化趋势。所有数据存储在本地设备上，保护您的隐私安全。</p>
+
+        <div class="feature-list">
+            <div class="feature-tag">📝 多维数据记录</div>
+            <div class="feature-tag">📈 趋势图表</div>
+            <div class="feature-tag">🔍 体态分析</div>
+            <div class="feature-tag">📋 计划管理</div>
+            <div class="feature-tag">📄 PDF导出</div>
+            <div class="feature-tag">🔒 本地存储</div>
+        </div>
+
+        <h2>常见问题</h2>
+
+        <div class="faq-item">
+            <div class="question">如何记录身体数据？</div>
+            <div class="answer">打开应用后，在「身体」页面选择要记录的数据类型（如体重、身高、腰围等），使用数字键盘输入数值后点击"保存"按钮即可完成记录。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">如何查看数据变化趋势？</div>
+            <div class="answer">切换到「轨迹」页面，选择想要查看的数据类型和时间范围（7天、30天、3个月等），即可看到数据变化的折线图和统计信息。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">体态指数和腰高比是什么？</div>
+            <div class="answer">体态指数根据体重和身高计算得出，帮助了解自身体态情况。腰高比根据腰围和身高计算，建议保持在0.5以下。这些指标可在「洞察」页面查看。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">如何设定目标？</div>
+            <div class="answer">在「计划」页面点击"设定"按钮，输入目标体重和目标日期即可创建目标。应用会帮您追踪距离目标的进度。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">如何导出数据？</div>
+            <div class="answer">在「我的」页面点击"导出数据"，应用会自动生成包含所有记录的PDF报告文件，并弹出分享界面供您选择保存或发送方式。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">如何删除记录？</div>
+            <div class="answer">在「轨迹」页面的历史记录列表中，向左滑动某条记录即可出现删除选项。您也可以在「我的」页面选择"清除所有数据"来删除全部记录。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">我的数据安全吗？</div>
+            <div class="answer">非常安全。所有数据完全存储在您的设备本地，不会上传到任何服务器。卸载应用时数据会一同被删除。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">应用是否需要联网？</div>
+            <div class="answer">不需要。本应用所有核心功能均可离线使用。仅在点击隐私政策或技术支持链接时会使用系统浏览器打开网页。</div>
+        </div>
+
+        <h2>系统要求</h2>
+        <p>iOS 12.0 或更高版本。兼容 iPhone 和 iPad。</p>
+
+        <h2>联系我们</h2>
+        <div class="contact-card">
+            <h3>需要更多帮助？</h3>
+            <p>如果以上信息没有解答您的问题，请通过邮件联系我们</p>
+            <a href="mailto:support@validiapp.com" class="email">support@validiapp.com</a>
+        </div>
+
+        <p style="text-align: center; margin-top: 24px;">
+            <a href="privacy" style="color: #4A90D9; text-decoration: none; font-weight: 500;">查看隐私政策 →</a>
+        </p>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2026 轻体之间. All rights reserved.</p>
+    </div>
+</body>
+</html>
