@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlpineRoster — Outdoor Companion Roster</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #2D5F3E;
+            --primary-light: #4A8C64;
+            --accent: #D4956A;
+            --surface: #F8F6F3;
+            --card: #FFFFFF;
+            --text: #1C1917;
+            --text-secondary: #78716C;
+            --text-muted: #A8A29E;
+            --border: #E5E0DA;
+            --climbing: #B45309;
+            --diving: #0369A1;
+            --cycling: #7C3AED;
+        }
+        body {
+            font-family: 'Albert Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--surface);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+        /* Nav */
+        nav {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+        }
+        nav .container { display: flex; align-items: center; justify-content: space-between; }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text);
+        }
+        .nav-brand .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 14px;
+        }
+        .nav-brand span { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; }
+        .nav-links { display: flex; gap: 28px; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        .hero-badge .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .hero h1 em {
+            font-style: normal;
+            color: var(--primary);
+        }
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 560px;
+            margin: 0 auto 36px;
+            line-height: 1.6;
+        }
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .hero-cta:hover { background: var(--primary-light); transform: translateY(-1px); }
+        .hero-cta svg { width: 18px; height: 18px; }
+
+        /* Features */
+        .features { padding: 60px 0 80px; }
+        .features h2 {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+        .features .subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .feature-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+        }
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 22px;
+        }
+        .feature-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+        .feature-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+
+        /* Sport Section */
+        .sports { padding: 60px 0; }
+        .sports h2 {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 48px;
+            letter-spacing: -0.5px;
+        }
+        .sport-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .sport-card {
+            border-radius: 20px;
+            padding: 36px 28px;
+            text-align: center;
+            color: white;
+            transition: transform 0.2s;
+        }
+        .sport-card:hover { transform: translateY(-3px); }
+        .sport-card.climbing { background: linear-gradient(135deg, #B45309, #D97706); }
+        .sport-card.diving { background: linear-gradient(135deg, #0369A1, #0EA5E9); }
+        .sport-card.cycling { background: linear-gradient(135deg, #7C3AED, #A78BFA); }
+        .sport-card .sport-emoji { font-size: 40px; margin-bottom: 16px; }
+        .sport-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+        .sport-card p { font-size: 14px; opacity: 0.85; line-height: 1.5; }
+
+        /* Privacy badge */
+        .privacy-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+        .privacy-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 48px;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        .privacy-card .shield { font-size: 48px; margin-bottom: 16px; }
+        .privacy-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+        .privacy-card p { font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            text-align: center;
+        }
+        footer p { font-size: 13px; color: var(--text-muted); }
+        footer .footer-links { margin-top: 12px; display: flex; justify-content: center; gap: 24px; }
+        footer a {
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        footer a:hover { color: var(--primary); }
+
+        @media (max-width: 768px) {
+            .sport-cards { grid-template-columns: 1fr; }
+            .nav-links { gap: 16px; }
+            .hero { padding: 60px 0 40px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="/" class="nav-brand">
+                <div class="logo-icon">AR</div>
+                <span>AlpineRoster</span>
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#sports">Sports</a>
+                <a href="privacy/">Privacy</a>
+                <a href="support/">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                Offline-first companion manager
+            </div>
+            <h1>Your Outdoor<br><em>Companion Roster</em></h1>
+            <p>Organize your climbing partners, diving buddies, and cycling teammates in one place. Track trips, save routes, and keep everything private on your device.</p>
+            <a href="#features" class="hero-cta">
+                Explore Features
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+            </a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Everything You Need</h2>
+            <p class="subtitle">Built for outdoor enthusiasts who value privacy and simplicity.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(45,95,62,0.1);">
+                        <span>&#x1F465;</span>
+                    </div>
+                    <h3>Partner Roster</h3>
+                    <p>Maintain detailed profiles of your outdoor companions including contact info, skill levels, emergency contacts, and personal notes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(212,149,106,0.1);">
+                        <span>&#x1F4CD;</span>
+                    </div>
+                    <h3>Trip Logging</h3>
+                    <p>Record every adventure with details like elevation gain, dive depth, distance, weather conditions, gear used, and difficulty ratings.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(2,132,199,0.1);">
+                        <span>&#x1F5FA;</span>
+                    </div>
+                    <h3>Route Database</h3>
+                    <p>Save your favorite peaks, dive sites, and cycling trails with terrain info, seasonal recommendations, and personal ratings.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(124,58,237,0.1);">
+                        <span>&#x1F4DD;</span>
+                    </div>
+                    <h3>Personal Notes</h3>
+                    <p>Keep private notes about each partner with text and image support. All stored locally on your device, visible only to you.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(220,38,38,0.1);">
+                        <span>&#x1F4CA;</span>
+                    </div>
+                    <h3>Activity Dashboard</h3>
+                    <p>Visualize your outdoor activities with charts and statistics. Track partner counts, trip history, and sport-specific metrics at a glance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(5,150,105,0.1);">
+                        <span>&#x1F4E4;</span>
+                    </div>
+                    <h3>PDF Export</h3>
+                    <p>Export your complete roster, trip logs, and route database as a formatted PDF document. Share via any method on your device.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sports" id="sports">
+        <div class="container">
+            <h2>Three Sports, One App</h2>
+            <div class="sport-cards">
+                <div class="sport-card climbing">
+                    <div class="sport-emoji">&#x26F0;</div>
+                    <h3>Climbing</h3>
+                    <p>Track elevation gains, log summit attempts, save peak routes, and manage your climbing crew with skill level tracking.</p>
+                </div>
+                <div class="sport-card diving">
+                    <div class="sport-emoji">&#x1F93F;</div>
+                    <h3>Diving</h3>
+                    <p>Record dive depths, log dive site conditions, track visibility, and keep your buddy list organized with certification details.</p>
+                </div>
+                <div class="sport-card cycling">
+                    <div class="sport-emoji">&#x1F6B4;</div>
+                    <h3>Cycling</h3>
+                    <p>Measure distances, save favorite trails, record terrain types, and coordinate with your riding group through detailed profiles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="privacy-section">
+        <div class="container">
+            <div class="privacy-card">
+                <div class="shield">&#x1F512;</div>
+                <h3>100% Offline &amp; Private</h3>
+                <p>AlpineRoster stores all data locally on your device. No accounts, no cloud sync, no data collection, no tracking. Your outdoor companion data stays completely under your control.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AlpineRoster. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy/">Privacy Policy</a>
+                <a href="support/">Support</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
