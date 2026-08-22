@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>声息观测 - 嗓音保养记录工具</title>
+    <style>
+        :root {
+            --primary: #58A691;
+            --primary-dark: #3A7D6A;
+            --accent: #4CACBC;
+            --bg: #1A1D2E;
+            --surface: #242840;
+            --surface-light: #2E3352;
+            --text: #F0F0F5;
+            --text-secondary: #A0A4B8;
+            --text-hint: #6B6F85;
+            --divider: #3A3E55;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(26, 29, 46, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(58, 62, 85, 0.3);
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .nav-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .nav-logo span { font-size: 18px; font-weight: 700; }
+
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(88, 166, 145, 0.15) 0%, transparent 70%);
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; max-width: 700px; }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(88, 166, 145, 0.15);
+            border: 1px solid rgba(88, 166, 145, 0.3);
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--text), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto 36px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary { background: var(--primary); color: white; }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(88, 166, 145, 0.3);
+        }
+
+        .btn-outline { border: 1.5px solid var(--divider); color: var(--text); background: transparent; }
+
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+        .features { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
+
+        .features-header { text-align: center; margin-bottom: 60px; }
+
+        .features-header h2 { font-size: 36px; font-weight: 700; margin-bottom: 16px; }
+
+        .features-header p { color: var(--text-secondary); font-size: 16px; max-width: 500px; margin: 0 auto; }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--surface);
+            border: 1px solid var(--divider);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+
+        .feature-card p { color: var(--text-secondary); font-size: 14px; line-height: 1.7; }
+
+        .stats-section {
+            padding: 60px 24px;
+            background: var(--surface);
+            border-top: 1px solid var(--divider);
+            border-bottom: 1px solid var(--divider);
+        }
+
+        .stats-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            text-align: center;
+        }
+
+        .stat-item h3 { font-size: 36px; font-weight: 800; color: var(--primary); margin-bottom: 6px; }
+
+        .stat-item p { color: var(--text-secondary); font-size: 13px; }
+
+        footer { padding: 48px 24px; text-align: center; border-top: 1px solid var(--divider); }
+
+        .footer-links { display: flex; gap: 32px; justify-content: center; margin-bottom: 20px; }
+
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.3s; }
+
+        .footer-links a:hover { color: var(--primary); }
+
+        footer p { color: var(--text-hint); font-size: 13px; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 15px; }
+            .nav-links { display: none; }
+            .stats-inner { grid-template-columns: repeat(2, 1fr); }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <div class="nav-logo-icon">🎵</div>
+                <span>声息观测</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">功能介绍</a></li>
+                <li><a href="privacy">隐私政策</a></li>
+                <li><a href="support">技术支持</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">嗓音保养 · 科学记录</div>
+            <h1>声息观测</h1>
+            <p>一款用心陪伴你观察和呵护声音的工具。记录声音环境、追踪日常状态、建立个人专属的保养计划——所有数据均存储在你的设备本地，安全可靠。</p>
+            <div class="hero-buttons">
+                <a href="#features" class="btn btn-primary">
+                    <span>了解功能</span>
+                    <span>→</span>
+                </a>
+                <a href="privacy" class="btn btn-outline">隐私政策</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="features-header">
+            <h2>核心功能</h2>
+            <p>全方位观测、记录与呵护你的声音</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(88,166,145,0.15);">📊</div>
+                <h3>声场记录</h3>
+                <p>记录并分析你所处的声音环境。追踪噪声等级，分类环境类型，通过可视化图表发现规律。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(76,172,188,0.15);">📝</div>
+                <h3>手记日志</h3>
+                <p>详细的嗓音状态日记，支持舒适度追踪、疲劳监测、水分记录，以及环境上下文关联。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(156,124,219,0.15);">🧘</div>
+                <h3>养声计划</h3>
+                <p>内置丰富的保养项目，包含呼吸练习、发声热身、放松舒缓技巧和定时静默休息，配合引导音频。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(232,168,124,0.15);">🔬</div>
+                <h3>科学知识</h3>
+                <p>全面的嗓音科学知识库，涵盖发声结构、保养方法、环境影响和健康习惯养成。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(91,141,239,0.15);">📤</div>
+                <h3>数据导出</h3>
+                <p>将记录导出为精美排版的 PDF 文档，通过系统分享功能轻松发送。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(224,114,156,0.15);">🔒</div>
+                <h3>隐私为先</h3>
+                <p>所有数据仅存储在你的设备本地。无网络请求、无云端存储、无任何追踪。你的数据完全属于你。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="stats-inner">
+            <div class="stat-item">
+                <h3>10+</h3>
+                <p>养声项目</p>
+            </div>
+            <div class="stat-item">
+                <h3>20+</h3>
+                <p>知识文章</p>
+            </div>
+            <div class="stat-item">
+                <h3>12</h3>
+                <p>环境预设</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>离线 · 隐私</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="privacy">隐私政策</a>
+            <a href="support">技术支持</a>
+        </div>
+        <p>&copy; 2026 声息观测 版权所有</p>
+    </footer>
+</body>
+</html>
