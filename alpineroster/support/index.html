@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support — AlpineRoster</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #2D5F3E;
+            --primary-light: #4A8C64;
+            --accent: #D4956A;
+            --surface: #F8F6F3;
+            --card: #FFFFFF;
+            --text: #1C1917;
+            --text-secondary: #78716C;
+            --text-muted: #A8A29E;
+            --border: #E5E0DA;
+        }
+        body {
+            font-family: 'Albert Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--surface);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+        nav {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav .container { display: flex; align-items: center; justify-content: space-between; max-width: 720px; }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text);
+        }
+        .nav-brand .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 14px;
+        }
+        .nav-brand span { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; }
+        .nav-links { display: flex; gap: 24px; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+
+        .header {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+        .header p { color: var(--text-secondary); font-size: 16px; max-width: 480px; margin: 0 auto; }
+
+        .faq { padding: 20px 0 60px; }
+        .faq-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 20px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: background 0.15s;
+        }
+        .faq-question:hover { background: rgba(0,0,0,0.01); }
+        .faq-question .arrow {
+            font-size: 20px;
+            color: var(--text-muted);
+            transition: transform 0.2s;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        .faq-answer.open { max-height: 400px; }
+        .faq-answer-inner {
+            padding: 0 24px 20px;
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .faq-item.open .arrow { transform: rotate(180deg); }
+
+        .contact-section {
+            padding: 40px 0 60px;
+        }
+        .contact-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+        }
+        .contact-card .icon { font-size: 40px; margin-bottom: 16px; }
+        .contact-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+        .contact-card p { font-size: 15px; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.6; }
+        .contact-card .email-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .contact-card .email-link:hover { background: var(--primary-light); }
+
+        .guide-section { padding: 0 0 60px; }
+        .guide-section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .guide-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+            text-align: center;
+        }
+        .guide-card .guide-icon { font-size: 28px; margin-bottom: 12px; }
+        .guide-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+        .guide-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            text-align: center;
+        }
+        footer p { font-size: 13px; color: var(--text-muted); }
+        footer .footer-links { margin-top: 12px; display: flex; justify-content: center; gap: 24px; }
+        footer a { font-size: 13px; color: var(--text-secondary); text-decoration: none; font-weight: 500; }
+        footer a:hover { color: var(--primary); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../" class="nav-brand">
+                <div class="logo-icon">AR</div>
+                <span>AlpineRoster</span>
+            </a>
+            <div class="nav-links">
+                <a href="../">Home</a>
+                <a href="../privacy/">Privacy</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>Support Center</h1>
+            <p>Find answers to common questions and get help with AlpineRoster.</p>
+        </div>
+
+        <section class="guide-section">
+            <h2>Quick Start Guide</h2>
+            <div class="guide-grid">
+                <div class="guide-card">
+                    <div class="guide-icon">&#x1F465;</div>
+                    <h4>Add Partners</h4>
+                    <p>Go to the Roster tab and tap the + button. Choose a sport type and fill in your companion's details.</p>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon">&#x1F4CD;</div>
+                    <h4>Log Trips</h4>
+                    <p>Navigate to the Trips tab and tap + to record a new adventure with location, metrics, and notes.</p>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon">&#x1F5FA;</div>
+                    <h4>Save Routes</h4>
+                    <p>Use the Routes tab to save peaks, dive sites, and cycling trails with difficulty and season info.</p>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon">&#x1F4E4;</div>
+                    <h4>Export Data</h4>
+                    <p>Go to Settings and tap "Export Data (PDF)" to generate and share a complete report of your records.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq">
+            <h2 style="font-size: 22px; font-weight: 700; margin-bottom: 20px; text-align: center;">Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Is my data stored in the cloud?</span>
+                    <span class="arrow">&#x25BC;</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        No. All data is stored locally on your device using an on-device database. AlpineRoster does not connect to any servers or cloud services. Your data never leaves your device unless you choose to export and share it.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>How do I export my data?</span>
+                    <span class="arrow">&#x25BC;</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Go to the Settings tab and tap "Export Data (PDF)". The app will generate a formatted PDF document containing your partners, trips, and routes. You can then share it using any method available on your device (email, AirDrop, messaging, etc.).
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Can other people see my notes?</span>
+                    <span class="arrow">&#x25BC;</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        No. The personal notes feature (accessible from each partner's profile) is completely private. Notes and images are stored locally on your device and are only visible within the app. They are not shared, synced, or transmitted in any way.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>What happens to my data if I delete the app?</span>
+                    <span class="arrow">&#x25BC;</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        If you uninstall AlpineRoster, all data stored by the app will be permanently deleted from your device. We recommend using the PDF export feature to create a backup before uninstalling.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Does the app require an internet connection?</span>
+                    <span class="arrow">&#x25BC;</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        No. AlpineRoster works entirely offline. You do not need an internet connection to use any feature of the app. All data is stored and processed locally on your device.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>What sports does the app support?</span>
+                    <span class="arrow">&#x25BC;</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        AlpineRoster supports three outdoor sports: climbing (mountaineering, rock climbing), diving (scuba diving, freediving), and cycling (road, mountain, gravel). Each sport has tailored fields for tracking relevant metrics like elevation gain, dive depth, and ride distance.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>How do I add images to partner notes?</span>
+                    <span class="arrow">&#x25BC;</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Open a partner's profile and tap "Notes" to enter the notes screen. Tap the image icon in the bottom-left corner of the input bar to select an image from your device's photo library. The image will be saved locally alongside your text notes.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <div class="contact-card">
+                <div class="icon">&#x1F4EC;</div>
+                <h3>Still Need Help?</h3>
+                <p>If you cannot find the answer to your question above, feel free to reach out to us. We typically respond within 24-48 hours.</p>
+                <a href="mailto:support@alpineroster.app" class="email-link">
+                    Contact Support
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AlpineRoster. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="../">Home</a>
+                <a href="../privacy/">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFaq(el) {
+            const item = el.parentElement;
+            const answer = item.querySelector('.faq-answer');
+            const isOpen = item.classList.contains('open');
+
+            document.querySelectorAll('.faq-item.open').forEach(i => {
+                i.classList.remove('open');
+                i.querySelector('.faq-answer').classList.remove('open');
+            });
+
+            if (!isOpen) {
+                item.classList.add('open');
+                answer.classList.add('open');
+            }
+        }
+    </script>
+</body>
+</html>
